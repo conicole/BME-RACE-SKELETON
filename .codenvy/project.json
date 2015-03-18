@@ -1,1 +1,1 @@
-{"mixinTypes":[],"builders":{"configs":{},"default":"ant"},"runners":{"configs":{}},"type":"ant","attributes":{"languageVersion":["1.6"],"language":["java"]}}
+{"mixinTypes":["contribution"],"builders":{"configs":{},"default":"ant"},"runners":{"configs":{}},"type":"ant","attributes":{"languageVersion":["1.6"],"language":["java"],"contribute_branch":["master"],"contribute_mode":["contribute"]}}
