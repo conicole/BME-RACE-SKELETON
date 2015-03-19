@@ -23,4 +23,11 @@ public class SpeedVector {
     dg--;
   }
 
+
+
+
+    public static void main(String[] args){
+        System.out.println("Hello World");
+
+    }
 }
