@@ -4,6 +4,10 @@ public class Car extends AbstractObstacle implements ICar{
     private Game g;///
     private Segment position;///
 
+    Car(){
+    
+    }
+    
     Car(Game game){
          g=game;
          sv=new SpeedVector();
@@ -64,7 +68,7 @@ public class Car extends AbstractObstacle implements ICar{
     public void updateCarPosition(){
           System.out.println("I update car position\n");
           g.getTrack().remove(this, position);
-          position = g.nextSegment(position,sv);
+          position = g.nextSegment(this);
           System.out.println("I have a new segment position\n");
     }
     

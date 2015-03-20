@@ -4,4 +4,10 @@ public class Track {
     {
 
     }
+    
+    public void updateCarPosition(ICar c){
+    	System.out.println("I update the car position on the track");
+    	Segment s = new Segment();
+    	s.CarIsComing(c);
+    }
 }

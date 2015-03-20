@@ -55,7 +55,7 @@ public class skeleton {
                     break;
                 case "2":
                     notAnswered = false;
-                    game.getCar1().decelerate();
+                    game.getCar1().brake();
                     break;
                 case "3":
                     notAnswered = false;

@@ -26,10 +26,10 @@ public class Game {
         return car2;
     }
     
-    public Segment nextSegment(Segment pos, SpeedVector sv){
+    public Segment nextSegment(ICar c){
     	System.out.println("Calcul of the next segment of the Car\n");
     	System.out.println("Compute new position\n");
-    	track.updateCarPosition(sv);
+    	track.updateCarPosition(c);
     	return new Segment();
     }
 
