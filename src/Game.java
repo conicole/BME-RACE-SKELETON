@@ -12,6 +12,11 @@ public class Game {
     car1 = new Car();
     car2 = new Car();
   }
-  
+
+    public Track getTrack(){
+        return track;
+    }
+
+
   
 }
