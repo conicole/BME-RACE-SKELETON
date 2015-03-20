@@ -1,11 +1,11 @@
-public class Car extends AbstractObstacle implements ICar{
+public class Car implements  ICar{
 
     private SpeedVector sv;///
     private Game g;///
     private Segment position;///
 
     Car(){
-    	sv = new SpeedVector();
+    	sv = new SpeedVector(1);
     }
     
     Car(Game game){
@@ -16,7 +16,7 @@ public class Car extends AbstractObstacle implements ICar{
     }
     
     public void ObstacleHitted(ICar c){
-        System.out.println("Car : ObstacleHitted : Car");
+        System.out.println("Car Hitted : ObstacleHitted : Car");
         c.hitCar();
         this.accelerate();
     }
@@ -47,7 +47,8 @@ public class Car extends AbstractObstacle implements ICar{
     }
     
     public void stop(){
-        System.out.println("Car : stop"); 
+        System.out.println("Hitter Car : stop");
+        sv.stop();
     }
     
     public void hitGlue(){

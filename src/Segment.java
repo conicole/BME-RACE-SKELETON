@@ -43,7 +43,7 @@ public class Segment implements ISegment {
                   return;
               case "3":
             	  System.out.println("Segment : car hit a car");
-            	  Car car=new Car();
+                  Car car = new Car();
             	  car.ObstacleHitted(c);
                   notAnswered = false;
                   return;
@@ -55,7 +55,7 @@ public class Segment implements ISegment {
                   return;
               case "5":
             	  System.out.println("Segment : hit Obstacle");
-            	  Obstacle o=new Obstacle();
+            	  Obstacle o=new Obstacle(1);
             	  o.ObstacleHitted(c);
                   notAnswered = false;
                   return;
@@ -63,6 +63,8 @@ public class Segment implements ISegment {
                   System.out.println("Please enter correct option");
                   break;
           }
+
+          this.addObstacle(c);
           
       }
 

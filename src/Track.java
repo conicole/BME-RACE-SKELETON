@@ -18,9 +18,8 @@ public class Track {
 
     }
     
-    public void updateCarPosition(ICar c){
+    public void updateCarPosition(ICar c, ISegment s ){
     	System.out.println("Track : Updating the car position on the track");
-    	Segment s = new Segment();
     	s.CarIsComing(c);
     }
     

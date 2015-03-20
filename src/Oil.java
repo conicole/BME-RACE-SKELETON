@@ -1,10 +1,10 @@
 
 
 
-public class Oil extends AbstractObstacle{
+public class Oil implements AbstractObstacle{
 
 
-    void ObstacleHitted(ICar c) {
+    public void ObstacleHitted(ICar c) {
     	    System.out.println("ObstacleHitted : Oil");
     	    c.hitOil();
     }

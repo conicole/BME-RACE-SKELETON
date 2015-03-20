@@ -1,22 +1,27 @@
 public class SpeedVector {
 
     SpeedVector(){
-	System.out.println("Speed Vector : Speed Vector created");
+	System.out.println("Speed Vector : Creation of the speed vector");
     }
+    SpeedVector(int i){    }
 
     void decrease(int a){
-    	   System.out.println("Speed Vector : The speed vector decreases of "+a); 
+    	   System.out.println("Speed Vector : decrease of "+a);
     }
  
     void increase(int a){
-    	   System.out.println("Speed Vector : The speed vector increase of "+a); 
+    	   System.out.println("Speed Vector :increase of "+a);
     }
     
     void turnRight(){
-    	  System.out.println("Speed Vector : The speed vector turn right"); 
+    	  System.out.println("Speed Vector : turn right");
     }
  
     void turnLeft(){
-    	  System.out.println("Speed Vector : The speed vector turn left"); 
+    	  System.out.println("Speed Vector : turn left");
+    }
+
+    void stop(){
+        System.out.println("Speed Vector : set to zero");
     }
 }

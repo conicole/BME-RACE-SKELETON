@@ -1,5 +1,5 @@
 
-public interface ICar {
+public interface ICar extends AbstractObstacle {
 
 
     public void hitCar();

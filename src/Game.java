@@ -9,7 +9,6 @@ public class Game {
     public void createGame()
     {
     	System.out.println("Game : Creation of the game");
-    	System.out.println("Game : new Track");
         track = new Track();
         car1 = new Car(this);
         car2 = new Car(this);
@@ -31,10 +30,10 @@ public class Game {
     }
     
     public Segment nextSegment(ICar c){
-    	System.out.println("Game : Calcul of the next segment of the Car");
-    	System.out.println("Game : Compute new position");
-    	track.updateCarPosition(c);
-    	return new Segment();
+    	System.out.println("Game : Compute the next segment of the Car");
+        Segment newSegment = new Segment();
+    	track.updateCarPosition(c,newSegment);
+    	return newSegment;
     }
 
 

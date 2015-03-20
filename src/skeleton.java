@@ -55,47 +55,38 @@ public class skeleton {
                 case "1":
                     writeLine();
                     game.getCar1().accelerate();
-                    writeLine();
                     break;
                 case "2":
                     writeLine();
                     game.getCar1().brake();
-                    writeLine();
                     break;
                 case "3":
                     writeLine();
                     game.getCar1().updateCarPosition();
-                    writeLine();
                     break;
                 case "4":
                     writeLine();
                     game.getCar1().goLeft();
-                    writeLine();
                     break;
                 case "5":
                     writeLine();
                     game.getCar1().goRight();
-                    writeLine();
                     break;
                 case "6":
                     writeLine();
                     game.getCar1().releaseOil();
-                    writeLine();
                     break;
                 case "7":
                     writeLine();
                     game.getCar1().releaseGlue();
-                    writeLine();
                     break;
                 case "8":
                     writeLine();
                     System.out.println("Quit Game");
-                    writeLine();
                     return;
                 default:
                     writeLine();
                     System.out.println("Please enter your choice");
-                    writeLine();
                     break;
             }
         }
