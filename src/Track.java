@@ -10,7 +10,7 @@ public class Track {
     }
     
     public Track(){
-    	System.out.println("I create a Track");
+    	System.out.println("Track : creation a Track");
     	s1=new Segment();
     	s2=new Segment();
     	s3=new Segment();
@@ -18,7 +18,7 @@ public class Track {
     }
     
     public void updateCarPosition(ICar c){
-    	System.out.println("I update the car position on the track");
+    	System.out.println("Track : Updating the car position on the track");
     	Segment s = new Segment();
     	s.CarIsComing(c);
     }
