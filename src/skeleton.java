@@ -47,7 +47,7 @@ public class skeleton {
             switch (input) {
                 case "1":
                     notAnswered = false;
-
+                    game.getCar1().accelerate();
                     break;
                 case "2":
                     return;

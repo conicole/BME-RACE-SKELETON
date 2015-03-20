@@ -27,12 +27,12 @@ public class Car extends AbstractObstacle implements ICar{
         sv.decrease(1);
     }
     
-    void goLeft(){
+    public void goLeft(){
       System.out.println("I go left\n");
         sv.turnLeft();
     }
 
-    void goRight(){
+    public void goRight(){
       System.out.println("I go right\n");
         sv.turnRight();
     }
@@ -41,7 +41,7 @@ public class Car extends AbstractObstacle implements ICar{
         System.out.println("I stop\n"); 
     }
     
-    void hitGlue(){
+    public void glueHitted(){
          System.out.println("I hit glue\n");
          sv.decrease(2);
     }
