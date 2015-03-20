@@ -64,7 +64,7 @@ public class Car extends AbstractObstacle implements ICar{
     public void updateCarPosition(){
           System.out.println("I update car position\n");
           g.getTrack().remove(this, position);
-          postion = g.nextSegment();
+          position = g.nextSegment(position,sv);
           System.out.println("I have a new segment position\n");
     }
     

@@ -8,6 +8,7 @@ public class Game {
 
     public void createGame()
     {
+    	System.out.print("Creation of the game\n");
         track = new Track();
         car1 = new Car(this);
         car2 = new Car(this);
@@ -23,6 +24,13 @@ public class Game {
 
     public ICar getCar2(){
         return car2;
+    }
+    
+    public Segment nextSegment(Segment pos, SpeedVector sv){
+    	System.out.println("Calcul of the next segment of the Car\n");
+    	System.out.println("Compute new position\n");
+    	track.updateCarPosition(sv);
+    	return new Segment();
     }
 
 
