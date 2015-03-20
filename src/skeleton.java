@@ -46,6 +46,7 @@ public class skeleton {
             System.out.println("(5) Go right");
             System.out.println("(6) Release Oil");
             System.out.println("(7) Release Glue");
+            System.out.println("(8) Quit game");
             Scanner reader = new Scanner(System.in);
             String input = reader.nextLine();
             switch (input) {
@@ -55,7 +56,7 @@ public class skeleton {
                     break;
                 case "2":
                     notAnswered = false;
-                    game.getCar1().decelerate();
+                    game.getCar1().brake();
                     break;
                 case "3":
                     notAnswered = false;
@@ -77,8 +78,11 @@ public class skeleton {
                     notAnswered = false;
                     game.getCar1().releaseGlue();
                     break;
+                case "8":
+                    System.out.println("Quit Game");
+                    return;
                 default:
-                    System.out.println("Please enter 1 or 2");
+                    System.out.println("Please enter your choice");
                     break;
             }
         }
