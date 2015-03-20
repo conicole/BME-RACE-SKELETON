@@ -1,11 +1,10 @@
+public class Obstacle extends AbstractObstacle{
 
 
-
-public class Obstacle extends AbstractObstacle {
-
-
-    void ObstacleHitted(ICar arg0) {
-        // TODO Auto-generated method stub
-        
+    void ObstacleHitted(ICar c) {
+    	    System.out.println("ObstacleHitted : Obstacle\n");
+    	    c.hitObstacle();
     }
+    
+    
 }

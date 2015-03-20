@@ -1,33 +1,22 @@
-
 public class SpeedVector {
 
-  public int dg;
-  public int r;
-  public final static int R_MAX = 10;
-  public final static int R_MIN =0;
+    SpeedVector(){
+	System.out.println("Speed Vector created\n");
+    }
 
-
-	public void decrease(int i){
-	  r+=i;
-	}
-  
-  public void increase(int i){
-   r-=i;
-  }
-  
-  public void goLeft() {
-    dg++;
-  }
-
-  public void goRight() {
-    dg--;
-  }
-
-
-
-
-    public static void main(String[] args){
-        System.out.println("Hello World");
-
+    void decrease(int a){
+    	   System.out.println("My speed vector decrease of "+a+"\n"); 
+    }
+ 
+    void increase(int a){
+    	   System.out.println("My speed vector increase of "+a+"\n"); 
+    }
+    
+    void turnRight(){
+    	  System.out.println("My speed vector turn right\n"); 
+    }
+ 
+    void turnLeft(){
+    	  System.out.println("My speed vector turn left\n"); 
     }
 }

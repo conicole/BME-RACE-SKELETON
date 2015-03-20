@@ -4,8 +4,11 @@
 public class Oil extends AbstractObstacle{
 
 
-    void ObstacleHitted(ICar arg0) {
-        // TODO Auto-generated method stub
-        
+    void ObstacleHitted(ICar c) {
+    	    System.out.println("ObstacleHitted : Oil\n");
+    	    c.hitOil();
     }
+    
+    
 }
+
