@@ -7,15 +7,15 @@ public class Segment implements ISegment {
   
   
   public void addObstacle(AbstractObstacle o){
-	  System.out.println("I add an obstacle on the segment\n");
+	  System.out.println("Segment : add an obstacle on the segment");
   }
   
   // prevent all the object on the segment that
   // a car is coming | manage collision
   public void CarIsComing(ICar c)
   {
-	  System.out.println("A car is coming on the Segment\n");
-	  System.out.println("Do I have some obstacle on me ?\n");
+	  System.out.println("Segment : A car is coming on the Segment");
+	  System.out.println("Segment : Do I have some obstacle on me ?");
 	  boolean notAnswered = true;
 
       while(notAnswered) {
@@ -29,29 +29,29 @@ public class Segment implements ISegment {
           String input = reader.nextLine();
           switch (input) {
               case "1":
-            	  System.out.println("I hit nothing");
+            	  System.out.println("Segment : car hit nothing");
                   notAnswered = false;
                   break;
               case "2":
-            	  System.out.println("I hit oil");
+            	  System.out.println("Segment :car hit oil");
             	  Oil oil = new Oil();
             	  oil.ObstacleHitted(c);
                   notAnswered = false;
                   return;
               case "3":
-            	  System.out.println("I hit a car");
+            	  System.out.println("Segment : car hit a car");
             	  Car car=new Car();
             	  car.ObstacleHitted(c);
                   notAnswered = false;
                   return;
               case "4":
-            	  System.out.println("I hit Glue");
+            	  System.out.println("Segment : hit Glue");
             	  Glue glue = new Glue();
             	  glue.ObstacleHitted(c);
                   notAnswered = false;
                   return;
               case "5":
-            	  System.out.println("I hit Obstacle");
+            	  System.out.println("Segment : hit Obstacle");
             	  Obstacle o=new Obstacle();
             	  o.ObstacleHitted(c);
                   notAnswered = false;

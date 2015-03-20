@@ -8,7 +8,8 @@ public class Game {
 
     public void createGame()
     {
-    	System.out.print("Creation of the game\n");
+    	System.out.print("Game : Creation of the game\n");
+    	System.out.print("Game : new Track");
         track = new Track();
         car1 = new Car(this);
         car2 = new Car(this);
@@ -30,8 +31,8 @@ public class Game {
     }
     
     public Segment nextSegment(ICar c){
-    	System.out.println("Calcul of the next segment of the Car\n");
-    	System.out.println("Compute new position\n");
+    	System.out.println("Game : Calcul of the next segment of the Car");
+    	System.out.println("Game : Compute new position");
     	track.updateCarPosition(c);
     	return new Segment();
     }

@@ -5,78 +5,78 @@ public class Car extends AbstractObstacle implements ICar{
     private Segment position;///
 
     Car(){
-    
+    	sv = new SpeedVector();
     }
     
     Car(Game game){
          g=game;
          sv=new SpeedVector();
-         System.out.println("You've just created a car\n");
+         System.out.println("Car : Creation of a car");
          
     }
     
     public void ObstacleHitted(ICar c){
-        System.out.println("ObstacleHitted : Car\n");
+        System.out.println("Car : ObstacleHitted : Car");
         c.hitCar();
         this.accelerate();
     }
 
     public void hitCar(){
-         System.out.println("I hit a car\n");
+         System.out.println("Car : hit a car");
          this.stop();
     }
 
     public void accelerate(){
-        System.out.println("I accelerate\n");
+        System.out.println("Car : accelerate");
         sv.increase(2);
     }
     
     public void brake(){
-      System.out.println("I brake\n");
+      System.out.println("Car : brake");
         sv.decrease(1);
     }
     
     public void goLeft(){
-      System.out.println("I go left\n");
+      System.out.println("Car : go left");
         sv.turnLeft();
     }
 
     public void goRight(){
-      System.out.println("I go right\n");
+      System.out.println("Car : go right");
         sv.turnRight();
     }
     
     public void stop(){
-        System.out.println("I stop\n"); 
+        System.out.println("Car : stop"); 
     }
     
     public void hitGlue(){
-         System.out.println("I hit glue\n");
+         System.out.println("Car : hit glue");
          sv.decrease(2);
     }
     
     public void hitOil(){
-         System.out.println("I hit oil\n");
+         System.out.println("Car : hit oil");
          sv.increase(2);
     }
     
     public void hitObstacle(){
-         System.out.println("I hit an obstacle\n");
+         System.out.println("Car : hit an obstacle");
     }
     
     public void updateCarPosition(){
-          System.out.println("I update car position\n");
+          System.out.println("Car : update car position");
           g.getTrack().remove(this, position);
           position = g.nextSegment(this);
-          System.out.println("I have a new segment position\n");
+          System.out.println("Car : has a new segment position");
     }
     
     public void releaseOil(){
-         System.out.println("I release Oil\n");
+         System.out.println("Car : release Oil");
          position.addObstacle(new Oil());
     }
     public void releaseGlue(){
-         System.out.println("I release Glue\n");
+         System.out.println("Car : release Glue");
          position.addObstacle(new Glue());
     }
     
