@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class skeleton {
 
     public static void writeLine(){
-        System.out.println("*************");
+        System.out.println("*****************");
     }
     public static void main(String[] args){
         writeLine();
@@ -34,10 +34,12 @@ public class skeleton {
         writeLine();
         System.out.println("Launch game");
         Game game = new Game();
-        writeLine();
+        game.createGame();
+
         notAnswered = true;
 
         while(notAnswered) {
+            writeLine();
             System.out.println("Please choose an option");
             System.out.println("(1) Accelerate");
             System.out.println("(2) Decelerate");
@@ -51,38 +53,49 @@ public class skeleton {
             String input = reader.nextLine();
             switch (input) {
                 case "1":
-                    notAnswered = false;
+                    writeLine();
                     game.getCar1().accelerate();
+                    writeLine();
                     break;
                 case "2":
-                    notAnswered = false;
+                    writeLine();
                     game.getCar1().brake();
+                    writeLine();
                     break;
                 case "3":
-                    notAnswered = false;
+                    writeLine();
                     game.getCar1().updateCarPosition();
+                    writeLine();
                     break;
                 case "4":
-                    notAnswered = false;
+                    writeLine();
                     game.getCar1().goLeft();
+                    writeLine();
                     break;
                 case "5":
-                    notAnswered = false;
+                    writeLine();
                     game.getCar1().goRight();
+                    writeLine();
                     break;
                 case "6":
-                    notAnswered = false;
+                    writeLine();
                     game.getCar1().releaseOil();
+                    writeLine();
                     break;
                 case "7":
-                    notAnswered = false;
+                    writeLine();
                     game.getCar1().releaseGlue();
+                    writeLine();
                     break;
                 case "8":
+                    writeLine();
                     System.out.println("Quit Game");
+                    writeLine();
                     return;
                 default:
+                    writeLine();
                     System.out.println("Please enter your choice");
+                    writeLine();
                     break;
             }
         }
