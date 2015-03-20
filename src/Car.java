@@ -11,7 +11,6 @@ public class Car extends AbstractObstacle implements ICar{
     Car(Game game){
          g=game;
          sv=new SpeedVector();
-         position = new Segment();
          System.out.println("You've just created a car\n");
          
     }
@@ -81,5 +80,8 @@ public class Car extends AbstractObstacle implements ICar{
          position.addObstacle(new Glue());
     }
     
+    public void setPosition(Segment s){
+    	position=s;
+    }
     
 }

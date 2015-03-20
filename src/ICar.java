@@ -14,5 +14,5 @@ public interface ICar {
    public void updateCarPosition();   
    public void releaseOil();
    public void releaseGlue();
-   
+   public void setPosition(Segment s);
 }

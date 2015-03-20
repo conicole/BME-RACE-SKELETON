@@ -12,6 +12,9 @@ public class Game {
         track = new Track();
         car1 = new Car(this);
         car2 = new Car(this);
+        car1.setPosition(track.gets1());
+        car2.setPosition(track.gets2());
+        track.gets3().addObstacle(new Obstacle());
     }
 
     public Track getTrack(){
