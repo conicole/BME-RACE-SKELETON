@@ -5,6 +5,9 @@ public class Segment implements ISegment {
   
   public Stack<AbstractObstacle> SObs;
   
+  public void remove(ICar c){
+	  System.out.println("Segment : remove the car from the old segment");
+  }
   
   public void addObstacle(AbstractObstacle o){
 	  System.out.println("Segment : add an obstacle on the segment");

@@ -8,8 +8,8 @@ public class Game {
 
     public void createGame()
     {
-    	System.out.print("Game : Creation of the game\n");
-    	System.out.print("Game : new Track");
+    	System.out.println("Game : Creation of the game");
+    	System.out.println("Game : new Track");
         track = new Track();
         car1 = new Car(this);
         car2 = new Car(this);

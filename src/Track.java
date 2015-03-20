@@ -6,7 +6,8 @@ public class Track {
 	
     public void remove(ICar car,ISegment seg)
     {
-
+    	System.out.println("Track : remove the car of the position");
+    	seg.remove(car);
     }
     
     public Track(){
