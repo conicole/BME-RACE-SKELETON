@@ -47,7 +47,7 @@ public class Car extends AbstractObstacle implements ICar{
         System.out.println("I stop\n"); 
     }
     
-    public void glueHitted(){
+    public void hitGlue(){
          System.out.println("I hit glue\n");
          sv.decrease(2);
     }

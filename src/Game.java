@@ -9,8 +9,8 @@ public class Game {
     public void createGame()
     {
         track = new Track();
-        car1 = new Car();
-        car2 = new Car();
+        car1 = new Car(this);
+        car2 = new Car(this);
     }
 
     public Track getTrack(){
