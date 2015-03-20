@@ -2,13 +2,17 @@
 public interface ICar {
 
 
-    public void accelerate();
-    public  void breake();
-    public void goLeft();
-    public void goRight();
-    public void glueHitted();
-    public  void oilHitted();
-    public void carHitted();
-
     public void hitCar();
+   public void accelerate();   
+   public void brake();
+   public void goLeft();
+   public void goRight();   
+   public void stop();   
+   public void hitGlue(); 
+   public void hitOil();   
+   public void hitObstacle();
+   public void updateCarPosition();   
+   public void releaseOil();
+   public void releaseGlue();
+   
 }
