@@ -1,7 +1,7 @@
 
 public interface ICar extends AbstractObstacle {
 
-
+   //interface representing all obstacle
     public void hitCar();
    public void accelerate();   
    public void brake();

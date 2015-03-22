@@ -4,21 +4,32 @@ import java.util.Scanner;
  */
 public class skeleton {
 
+	//Demo program to test all features of the use cases
     public static void writeLine(){
+    	//output
         System.out.println("*****************");
     }
     public static void main(String[] args){
-        writeLine();
+        //Decoration
+    	writeLine();
         System.out.println("Skeleton Program ");
+       //Decoration
         writeLine();
+        
         boolean notAnswered = true;
 
         while(notAnswered) {
+        	//Ask input from the user
             System.out.println("Please choose an option");
             System.out.println("(1) New game");
             System.out.println("(2) Quit Program");
+            
+            //Get input from user
+            
             Scanner reader = new Scanner(System.in);
             String input = reader.nextLine();
+            reader.close();
+            //Finds out what was selected by the user
             switch (input) {
                 case "1":
                     notAnswered = false;
@@ -30,9 +41,11 @@ public class skeleton {
                     break;
             }
         }
-
+        //Decoration
         writeLine();
         System.out.println("Launch game");
+        
+        //Creates a new game
         Game game = new Game();
         game.createGame();
 
@@ -40,6 +53,7 @@ public class skeleton {
 
         while(notAnswered) {
             writeLine();
+            //Outputs to the user
             System.out.println("Please choose an option");
             System.out.println("(1) Accelerate");
             System.out.println("(2) Decelerate");
@@ -49,10 +63,17 @@ public class skeleton {
             System.out.println("(6) Release Oil");
             System.out.println("(7) Release Glue");
             System.out.println("(8) Quit game");
+            
+            // Gets input from the user
             Scanner reader = new Scanner(System.in);
             String input = reader.nextLine();
+            //Close connection 
+            reader.close();
+            
+            //Use input from user to perform a particular task
             switch (input) {
                 case "1":
+                	
                     writeLine();
                     game.getCar1().accelerate();
                     break;
