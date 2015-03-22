@@ -28,7 +28,7 @@ public class skeleton {
             
             Scanner reader = new Scanner(System.in);
             String input = reader.nextLine();
-            reader.close();
+           
             //Finds out what was selected by the user
             switch (input) {
                 case "1":
@@ -67,8 +67,8 @@ public class skeleton {
             // Gets input from the user
             Scanner reader = new Scanner(System.in);
             String input = reader.nextLine();
-            //Close connection 
-            reader.close();
+           
+            
             
             //Use input from user to perform a particular task
             switch (input) {

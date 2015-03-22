@@ -36,7 +36,7 @@ public class Segment implements ISegment {
           //Gets input from the user
           Scanner reader = new Scanner(System.in);
           String input = reader.nextLine();
-          reader.close();
+          
           
           switch (input) {
               case "1":
