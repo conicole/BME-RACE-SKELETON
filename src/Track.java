@@ -1,21 +1,33 @@
 
 public class Track {
-	Segment s1;
-	Segment s2;
-	Segment s3;
-	
-    public void remove(ICar car,ISegment seg)
-    {
-    	System.out.println("Track : remove the car of the position");
-    	seg.remove(car);
-    }
-    
-    public Track(){
-    	System.out.println("Track : creation a Track");
-    	s1=new Segment();
-    	s2=new Segment();
-    	s3=new Segment();
+	Segment[][] tabSeg;
+    int height;
+    int length;
 
+    public Track(int l,int h) {
+        height = h;
+        length = l;
+        createTrack();
+    }
+
+    private void createTrack(){
+        tabSeg = new Segment[height][length];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < length; j++) {
+                tabSeg[i][j] = new Segment(i+j);
+            }
+        }
+    }
+    public void remove(AbstractObstacle obj, Segment seg){
+        int segX = seg.getId()/length;
+        int segY = seg.getId()%height;
+        tabSeg[segX][segY].remove(obj);
+    }
+
+    public Track(){
+        height = 10;
+        length = 10;
+        createTrack();
     }
     
     public void updateCarPosition(ICar c, ISegment s ){
@@ -23,15 +35,5 @@ public class Track {
     	s.CarIsComing(c);
     }
     
-    public Segment gets1(){
-    	return s1;
-    }
-    
-    public Segment gets2(){
-    	return s2;
-    }
-    
-    public Segment gets3(){
-    	return s3;
-    }
+
 }

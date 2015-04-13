@@ -1,13 +1,25 @@
 import java.util.*;
   
 public class Segment implements ISegment {
+    public int Id;
   
-  
+
+
   public Stack<AbstractObstacle> SObs;
-  
-  public void remove(ICar c){
-	  System.out.println("Segment : remove the car from the old segment");
-  }
+
+
+    public Segment(int id){
+        Id = id;
+    }
+
+    public int getId(){
+        return Id;
+    }
+
+
+    public void remove(AbstractObstacle obj){
+//todO
+    }
   
   public void addObstacle(AbstractObstacle o){
 	  System.out.println("Segment : add an obstacle on the segment");

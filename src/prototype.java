@@ -8,20 +8,20 @@ public class prototype {
 
     public static String[] cfgPatterns = {
             "Launch",
-            "End",
             "Save ([a-z]*)",
             "Load ([a-z]*)",
-            "Add_Glue [0-9]",
-            "Add_Oil [0-9]",
-            "Add_Obstacle [0-9]",
-            "Add_Car [Position]",
-            "Add_Repair_Car [Position][0-9]",
-            "CreateGame ([0-9])",
-            "Add_Grass ([0-9])([0-9])",
-            "Create_Finish_Line ([0-9])([0-9])([0-9])([0-9])"
+            "Add_Glue ([0-9]*) ([0-9]*)",
+            "Add_Oil ([0-9]*) ([0-9]*",
+            "Add_Obstacle ([0-9]*) ([0-9]*",
+            "Add_Car ([0-9]*) ([0-9]*",
+            "Add_Repair_Car ([0-9]*) ([0-9]*)",
+            "CreateGame ([0-9]*) ([0-9]*)",
+            "Add_Grass ([0-9]) ([0-9])",
+            "Create_Finish_Line ([0-9]) ([0-9]) ([0-9]) ([0-9])"
     };
 
     Game game;
+    Matcher matcher;
 
 
     public prototype() {
@@ -29,18 +29,18 @@ public class prototype {
     }
 
     // check if string s respect a pattern of a configuration command. Return the number of the command(-1). Else return -1
-    public static int isConfiguration(String s) {
+    public  int isConfiguration(String s) {
         int res = -1;
         //System.out.println("let's check " + s);
         for (int i = 0; i < cfgPatterns.length && res == -1; i++) {
             Pattern pattern = Pattern.compile(cfgPatterns[i]);
-            Matcher matcher = pattern.matcher(s);
+            this.matcher = pattern.matcher(s);
            // System.out.println(cfgPatterns[i]);
-            if (matcher.find()) {
+            if (this.matcher.find()) {
                 res = i;
-
             }
         }
+       // System.out.println(res);
         return res;
     }
 
@@ -55,49 +55,101 @@ public class prototype {
             // Get the object of DataInputStream
             DataInputStream in = new DataInputStream(fstream);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
-            String strLine;
-
-            br.mark(100);
-            while ((strLine = br.readLine()) != null) {
-                if (isConfiguration(strLine) != -1) {
-                    proto.configuration(br);
-                }
-
-                in.close();
-            }
-        } catch (Exception e) {//Catch exception if any
+            proto.run_configuration(br);
+            proto.run_game(br);
+            in.close();
+        }
+        catch (Exception e) {//Catch exception if any
             System.err.println("Error: " + e.getMessage());
         }
     }
 
 
-    public void configuration(BufferedReader br) throws java.io.IOException {
-        br.reset();
+    public void run_configuration(BufferedReader br) throws java.io.IOException {
         String strLine;
-        if ((strLine = br.readLine()) != null) {
+        while((strLine = br.readLine()) != null ) {
             int nbCmd = isConfiguration(strLine);
-            System.out.println(nbCmd);
+         //   System.out.println(nbCmd);
             this.ComputeCfgCmd(nbCmd);
-
-
             // res = matcher.group(1);
 
-
         }
-        br.reset();
+    }
+
+    public void run_game(BufferedReader br) throws java.io.IOException {
+
     }
 
 
     public void ComputeCfgCmd(int nbCmd ){
-        System.out.println("cmd + "+ nbCmd);
+        int x;
+        int y;
         switch(nbCmd) {
+            case 0:
+                return;
+            case 1:
+                this.save(matcher.group(1));
+                break;
+            case 2:
+                this.load(matcher.group(1));
+                break;
+            case 3:
+                 x = Integer.parseInt(this.matcher.group(1));
+                 y = Integer.parseInt(this.matcher.group(2));
+                game.init_add_glue(x,y);
+                break;
+            case 4:
+                x = Integer.parseInt(this.matcher.group(1));
+                y = Integer.parseInt(this.matcher.group(2));
+                game.init_add_oil(x,y);
+                break;
+            case 5:
+                x = Integer.parseInt(this.matcher.group(1));
+                y = Integer.parseInt(this.matcher.group(2));
+                game.init_add_obs(x, y);
+                break;
+            case 6:
+                x = Integer.parseInt(this.matcher.group(1));
+                y = Integer.parseInt(this.matcher.group(2));
+                game.add_car(x, y);
+                break;
+            case 7:
+                x = Integer.parseInt(this.matcher.group(1));
+                y = Integer.parseInt(this.matcher.group(2));
+                game.add_repairCar(x, y);
+                break;
+            case 8:
+                x = Integer.parseInt(this.matcher.group(1));
+                y = Integer.parseInt(this.matcher.group(2));
+                game.setTrack(x,y);
+                break;
             case 9:
-                System.out.println("Creation of game");
+                x = Integer.parseInt(this.matcher.group(1));
+                y = Integer.parseInt(this.matcher.group(2));
+                game.sow_grass(x,y);
+                break;
+            case 10:
+                int x1 = Integer.parseInt(this.matcher.group(1));
+                int y1 = Integer.parseInt(this.matcher.group(2));
+                int x2 = Integer.parseInt(this.matcher.group(3));
+                int y2 = Integer.parseInt(this.matcher.group(4));
+                game.set_finish_line(x1,y1,x2,y2);
                 break;
             default:
                 System.out.println("error");
                 break;
         }
+    }
+
+    public void save(String name){
+        // todo
+
+    }
+
+
+    public void load(String name){
+        // todo
+
     }
 }
 
