@@ -1,7 +1,7 @@
-public abstract class AbstractObstacle{
+public interface  AbstractObstacle{
 
 
-    abstract void ObstacleHitted(ICar c);
+    public void ObstacleHitted(ICar c);
     
     
 }

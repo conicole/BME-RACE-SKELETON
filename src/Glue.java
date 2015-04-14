@@ -1,8 +1,11 @@
-public class Glue extends AbstractObstacle{
+public class Glue implements AbstractObstacle{
 
-
-    void ObstacleHitted(ICar c) {
-    	    System.out.println("ObstacleHitted : Glue\n");
+		
+   public void ObstacleHitted(ICar c) {
+	   
+	        //output
+    	    System.out.println("ObstacleHitted : Glue");
+    	    //type of obstacle hit
     	    c.hitGlue();
     }
     

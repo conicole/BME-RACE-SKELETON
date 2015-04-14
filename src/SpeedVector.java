@@ -1,22 +1,33 @@
 public class SpeedVector {
-
+	//Represents the speed vector of the car
     SpeedVector(){
-	System.out.println("Speed Vector : Speed Vector created");
+    //creation of speedvector
+	System.out.println("Speed Vector : Creation of the speed vector");
     }
+    SpeedVector(int i){    }
 
     void decrease(int a){
-    	   System.out.println("Speed Vector : The speed vector decreases of "+a); 
+    	//decrease speed
+    	   System.out.println("Speed Vector : decrease of "+a);
     }
  
     void increase(int a){
-    	   System.out.println("Speed Vector : The speed vector increase of "+a); 
+    	//increase speed
+    	   System.out.println("Speed Vector :increase of "+a);
     }
     
     void turnRight(){
-    	  System.out.println("Speed Vector : The speed vector turn right"); 
+    	//moves car to the right
+    	  System.out.println("Speed Vector : turn right");
     }
  
     void turnLeft(){
-    	  System.out.println("Speed Vector : The speed vector turn left"); 
+    	//moves car to the left
+    	  System.out.println("Speed Vector : turn left");
+    }
+
+    void stop(){
+    	//stops car
+        System.out.println("Speed Vector : set to zero");
     }
 }
