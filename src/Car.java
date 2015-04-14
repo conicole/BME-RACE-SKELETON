@@ -5,14 +5,19 @@ public class Car implements  ICar{
     private Segment position;///
 
     Car(){
-    	sv = new SpeedVector(1);
+    	sv = new SpeedVector();
     }
     
     Car(Game game){
-         g=game;
-         
-         
+         g=game;  
+         sv = new SpeedVector();
     }
+    
+    Car(Game game,int i,int j){
+        g=game;  
+        sv = new SpeedVector();
+        position=game.getTrack().getSegment(i,j);
+   }
     
     public void ObstacleHitted(ICar c){
         c.hitCar();
@@ -24,42 +29,35 @@ public class Car implements  ICar{
     }
 
     public void accelerate(){
-        System.out.println("Car : accelerate");
         sv.increase(2);
     }
     
     public void brake(){
-      System.out.println("Car : brake");
         sv.decrease(1);
     }
     
     public void goLeft(){
-      System.out.println("Car : go left");
         sv.turnLeft();
     }
 
     public void goRight(){
-      System.out.println("Car : go right");
         sv.turnRight();
     }
     
     public void stop(){
-        System.out.println("Hitter Car : stop");
         sv.stop();
     }
     
     public void hitGlue(){
-         System.out.println("Car : hit glue");
          sv.decrease(2);
     }
     
     public void hitOil(){
-         System.out.println("Car : hit oil");
          sv.increase(2);
     }
     
     public void hitObstacle(){
-         System.out.println("Car : hit an obstacle");
+    	sv.stop();
     }
     
     public void updateCarPosition(){
@@ -89,6 +87,10 @@ public class Car implements  ICar{
     public void collisionWithRepairCar(RepairCar rc){
     	rc.hitCar();
     	position.addObstacle(this);
+    }
+    
+    public SpeedVector getSpeedVector(){
+    	return sv;
     }
     
 }

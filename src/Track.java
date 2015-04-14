@@ -35,5 +35,7 @@ public class Track {
     	s.CarIsComing(c);
     }
     
-
+    Segment getSegment(int i, int j){
+    	return tabSeg[i][j];
+    }
 }

@@ -12,7 +12,6 @@ public class SpeedVector {
     	SpeedX=0;
     	SpeedY=0;
     }
-    SpeedVector(int i){    }
 
     void decrease(int a){
     	   double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
@@ -55,5 +54,13 @@ public class SpeedVector {
     void stop(){
     	SpeedX=0;
    	    SpeedX=0;
+    }
+    
+    public int getSpeedX(){
+    	return  (int) (SpeedX);
+    }
+    
+    public int getSpeedY(){
+    	return  (int) (SpeedY);
     }
 }

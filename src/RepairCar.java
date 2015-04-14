@@ -6,6 +6,11 @@ public class RepairCar extends Oil {
 	int LifeTime;
 	Segment position;
 	
+	RepairCar(Segment s){
+		position=s;
+		LifeTime=4;
+	})
+	
 	///Cleans the segments which contains patches.
 	void cleaning(){
 		position.clear(this);
