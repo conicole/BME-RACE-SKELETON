@@ -93,4 +93,8 @@ public class Car implements  ICar{
     	return sv;
     }
     
+    public boolean HasNoMoreEffect(){
+    	return false;
+    }
+    
 }

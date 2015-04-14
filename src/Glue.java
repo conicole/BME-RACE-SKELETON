@@ -8,7 +8,7 @@ public class Glue implements AbstractObstacle{
     }
    
    public void collisionWithRepairCar(RepairCar rc){
-   	
+   		
    }
     
     

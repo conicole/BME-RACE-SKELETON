@@ -31,7 +31,6 @@ public class Track {
     }
     
     public void updateCarPosition(ICar c, ISegment s ){
-    	System.out.println("Track : Updating the car position on the track");
     	s.CarIsComing(c);
     }
     

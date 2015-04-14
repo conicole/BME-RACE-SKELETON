@@ -8,7 +8,13 @@ public class Obstacle implements AbstractObstacle{
     public void ObstacleHitted(ICar c) {
     	    System.out.println("ObstacleHitted : Obstacle");
     	    c.hitObstacle();
+    	    effectLeft--;
     }
     
-    
+    public void collisionWithRepairCar(RepairCar rc){
+    	
+    }
+    public boolean HasNoMoreEffect(){
+ 	   return effectLeft==0;
+    }
 }

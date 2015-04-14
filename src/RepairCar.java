@@ -9,7 +9,7 @@ public class RepairCar extends Oil {
 	RepairCar(Segment s){
 		position=s;
 		LifeTime=4;
-	})
+	}
 	
 	///Cleans the segments which contains patches.
 	void cleaning(){
