@@ -1,27 +1,59 @@
+import java.lang.Math.*;
+
 public class SpeedVector {
 
+	double SpeedX;
+	double SpeedY;
+	final static int MAXSPEED = 10;
+	final static int MINSPEED = 0;
+	final static double ROTATION = 10;
+	
     SpeedVector(){
-	System.out.println("Speed Vector : Creation of the speed vector");
+    	SpeedX=0;
+    	SpeedY=0;
     }
     SpeedVector(int i){    }
 
     void decrease(int a){
-    	   System.out.println("Speed Vector : decrease of "+a);
+    	   double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
+    	   r-=a;
+    	   if(r>MINSPEED){
+	    	   double teta = Math.atan(SpeedX/SpeedY);
+	    	   SpeedX=r*Math.cos(teta);
+	    	   SpeedX=r*Math.sin(teta);
+    	   }
+    	   else r=MINSPEED;
     }
  
     void increase(int a){
-    	   System.out.println("Speed Vector :increase of "+a);
+ 	   double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
+ 	   r-=a;
+ 	   if(r<MAXSPEED){
+	    	   double teta = Math.atan(SpeedX/SpeedY);
+	    	   SpeedX=r*Math.cos(teta);
+	    	   SpeedX=r*Math.sin(teta);
+ 	   }
+ 	   else r=MAXSPEED;
     }
     
     void turnRight(){
-    	  System.out.println("Speed Vector : turn right");
+ 	   double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
+ 	   double teta = Math.atan(SpeedX/SpeedY);
+ 	   teta-=ROTATION;
+	   SpeedX=r*Math.cos(teta);
+	   SpeedX=r*Math.sin(teta);
     }
  
     void turnLeft(){
-    	  System.out.println("Speed Vector : turn left");
+  	   double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
+  	   double teta = Math.atan(SpeedX/SpeedY);
+  	   teta+=ROTATION;
+ 	   SpeedX=r*Math.cos(teta);
+ 	   SpeedX=r*Math.sin(teta);
     }
 
     void stop(){
-        System.out.println("Speed Vector : set to zero");
+    	SpeedX=0;
+   	    SpeedX=0;
     }
 }

@@ -1,7 +1,7 @@
 import java.util.*;
   
 public class Segment implements ISegment {
-    public int Id;
+  public int Id;
   public Stack<AbstractObstacle> SObs;
   public boolean isOutOfTrack;
 
@@ -38,6 +38,12 @@ public class Segment implements ISegment {
   
   public void setOutOfTrack(){
 	  isOutOfTrack = true;
+  }
+  
+  public void clear(RepairCar rc){
+	  while(!SObs.empty()){
+		  SObs.pop().collisionWithRepairCar(rc);
+	  }
   }
   
 }

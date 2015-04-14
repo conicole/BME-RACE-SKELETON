@@ -8,7 +8,7 @@ public class RepairCar extends Oil {
 	
 	///Cleans the segments which contains patches.
 	void cleaning(){
-		position.clear();
+		position.clear(this);
 	}
 	
 	///Makes the Car to disapperar from the track when its lifetime is 0.
@@ -28,7 +28,9 @@ public class RepairCar extends Oil {
 	
 	///Used to move the Repair car around the track.
 	void Move(Segment seg){
-		
+		position=seg;
+		Age();
+		seg.addObstacle(this);
 	}
 	
 	///Used to get the lifetime the repairCar has left.

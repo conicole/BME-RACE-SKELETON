@@ -10,19 +10,16 @@ public class Car implements  ICar{
     
     Car(Game game){
          g=game;
-         sv=new SpeedVector();
-         System.out.println("Car : Creation of a car");
+         
          
     }
     
     public void ObstacleHitted(ICar c){
-        System.out.println("Car Hitted : ObstacleHitted : Car");
         c.hitCar();
         this.accelerate();
     }
 
     public void hitCar(){
-         System.out.println("Car : hit a car");
          this.stop();
     }
 
@@ -87,6 +84,11 @@ public class Car implements  ICar{
     
     public void outOfTrack(){
     	sv.decrease(2);
+    }
+    
+    public void collisionWithRepairCar(RepairCar rc){
+    	rc.hitCar();
+    	position.addObstacle(this);
     }
     
 }
