@@ -85,4 +85,8 @@ public class Car implements  ICar{
     	position=s;
     }
     
+    public void outOfTrack(){
+    	sv.decrease(2);
+    }
+    
 }
