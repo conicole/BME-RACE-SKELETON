@@ -80,6 +80,10 @@ public class Car implements  ICar{
     	position=s;
     }
     
+    public Segment getPosition(){
+    	return position;
+    }
+    
     public void outOfTrack(){
     	sv.decrease(2);
     }

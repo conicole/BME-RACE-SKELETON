@@ -57,14 +57,18 @@ public class Game {
     }
     
     public Segment nextSegment(ICar c){
-    	c.getSpeedVector().getSpeedX();
-    	c.getSpeedVector().getSpeedY();
-    	//TO DO : Get the coordinate of the actual segment (with method in track)
-    	// add speedX & speedY to this coordinate, without the car go out of the track
-    	/// Find the segment
-    	//track.updateCarPosition(c,newSegment);
-    	//return newSegment;
-    	return new Segment(1);
+    	
+    	int h=track.getHeight();
+    	int l=track.getLength();
+    	int x = c.getSpeedVector().getSpeedX()+c.getPosition().getX();
+    	int y = c.getSpeedVector().getSpeedY()+c.getPosition().getY();
+    	if(x<0) x=0;
+    	if(x>=h) x=h;
+    	if(y<0) y=0;
+    	if(y>=l) x=l;
+    	Segment newSegment = track.getSegment(x, y);
+    	track.updateCarPosition(c,newSegment);
+    	return newSegment;
     }
 
     public void init_add_glue(int x,int y){

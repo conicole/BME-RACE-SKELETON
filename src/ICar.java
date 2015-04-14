@@ -17,4 +17,5 @@ public interface ICar extends AbstractObstacle {
    public void setPosition(Segment s);
    public void outOfTrack();
    public SpeedVector getSpeedVector();
+   public Segment getPosition();
 }

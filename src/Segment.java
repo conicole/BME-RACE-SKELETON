@@ -1,23 +1,28 @@
 import java.util.*;
   
 public class Segment implements ISegment {
-  public int Id;
+  private int x;
+  private int y;
   public Stack<AbstractObstacle> SObs;
   public boolean isOutOfTrack;
 
 
-    public Segment(int id){
-        Id = id;
+    public Segment(int i,int j){
+        x = i;
+        y=j;
         isOutOfTrack = false;
     }
 
-    public int getId(){
-        return Id;
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
     }
 
 
     public void remove(AbstractObstacle obj){
-//todO
+    		
     }
   
   public void addObstacle(AbstractObstacle o){
@@ -32,6 +37,7 @@ public class Segment implements ISegment {
 	  if(!SObs.empty()){
 		     SObs.peek().ObstacleHitted(c);
       }
+	  if(SObs.peek().HasNoMoreEffect()) SObs.pop();
 	  this.addObstacle(c);
 	  if(isOutOfTrack) c.outOfTrack();
   }
