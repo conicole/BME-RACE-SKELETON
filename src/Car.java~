@@ -64,7 +64,7 @@ public class Car extends AbstractObstacle{
     void updateCarPosition(){
     	     System.out.println("I update car position\n");
     	     g.track.remove(this, position);//Attribute ???
-    	     postion = g.nextSegment();//Attribute ???
+    	     position = g.nextSegment();//Attribute ???
     	     System.out.println("I have a new segment position\n");
     }
     
