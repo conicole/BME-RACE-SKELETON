@@ -1,6 +1,7 @@
 public class Glue implements AbstractObstacle{
 	public static int nbpatch =1;
 	public int id;
+	public int effectLeft=EFFETLONG;
 
 	public Glue(){
 		id=nbpatch;
@@ -24,6 +25,20 @@ public class Glue implements AbstractObstacle{
    public String type(){
    	return "Glue";
    }
+
+
+@Override
+public int getId() {
+	// TODO Auto-generated method stub
+	return id;
+}
+
+
+@Override
+public int effectLeft() {
+	// TODO Auto-generated method stub
+	return effectLeft();
+}
     
     
 }

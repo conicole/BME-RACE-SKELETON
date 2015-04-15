@@ -4,13 +4,14 @@
 public class Oil implements AbstractObstacle{
 	public static int nbpatch =1;
 	public int id;
+	public int effectLeft=EFFETLONG;
 
 	public Oil(){
 		id=nbpatch;
 		nbpatch++;
 	}
 	
-	public int getID(){
+	public int getId(){
 		return id;
 	}
 	
@@ -26,6 +27,17 @@ public class Oil implements AbstractObstacle{
     public boolean HasNoMoreEffect(){
  	   return effectLeft==0;
     }
+    
+    public String type(){
+    	return "Oil";
+    }
+
+
+	@Override
+	public int effectLeft() {
+		// TODO Auto-generated method stub
+		return effectLeft;
+	}
     
 }
 

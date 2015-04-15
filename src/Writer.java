@@ -10,7 +10,7 @@ public class Writer {
 	public static FileWriter fw=new FileWriter(f);
 	private static BufferedWriter bw = new BufferedWriter(fw);
 	
-	public static void writeGoLeft(ICar c, int i){
+	public static void writeGoLeft(Car c){
 		try{
 			bw.append("Car "+c.getId()+" Moved_Left ");
 			bw.newLine();
@@ -19,7 +19,7 @@ public class Writer {
 		}
 	}
 	
-	public static void writeGoRight(ICar c, int i){
+	public static void writeGoRight(Car c){
 		try{
 			bw.append("Car "+c.getId()+" Moved_Right ");
 			bw.newLine();
@@ -28,7 +28,7 @@ public class Writer {
 		}
 	}
 	
-	public static void writeAccelerrate(ICar c, int i){
+	public static void writeAccelerrate(Car c){
 		try{
 			bw.append("Car "+c.getId()+" Accelerated ");
 			bw.newLine();
@@ -37,7 +37,7 @@ public class Writer {
 		}
 	}
 	
-	public static void writeBrake(ICar c, int i){
+	public static void writeBrake(Car c){
 		try{
 			bw.append("Car "+c.getId()+" Braked ");
 			bw.newLine();
@@ -62,7 +62,7 @@ public class Writer {
 		
 	}
 	
-	public static void writeOutOfTrack(ICar c, int i){
+	public static void writeOutOfTrack(Car c){
 		try{
 			bw.append("Car "+c.getId()+" Out_Of_Track ");
 			bw.newLine();
@@ -71,25 +71,25 @@ public class Writer {
 		}
 	}
 	
-	public static void writeReleaseOil(ICar c, Oil o){
+	public static void writeReleaseOil(Car c, Oil o){
 		try{
-			bw.append("Car "+c.getId()+" Released_Oil "+o.getID()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
+			bw.append("Car "+c.getId()+" Released_Oil "+o.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
 		} catch(IOException e){
 			
 		}
 	}
 	
-	public static void writeReleaseGlue(ICar c, Glue g){
+	public static void writeReleaseGlue(Car c, Glue g){
 		try{
-			bw.append("Car "+c.getId()+" Released_Glue "+g.getID()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
+			bw.append("Car "+c.getId()+" Released_Glue "+g.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
 		} catch(IOException e){
 			
 		}
 	}
 	
-	public static void writeCollisionOil(ICar c,Oil o){
+	public static void writeCollisionOil(Car c,Oil o){
 		try{
 			bw.append("Car "+c.getId()+" Collided_With Oil "+o.getID()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
@@ -98,16 +98,16 @@ public class Writer {
 		}
 	}
 	
-	public static void writeCollisionGlue(ICar c, Glue g){
+	public static void writeCollisionGlue(Car c, Glue g){
 		try{
-			bw.append("Car "+c.getId()+" Collided_With Glue "+g.getID()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
+			bw.append("Car "+c.getId()+" Collided_With Glue "+g.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
 		} catch(IOException e){
 			
 		}
 	}
 	
-	public static void writeCollisionRepairCar(ICar c,RepairCar rc){
+	public static void writeCollisionRepairCar(Car c,RepairCar rc){
 		try{
 			bw.append("Car "+c.getId()+" Collided_With Repair Car "+rc.getID()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
@@ -116,9 +116,9 @@ public class Writer {
 		}
 	}
 	
-	public static void writeCollisionCar(ICar c,ICar rc){
+	public static void writeCollisionCar(Car c,ICar c2){
 		try{
-			bw.append("Car "+c.getId()+" Collided_With Car "+rc.getID()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
+			bw.append("Car "+c.getId()+" Collided_With Car "+c2.getID()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
 		} catch(IOException e){
 			
@@ -154,8 +154,20 @@ public class Writer {
 				Segment p = c.getPosition();
 				bw.append("Car "+c.getId()+" Position "+p.getX()+" "+p.getY()+" Speed "+c.getSpeedX()+" "+c.getSpeedY());
 				bw.newLine();
-			}			
-			bw.newLine();
+			}
+			Track t=g.getTrack();
+			for(int i=0;i<t.getHeight();i++){
+				for(int j=0;i<t.getLength();j++){
+					Segment s = t.getSegment(i,j);
+					if(s.hasObstacle()) {
+						for (int k=0;i<s.SObs.size();k++){
+							AbstractObstacle o = s.SObs.get(k);
+							bw.append(o.type()+" "+o.getId()+" Position : "+s.getX()+" "+s.getY()+" Effect_Left "+o.effectLeft());
+							bw.newLine();
+						}		
+					}
+				}		
+			}
 		} catch(IOException e){
 			
 		}

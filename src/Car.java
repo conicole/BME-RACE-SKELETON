@@ -1,9 +1,14 @@
+import java.util.Stack;
+
 public class Car implements  ICar{
 
     private SpeedVector sv;///
     private Game g;///
     private Segment position;///
     private int id;
+    public Stack<Glue> Sg;
+    public Stack<Oil> So;
+    public final int AMMUNITION = 4;
 
     Car(){
     	sv = new SpeedVector();
@@ -20,6 +25,10 @@ public class Car implements  ICar{
         position=game.getTrack().getSegment(i,j);
         position.addObstacle(this);
         id=n;
+        for(int k=0;k<AMMUNITION;k++) {
+        	So.push(new Oil());
+        	Sg.push(new Glue());
+        }
    }
     
     public int getId(){
@@ -33,6 +42,7 @@ public class Car implements  ICar{
     public void ObstacleHitted(ICar c){
         c.hitCar();
         this.accelerate();
+        Writer.writeCollisionCar(this,c);
     }
 
     public void hitCar(){
@@ -41,18 +51,22 @@ public class Car implements  ICar{
 
     public void accelerate(){
         sv.increase(1);
+        Writer.writeAccelerrate(this);
     }
     
     public void brake(){
         sv.decrease(1);
+        Writer.writeBrake(this);
     }
     
     public void goLeft(){
         sv.turnLeft();
+        Writer.writeGoLeft(this);
     }
 
     public void goRight(){
         sv.turnRight();
+        Writer.writeGoRight(this);
     }
     
     public void stop(){
@@ -72,19 +86,24 @@ public class Car implements  ICar{
     }
     
     public void updateCarPosition(){
-          System.out.println("Car : update car position");
           g.getTrack().remove(this, position);
           position = g.nextSegment(this);
-          System.out.println("Car : has a new segment position");
     }
     
     public void releaseOil(){
-         System.out.println("Car : release Oil");
-         position.addObstacle(new Oil());
+         if(!So.empty()) {
+        	 Oil o=So.pop();
+        	 position.addObstacle(o);
+        	 Writer.writeReleaseOil(this, o);
+         }
+         
     }
     public void releaseGlue(){
-         System.out.println("Car : release Glue");
-         position.addObstacle(new Glue());
+    	if(!Sg.empty()) {
+    		Glue g =Sg.pop();
+    		position.addObstacle(g);
+    		Writer.writeReleaseGlue(this, g);
+    	}
     }
     
     public void setPosition(Segment s){
@@ -102,6 +121,7 @@ public class Car implements  ICar{
     public void collisionWithRepairCar(RepairCar rc){
     	rc.hitCar();
     	position.addObstacle(this);
+    	Writer.writeCollisionRepairCar(this,rc);
     }
     
     public SpeedVector getSpeedVector(){
@@ -115,5 +135,10 @@ public class Car implements  ICar{
     public String type(){
     	return null;
     }
+
+	@Override
+	public int effectLeft() {
+		return 1;
+	}
     
 }
