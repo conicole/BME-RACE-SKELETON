@@ -9,6 +9,7 @@ public class RepairCar extends Oil {
 	RepairCar(Segment s){
 		position=s;
 		LifeTime=4;
+		s.addObstacle(this);
 	}
 	
 	///Cleans the segments which contains patches.

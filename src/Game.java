@@ -13,7 +13,6 @@ public class Game {
     }
     public void createGame()
     {
-    	System.out.println("Game : Creation of the game");
         track = new Track();
 //        car1 = new Car(this);
 //        car2 = new Car(this);

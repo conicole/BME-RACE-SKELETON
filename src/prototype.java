@@ -19,6 +19,16 @@ public class prototype {
             "Add_Grass ([0-9]) ([0-9])",
             "Create_Finish_Line ([0-9]) ([0-9]) ([0-9]) ([0-9])"
     };
+    
+    public static String[] cmdPatterns = {
+        "Left ([0-9])",
+        "Right ([0-9])",
+        "Accelerate ([0-9])",
+        "Brake ([0-9])",
+        "Release_Oil ([0-9])",
+        "Release_Glue ([0-9])",
+        "Summarize"
+};
 
     Game game;
     Matcher matcher;
@@ -134,6 +144,45 @@ public class prototype {
                 int x2 = Integer.parseInt(this.matcher.group(3));
                 int y2 = Integer.parseInt(this.matcher.group(4));
                 game.set_finish_line(x1,y1,x2,y2);
+                break;
+            default:
+                System.out.println("error");
+                break;
+        }
+    }
+    
+    public void ComputeInputCmd(int nbCmd ){
+        int x;
+        int y;
+        switch(nbCmd) {
+            case 0:
+                return;
+            case 1:
+            	x = Integer.parseInt(this.matcher.group(1));
+                game.getCar(x).goLeft();
+                break;
+            case 2:
+            	x = Integer.parseInt(this.matcher.group(1));
+                game.getCar(x).goRight();
+                break;
+            case 3:
+            	x = Integer.parseInt(this.matcher.group(1));
+                game.getCar(x).accelerate();
+                break;
+            case 4:
+            	x = Integer.parseInt(this.matcher.group(1));
+                game.getCar(x).brake();
+                break;
+            case 5:
+            	x = Integer.parseInt(this.matcher.group(1));
+                game.getCar(x).releaseOil();
+                break;
+            case 6:
+            	x = Integer.parseInt(this.matcher.group(1));
+                game.getCar(x).releaseGlue();
+                break;
+            case 7:
+                //Summarize
                 break;
             default:
                 System.out.println("error");

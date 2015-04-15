@@ -17,6 +17,7 @@ public class Car implements  ICar{
         g=game;  
         sv = new SpeedVector();
         position=game.getTrack().getSegment(i,j);
+        position.addObstacle(this);
    }
     
     public void ObstacleHitted(ICar c){
@@ -29,7 +30,7 @@ public class Car implements  ICar{
     }
 
     public void accelerate(){
-        sv.increase(2);
+        sv.increase(1);
     }
     
     public void brake(){

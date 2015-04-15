@@ -14,41 +14,45 @@ public class SpeedVector {
     }
 
     void decrease(int a){
-    	   double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
+    	   /*double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
     	   r-=a;
     	   if(r>MINSPEED){
 	    	   double teta = Math.atan(SpeedX/SpeedY);
 	    	   SpeedX=r*Math.cos(teta);
 	    	   SpeedX=r*Math.sin(teta);
     	   }
-    	   else r=MINSPEED;
+    	   else r=MINSPEED;*/
+    	SpeedY-=a;
     }
  
     void increase(int a){
- 	   double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
+ 	  /* double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
  	   r-=a;
  	   if(r<MAXSPEED){
 	    	   double teta = Math.atan(SpeedX/SpeedY);
 	    	   SpeedX=r*Math.cos(teta);
 	    	   SpeedX=r*Math.sin(teta);
  	   }
- 	   else r=MAXSPEED;
+ 	   else r=MAXSPEED;*/
+    	SpeedY+=a;
     }
     
     void turnRight(){
- 	   double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
+ 	   /*double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
  	   double teta = Math.atan(SpeedX/SpeedY);
  	   teta-=ROTATION;
 	   SpeedX=r*Math.cos(teta);
-	   SpeedX=r*Math.sin(teta);
+	   SpeedX=r*Math.sin(teta);*/
+    	SpeedX++;
     }
  
     void turnLeft(){
-  	   double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
+  	   /*double r= (double) Math.sqrt((double)(SpeedX*SpeedX +SpeedY*SpeedY ));
   	   double teta = Math.atan(SpeedX/SpeedY);
   	   teta+=ROTATION;
  	   SpeedX=r*Math.cos(teta);
- 	   SpeedX=r*Math.sin(teta);
+ 	   SpeedX=r*Math.sin(teta);*/
+    	SpeedX--;
     }
 
     void stop(){
