@@ -1,6 +1,6 @@
 public interface  AbstractObstacle{
 	
-	public final int  EFFETLONG=4;
+	public final int  EFFECTLONG=4;
 
     public void ObstacleHitted(ICar c);
     public void collisionWithRepairCar(RepairCar rc);

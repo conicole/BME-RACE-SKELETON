@@ -4,7 +4,7 @@
 public class Oil implements AbstractObstacle{
 	public static int nbpatch =1;
 	public int id;
-	public int effectLeft=EFFETLONG;
+	public int effectLeft=EFFECTLONG;
 
 	public Oil(){
 		id=nbpatch;

@@ -91,7 +91,7 @@ public class Writer {
 	
 	public static void writeCollisionOil(Car c,Oil o){
 		try{
-			bw.append("Car "+c.getId()+" Collided_With Oil "+o.getID()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
+			bw.append("Car "+c.getId()+" Collided_With Oil "+o.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
 		} catch(IOException e){
 			
@@ -109,7 +109,7 @@ public class Writer {
 	
 	public static void writeCollisionRepairCar(Car c,RepairCar rc){
 		try{
-			bw.append("Car "+c.getId()+" Collided_With Repair Car "+rc.getID()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
+			bw.append("Car "+c.getId()+" Collided_With Repair Car "+rc.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
 		} catch(IOException e){
 			
@@ -127,11 +127,21 @@ public class Writer {
 	
 	
 	public static void writeCleanOil(RepairCar c, Oil o){
-		
+		try{
+			bw.append("RepairCar "+c.getId()+" Cleaned_Patch_of Oil "+o.getId()+" From "+c.getPosition().getX()+" "+c.getPosition().getY());
+			bw.newLine();
+		} catch(IOException e){
+			
+		}
 	}
 	
 	public static void writeCleanGlue(RepairCar c, Glue g){
-		
+		try{
+			bw.append("RepairCar "+c.getId()+" Cleaned_Patch_of Glue "+g.getId()+" From "+c.getPosition().getX()+" "+c.getPosition().getY());
+			bw.newLine();
+		} catch(IOException e){
+			
+		}		
 	}
 	
 	public static void writeRepairCarBecomesOil(RepairCar rc){
@@ -156,6 +166,8 @@ public class Writer {
 				bw.newLine();
 			}
 			Track t=g.getTrack();
+			
+			///Not very good, the car are in the list, so they are displaying 2 times.
 			for(int i=0;i<t.getHeight();i++){
 				for(int j=0;i<t.getLength();j++){
 					Segment s = t.getSegment(i,j);
