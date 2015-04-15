@@ -5,11 +5,21 @@ public class RepairCar extends Oil {
 	int SpeedY = 1;
 	int LifeTime;
 	Segment position;
+	int id;
 	
-	RepairCar(Segment s){
+	RepairCar(Segment s, int i){
 		position=s;
 		LifeTime=4;
 		s.addObstacle(this);
+		id=i;
+	}
+	
+	public Segment getPosition(){
+		return position;
+	}
+	
+	public int getId(){
+		return id;
 	}
 	
 	///Cleans the segments which contains patches.
@@ -55,6 +65,16 @@ public class RepairCar extends Oil {
 		//position.remove(this);
 		position.addObstacle(new Oil());
 		Disappear();
+	}
+
+	public int getSpeedY() {
+		// TODO Auto-generated method stub
+		return SpeedY;
+	}
+	
+	public int getSpeedX() {
+		// TODO Auto-generated method stub
+		return SpeedX;
 	}
 
 }

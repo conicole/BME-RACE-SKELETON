@@ -3,9 +3,9 @@ public class Game {
   
   private Track track;
   private ICar[] tabCar;
-  private int nbCar;
+  int nbCar;
   private RepairCar[] tabRepairCar;
-  private int nbRepairCar;
+  int nbRepairCar;
 
 
     public Game(){
@@ -35,12 +35,14 @@ public class Game {
     }
 
     public void add_car(int x,int y){
-    	tabCar[nbCar++]=new Car(this,x,y);
+    	tabCar[nbCar]=new Car(this,x,y,nbCar);
+    	nbCar++;
     }
 
     public void add_repairCar(int x,int y){
     	Segment s=track.getSegment(x, y);
-    	tabRepairCar[nbRepairCar++]=new RepairCar(s);
+    	tabRepairCar[nbRepairCar]=new RepairCar(s, nbRepairCar);
+    	nbRepairCar++;
     }
 
     public ICar getCar(int n) throws IndexOutOfBoundsException
@@ -89,4 +91,7 @@ public class Game {
     public void set_finish_line(int x1,int y1, int x2, int y2){
         //todo
     }
+	public RepairCar getRepairCar(int i) {
+		return tabRepairCar[i];
+	}
 }

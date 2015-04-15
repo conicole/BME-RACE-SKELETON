@@ -3,6 +3,7 @@ public class Car implements  ICar{
     private SpeedVector sv;///
     private Game g;///
     private Segment position;///
+    private int id;
 
     Car(){
     	sv = new SpeedVector();
@@ -13,12 +14,21 @@ public class Car implements  ICar{
          sv = new SpeedVector();
     }
     
-    Car(Game game,int i,int j){
+    Car(Game game,int i,int j, int n){
         g=game;  
         sv = new SpeedVector();
         position=game.getTrack().getSegment(i,j);
         position.addObstacle(this);
+        id=n;
    }
+    
+    public int getId(){
+    	return id;
+    }
+    
+    public String getID(){
+    	return Integer.toString(id);
+    }
     
     public void ObstacleHitted(ICar c){
         c.hitCar();
@@ -100,6 +110,10 @@ public class Car implements  ICar{
     
     public boolean HasNoMoreEffect(){
     	return false;
+    }
+    
+    public String type(){
+    	return null;
     }
     
 }

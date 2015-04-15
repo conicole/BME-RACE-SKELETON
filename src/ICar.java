@@ -18,4 +18,6 @@ public interface ICar extends AbstractObstacle {
    public void outOfTrack();
    public SpeedVector getSpeedVector();
    public Segment getPosition();
+   public int getId();
+   public String getID();
 }
