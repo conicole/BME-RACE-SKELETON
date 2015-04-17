@@ -5,10 +5,17 @@ import java.io.IOException;
 
 
 
-public class Writer {
-	public static File f= new File("ouput.txt");
-	public static FileWriter fw=new FileWriter(f);
-	private static BufferedWriter bw = new BufferedWriter(fw);
+public class Writer  {
+	public static File f;
+	public static FileWriter fw;
+	private static BufferedWriter bw;
+	
+	Writer() throws IOException{
+	f= new File("ouput.txt");
+	fw= new FileWriter(f);
+	bw = new BufferedWriter(fw);
+		
+	}
 	
 	public static void writeGoLeft(Car c){
 		try{
