@@ -10,20 +10,14 @@ public class Writer  {
 	public static FileWriter fw;
 	private static BufferedWriter bw;
 	
-	Writer() throws IOException{
-//	f= new File("ouput.txt");
-//	fw= new FileWriter(f);
-//	bw = new BufferedWriter(fw);
+	public static void createWriter() throws IOException{
+	f= new File("ouput.txt");
+	fw= new FileWriter(f);
+	bw = new BufferedWriter(fw);
 		
 	}
 
-
-    public static void  init() throws IOException{
-        f= new File("ouput.txt");
-        fw= new FileWriter(f);
-        bw = new BufferedWriter(fw);
-
-    }
+    
 
     public static void close() throws IOException{
         fw.close();

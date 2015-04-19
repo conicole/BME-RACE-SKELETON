@@ -13,7 +13,7 @@ public class Segment implements ISegment {
         x = i;
         y=j;
         isOutOfTrack = false;
-        SObs = new ArrayList<>();
+        SObs = new ArrayList<AbstractObstacle>();
     }
 
     public int getX(){
