@@ -167,8 +167,9 @@ public class Writer  {
 	}
 	
 	public static void summarize(Game g){
-        System.out.println("écriture");
 		try{
+            bw.append("-------------Summarize-----------------");
+            bw.newLine();
 	    	bw.append("Game : "+g.getTrack().getHeight()+" "+g.getTrack().getLength());
 			bw.newLine();
 			for(int i=0;i<g.nbCar;i++){

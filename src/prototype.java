@@ -35,7 +35,8 @@ public class prototype {
             "Brake ([0-9]*)",
             "Release_Oil ([0-9]*)",
             "Release_Glue ([0-9]*)",
-            "Summarize"
+            "Summarize",
+            "\\s*" // manage white line
     };
 
     Game game;
@@ -57,7 +58,6 @@ public class prototype {
                 res = i;
             }
         }
-        System.out.println(res);
         return res;
     }
 
@@ -188,33 +188,35 @@ public class prototype {
                 return;
             case 1:
             	x = Integer.parseInt(this.matcher.group(1));
-                game.getCar(x).goLeft();
+                game.getCar(x-1).goLeft();
                 break;
             case 2:
             	x = Integer.parseInt(this.matcher.group(1));
-                game.getCar(x).goRight();
+                game.getCar(x-1).goRight();
                 break;
             case 3:
             	x = Integer.parseInt(this.matcher.group(1));
-                game.getCar(x).accelerate();
+                game.getCar(x-1).accelerate();
                 break;
             case 4:
             	x = Integer.parseInt(this.matcher.group(1));
-                game.getCar(x).brake();
+                game.getCar(x-1).brake();
                 break;
             case 5:
             	x = Integer.parseInt(this.matcher.group(1));
-                game.getCar(x).releaseOil();
+                game.getCar(x-1).releaseOil();
                 break;
             case 6:
             	x = Integer.parseInt(this.matcher.group(1));
-                game.getCar(x).releaseGlue();
+                game.getCar(x-1).releaseGlue();
                 break;
             case 7:
                 Writer.summarize(game);
                 break;
+            case 8:
+                break;
             default:
-                System.out.println("error");
+                    System.out.println("Error : cmd doesn't existe" );
                 break;
         }
     }
