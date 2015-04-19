@@ -20,8 +20,13 @@ public class Writer  {
     
 
     public static void close() throws IOException{
-        fw.close();
+        bw.flush();
+        bw.close();
+
+
     }
+
+
 	
 	public static void writeGoLeft(Car c){
 		try{
@@ -162,8 +167,9 @@ public class Writer  {
 	}
 	
 	public static void summarize(Game g){
+        System.out.println("écriture");
 		try{
-			bw.append("Game : "+g.getTrack().getHeight()+" "+g.getTrack().getLength());
+	    	bw.append("Game : "+g.getTrack().getHeight()+" "+g.getTrack().getLength());
 			bw.newLine();
 			for(int i=0;i<g.nbCar;i++){
 				ICar c =g.getCar(i);
@@ -181,7 +187,7 @@ public class Writer  {
 			Track t=g.getTrack();
 			
 			///Not very good, the car are in the list, so they are displaying 2 times.
-			for(int i=0;i<t.getHeight();i++){
+			/*for(int i=0;i<t.getHeight();i++){
 				for(int j=0;i<t.getLength();j++){
 					Segment s = t.getSegment(i,j);
 					if(s.hasObstacle()) {
@@ -191,9 +197,10 @@ public class Writer  {
 							bw.newLine();
 						}		
 					}
-				}		
-			}
+				}
+			}*/
 		} catch(IOException e){
+            System.err.println("Error during summarize" + e.getMessage());
 			
 		}
 	}
