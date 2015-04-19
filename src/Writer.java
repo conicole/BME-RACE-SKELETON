@@ -98,7 +98,7 @@ public class Writer  {
 		}
 	}
 	
-	public static void writeReleaseGlue(Car c, Glue g){
+	public static void writeReleaseGlue(ICar c, Glue g){
 		try{
 			bw.append("Car "+c.getId()+" Released_Glue "+g.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
@@ -107,7 +107,7 @@ public class Writer  {
 		}
 	}
 	
-	public static void writeCollisionOil(Car c,Oil o){
+	public static void writeCollisionOil(ICar c,Oil o){
 		try{
 			bw.append("Car "+c.getId()+" Collided_With Oil "+o.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
@@ -116,7 +116,7 @@ public class Writer  {
 		}
 	}
 	
-	public static void writeCollisionGlue(Car c, Glue g){
+	public static void writeCollisionGlue(ICar c, Glue g){
 		try{
 			bw.append("Car "+c.getId()+" Collided_With Glue "+g.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
@@ -194,7 +194,6 @@ public class Writer  {
 				for(int j=0;j<t.getLength();j++){
 					Segment s = t.getSegment(i,j);
 						for(AbstractObstacle o : s.SObs){
-                            System.out.println( "size : "+ s.SObs.size() );
 							o.print(i,j);
 							//bw.newLine();
 						}		

@@ -13,6 +13,7 @@ public class Glue implements AbstractObstacle{
     	    System.out.println("ObstacleHitted : Glue");
     	    c.hitGlue();
     	    effectLeft--;
+            Writer.writeCollisionGlue(c,this);
     }
    
    public void collisionWithRepairCar(RepairCar rc){
@@ -27,14 +28,13 @@ public class Glue implements AbstractObstacle{
    }
 
 
-@Override
+
 public int getId() {
 	// TODO Auto-generated method stub
 	return id;
 }
 
 
-@Override
 public int effectLeft() {
 	// TODO Auto-generated method stub
 	return effectLeft();
