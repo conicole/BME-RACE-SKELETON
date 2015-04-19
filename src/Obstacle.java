@@ -33,8 +33,4 @@ public class Obstacle implements AbstractObstacle{
 		// TODO Auto-generated method stub
 		return effectLeft;
 	}
-	
-	public void print(int x, int y) {
-		Writer.write("Obstacle "+getId()+" Position "+ x +" "+ y+" Effect_Left "+effectLeft);
-	}
 }

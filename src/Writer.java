@@ -167,9 +167,8 @@ public class Writer  {
 	}
 	
 	public static void summarize(Game g){
+        System.out.println("écriture");
 		try{
-            bw.append("-------------Summarize-----------------");
-            bw.newLine();
 	    	bw.append("Game : "+g.getTrack().getHeight()+" "+g.getTrack().getLength());
 			bw.newLine();
 			/*for(int i=0;i<g.nbCar;i++){
@@ -187,8 +186,17 @@ public class Writer  {
 			}*/
 			Track t=g.getTrack();
 			
-			
 			///Not very good, the car are in the list, so they are displaying 2 times.
+
+			for(int i=0;i<t.getHeight();i++){
+				for(int j=0;i<t.getLength();j++){
+					Segment s = t.getSegment(i,j);
+					if(s.hasObstacle()) {
+						for (int k=0;i<s.SObs.size();k++){
+							AbstractObstacle o = s.SObs.get(k);
+							bw.append(o.type()+" "+o.getId()+" Position : "+s.getX()+" "+s.getY()+" Effect_Left "+o.effectLeft());
+							bw.newLine();
+
 			for(int i=0;i<t.getHeight();i++){
 				
 				for(int j=0;j<t.getLength();j++){
@@ -196,7 +204,9 @@ public class Writer  {
 						for(AbstractObstacle o : s.SObs){
 							o.print(i,j);
 							//bw.newLine();
+
 						}		
+					}
 				}
 			}
 		} catch(IOException e){
@@ -204,6 +214,7 @@ public class Writer  {
 			
 		}
 	}
+
 
 	public static void write(String string) {
 		try {
@@ -214,5 +225,6 @@ public class Writer  {
 		}
 		
 	}
+>>>>>>> FETCH_HEAD
 	
 }

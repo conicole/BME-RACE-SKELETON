@@ -1,3 +1,5 @@
-CreateGame 1 5Add_Car 0 0
-Add_Car 0 1LaunchSummarize
-SummarizeEnd
+CreateGame 2 2 
+Add_Car 0 0 
+Launch
+Summarize
+End

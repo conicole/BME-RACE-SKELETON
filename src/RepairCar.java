@@ -163,10 +163,5 @@ public class RepairCar implements  ICar {
     public void outOfTrack() {
 
     }
-    
-	public void print(int x, int y){
-		SpeedVector sv = getSpeedVector();
-		Writer.write("RepairCar "+getId()+" Position "+ x +" "+ y +" Speed "+sv.getSpeedX()+" "+sv.getSpeedY());
-	}
 
 }

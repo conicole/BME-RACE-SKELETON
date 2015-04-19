@@ -39,10 +39,13 @@ public class Oil implements AbstractObstacle{
 		// TODO Auto-generated method stub
 		return effectLeft;
 	}
+<<<<<<< HEAD
+=======
 
 	public void print(int x, int y) {
 		Writer.write("Oil "+getId()+" Position "+ x +" "+ y+" Effect_Left "+effectLeft);
 	}
+>>>>>>> FETCH_HEAD
     
 }
 

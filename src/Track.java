@@ -25,8 +25,7 @@ public class Track {
     }
     public void remove(AbstractObstacle obj, Segment seg){
     	int x=seg.getX();
-    	int y=seg.getY();
-
+    	int y=seg.getY();    	
         this.tabSeg[x][y].remove(obj);
     }
     

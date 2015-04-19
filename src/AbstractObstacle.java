@@ -8,6 +8,5 @@ public interface  AbstractObstacle{
     public String type();
     public int getId();
     public int effectLeft();
-	public void print(int x, int y);
     
 }

@@ -184,7 +184,6 @@ public class prototype {
     public void ComputeInputCmd(int nbCmd ){
         int x;
         int y;
-        
         switch(nbCmd) {
             case 0:
                 return;
