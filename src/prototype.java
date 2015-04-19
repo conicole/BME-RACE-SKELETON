@@ -78,6 +78,7 @@ public class prototype {
     public static void main(String args[]) throws IOException {
         //Creates Prototype object
     	prototype proto = new prototype();
+        Writer.init();
         // Open the file
         FileReader fReader = new FileReader("input.txt");
         //Creates buffer reader
@@ -96,6 +97,7 @@ public class prototype {
         finally{
         	//close unmanaged resource
         	 br.close();
+            Writer.close();
         	
         }
     }

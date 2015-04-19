@@ -11,11 +11,23 @@ public class Writer  {
 	private static BufferedWriter bw;
 	
 	Writer() throws IOException{
-	f= new File("ouput.txt");
-	fw= new FileWriter(f);
-	bw = new BufferedWriter(fw);
+//	f= new File("ouput.txt");
+//	fw= new FileWriter(f);
+//	bw = new BufferedWriter(fw);
 		
 	}
+
+
+    public static void  init() throws IOException{
+        f= new File("ouput.txt");
+        fw= new FileWriter(f);
+        bw = new BufferedWriter(fw);
+
+    }
+
+    public static void close() throws IOException{
+        fw.close();
+    }
 	
 	public static void writeGoLeft(Car c){
 		try{
