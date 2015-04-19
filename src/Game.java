@@ -63,6 +63,7 @@ public class Game {
     	if(y>=l) x=l;
     	//System.out.println(x);
     	//System.out.println(y);
+
     	Segment newSegment = track.getSegment(x, y);
     	
     	track.updateCarPosition(c,newSegment);
