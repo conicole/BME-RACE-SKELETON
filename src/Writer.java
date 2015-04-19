@@ -98,7 +98,7 @@ public class Writer  {
 		}
 	}
 	
-	public static void writeReleaseGlue(Car c, Glue g){
+	public static void writeReleaseGlue(ICar c, Glue g){
 		try{
 			bw.append("Car "+c.getId()+" Released_Glue "+g.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
@@ -107,7 +107,7 @@ public class Writer  {
 		}
 	}
 	
-	public static void writeCollisionOil(Car c,Oil o){
+	public static void writeCollisionOil(ICar c,Oil o){
 		try{
 			bw.append("Car "+c.getId()+" Collided_With Oil "+o.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
@@ -116,7 +116,7 @@ public class Writer  {
 		}
 	}
 	
-	public static void writeCollisionGlue(Car c, Glue g){
+	public static void writeCollisionGlue(ICar c, Glue g){
 		try{
 			bw.append("Car "+c.getId()+" Collided_With Glue "+g.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
 			bw.newLine();
@@ -171,7 +171,7 @@ public class Writer  {
 		try{
 	    	bw.append("Game : "+g.getTrack().getHeight()+" "+g.getTrack().getLength());
 			bw.newLine();
-			for(int i=0;i<g.nbCar;i++){
+			/*for(int i=0;i<g.nbCar;i++){
 				ICar c =g.getCar(i);
 				Segment p = c.getPosition();
 				SpeedVector sv = c.getSpeedVector();
@@ -183,11 +183,12 @@ public class Writer  {
 				Segment p = c.getPosition();
 				bw.append("Car "+c.getId()+" Position "+p.getX()+" "+p.getY()+" Speed "+c.getSpeedX()+" "+c.getSpeedY());
 				bw.newLine();
-			}
+			}*/
 			Track t=g.getTrack();
 			
 			///Not very good, the car are in the list, so they are displaying 2 times.
-			/*for(int i=0;i<t.getHeight();i++){
+
+			for(int i=0;i<t.getHeight();i++){
 				for(int j=0;i<t.getLength();j++){
 					Segment s = t.getSegment(i,j);
 					if(s.hasObstacle()) {
@@ -195,14 +196,35 @@ public class Writer  {
 							AbstractObstacle o = s.SObs.get(k);
 							bw.append(o.type()+" "+o.getId()+" Position : "+s.getX()+" "+s.getY()+" Effect_Left "+o.effectLeft());
 							bw.newLine();
+
+			for(int i=0;i<t.getHeight();i++){
+				
+				for(int j=0;j<t.getLength();j++){
+					Segment s = t.getSegment(i,j);
+						for(AbstractObstacle o : s.SObs){
+							o.print(i,j);
+							//bw.newLine();
+
 						}		
 					}
 				}
-			}*/
+			}
 		} catch(IOException e){
             System.err.println("Error during summarize" + e.getMessage());
 			
 		}
 	}
+
+
+	public static void write(String string) {
+		try {
+			bw.append(string);
+			bw.newLine();
+		} catch (IOException e) {
+			System.err.println( "Error with writing : " + e.getMessage());
+		}
+		
+	}
+>>>>>>> FETCH_HEAD
 	
 }

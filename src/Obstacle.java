@@ -18,17 +18,17 @@ public class Obstacle implements AbstractObstacle{
     public boolean HasNoMoreEffect(){
  	   return effectLeft==0;
     }
-	@Override
+
 	public String type() {
 		// TODO Auto-generated method stub
 		return "Obstacle ";
 	}
-	@Override
+
 	public int getId() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	@Override
+
 	public int effectLeft() {
 		// TODO Auto-generated method stub
 		return effectLeft;

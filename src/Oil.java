@@ -19,6 +19,7 @@ public class Oil implements AbstractObstacle{
     	    System.out.println("ObstacleHitted : Oil");
     	    c.hitOil();
     	    effectLeft--;
+            Writer.writeCollisionOil(c,this);
     }
     
     public void collisionWithRepairCar(RepairCar rc){
@@ -33,11 +34,18 @@ public class Oil implements AbstractObstacle{
     }
 
 
-	@Override
+
 	public int effectLeft() {
 		// TODO Auto-generated method stub
 		return effectLeft;
 	}
+<<<<<<< HEAD
+=======
+
+	public void print(int x, int y) {
+		Writer.write("Oil "+getId()+" Position "+ x +" "+ y+" Effect_Left "+effectLeft);
+	}
+>>>>>>> FETCH_HEAD
     
 }
 
