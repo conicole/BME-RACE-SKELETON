@@ -25,7 +25,7 @@ public class prototype {
             "Add_Repair_Car ([0-9]*) ([0-9]*)",
             "CreateGame ([0-9]*) ([0-9]*)",
             "Add_Grass ([0-9]) ([0-9])",
-            "Create_Finish_Line ([0-9]) ([0-9]) ([0-9]) ([0-9])"
+            "Create_Finish_Line ([0-9]) ([0-9]) ([0-9]) ([0-9]) ([0-9]) ([0-9]) ([0-9]) ([0-9])"
     };
 
     public static String[] cmdPatterns = {"End",
@@ -160,7 +160,14 @@ public class prototype {
                     int y1 = Integer.parseInt(this.matcher.group(2));
                     int x2 = Integer.parseInt(this.matcher.group(3));
                     int y2 = Integer.parseInt(this.matcher.group(4));
-                    game.set_finish_line(x1,y1,x2,y2);
+                    int x3 = Integer.parseInt(this.matcher.group(5));
+                    int y3 = Integer.parseInt(this.matcher.group(6));
+                    int x4 = Integer.parseInt(this.matcher.group(7));
+                    int y4 = Integer.parseInt(this.matcher.group(8));
+                    game.set_finish_line(x1,y1);
+                    game.set_finish_line(x2,y2);
+                    game.set_finish_line(x3,y3);
+                    game.set_finish_line(x4,y4);
                     break;
                 default:
                     System.out.println("Error on Config pattern");
@@ -174,7 +181,7 @@ public class prototype {
         while( (strLine = br.readLine()) != null ) {
             int nbCmd = isInput(strLine);
             this.ComputeInputCmd(nbCmd);
-            game.runStep();
+            game.UpdateGame();
         }
     }
 

@@ -1,17 +1,20 @@
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Game {
   
   private Track track;
   private ICar[] tabCar;
   int nbCar;
-  private RepairCar[] tabRepairCar;
+  private List<RepairCar> tabRepairCar;
   int nbRepairCar;
 
 
     public Game(){
          
         tabCar=new ICar[5];
-        tabRepairCar=new RepairCar[5];
+        tabRepairCar =new ArrayList<RepairCar>(5);
         nbCar=0;
         nbRepairCar=0;
     }
@@ -32,7 +35,7 @@ public class Game {
 
     public void add_repairCar(int x,int y){
     	Segment s=track.getSegment(x, y);
-    	tabRepairCar[nbRepairCar]=new RepairCar(s, nbRepairCar);
+    	tabRepairCar.add(new RepairCar(s, nbRepairCar));
     	nbRepairCar++;
     }
 
@@ -86,25 +89,43 @@ public class Game {
     }
 
 
-    // create the finish line, horizontal only now.
-    public void set_finish_line(int x1,int y1, int x2, int y2){
-        int lg = x2 - x1;
-        for(int i = 0; i <= lg; i++){
-            track.setFinish(x1,y1);
-            x1++;
+    
+    
+    // create the finish line
+    public void set_finish_line(int x,int y){
+        
+            track.setFinish(x,y);
+         
         }
-    }
+  
+    
+    
 	public RepairCar getRepairCar(int i) {
 		return (RepairCar)tabCar[i];
 	}
+	
+	public void computeRepairCarMove(){
+	for(int i=0;i<nbRepairCar;i++)
+	{//Removes repair car if life time is 0
+		if(tabRepairCar.get(i).getLifetime()==0){
+			tabRepairCar.remove(i);
+		}
+		
+	
+	
+	    
+	
+	
+	 }
+	}
 
     // run a step in the game : move all the object according to their speed
-    public void runStep(){
+    public void UpdateGame(){
         for(int i = 0; i < nbCar; i++){
             tabCar[i].updateCarPosition();
         }
-       /* for(int i = 0; i < nbRepairCar; i++){
-            tabRepairCar[i].updateCarPosition();
-        }*/
+        
+           computeRepairCarMove();
+        
     }
 }

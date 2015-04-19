@@ -22,8 +22,6 @@ public class Writer  {
     public static void close() throws IOException{
         bw.flush();
         bw.close();
-
-
     }
 
 

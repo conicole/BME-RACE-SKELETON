@@ -116,16 +116,23 @@ public class Car implements  ICar{
         return position;
     }
 
+    //remove car from race
     public void outOfTrack(){
-        sv.decrease(2);
+    	g.getTrack().remove(this, position);
     }
-
+    //collision with repair car
     public void collisionWithRepairCar(RepairCar rc){
         rc.hitCar();
+        //Ensure speed vector doesnt change after collision
+        int x= (int)sv.SpeedX;
+        int y= (int)sv.SpeedY;
+        
         position.addObstacle(this);
+        sv.SpeedX=x;
+        sv.SpeedY=y;
         Writer.writeCollisionRepairCar(this,rc);
     }
-
+    //
     public SpeedVector getSpeedVector(){
         return sv;
     }
