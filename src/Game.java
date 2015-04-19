@@ -9,7 +9,7 @@ public class Game {
 
 
     public Game(){
-        this.track = new Track(10,10);
+         
         tabCar=new ICar[5];
         tabRepairCar=new RepairCar[5];
         nbCar=0;
@@ -18,7 +18,7 @@ public class Game {
 
     public void setTrack(int x,int y)
     {
-    	track=new Track(x,y);
+    	track = new Track(x,y);
     }
 
     public Track getTrack(){
@@ -52,13 +52,19 @@ public class Game {
     	
     	int h=track.getHeight();
     	int l=track.getLength();
+    	
     	int x = c.getSpeedVector().getSpeedX()+c.getPosition().getX();
     	int y = c.getSpeedVector().getSpeedY()+c.getPosition().getY();
+    	//System.out.println(x);
+    	//System.out.println(y);
     	if(x<0) x=0;
     	if(x>=h) x=h;
     	if(y<0) y=0;
     	if(y>=l) x=l;
+    	//System.out.println(x);
+    	//System.out.println(y);
     	Segment newSegment = track.getSegment(x, y);
+    	
     	track.updateCarPosition(c,newSegment);
     	return newSegment;
     }

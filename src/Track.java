@@ -9,6 +9,7 @@ public class Track {
         height = h;
         length = l;
         createTrack();
+    
     }
 
 
@@ -19,6 +20,7 @@ public class Track {
             for (int j = 0; j < length; j++) {
                 tabSeg[i][j] = new Segment(i,j);
             }
+         
         }
     }
     public void remove(AbstractObstacle obj, Segment seg){
@@ -31,6 +33,7 @@ public class Track {
         height = 10;
         length = 10;
         createTrack();
+        
     }
     
     public void updateCarPosition(ICar c, ISegment s ){
@@ -38,6 +41,7 @@ public class Track {
     }
     
     public Segment getSegment(int i, int j){
+    
     	return tabSeg[i][j];
     }
     

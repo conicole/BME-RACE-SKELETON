@@ -56,7 +56,7 @@ public class prototype {
                 res = i;
             }
         }
-       // System.out.println(res);
+        System.out.println(res);
         return res;
     }
 
@@ -76,27 +76,36 @@ public class prototype {
 
 
     public static void main(String args[]) throws IOException {
-        prototype proto = new prototype();
+        //Creates Prototype object
+    	prototype proto = new prototype();
+        // Open the file
+        FileReader fReader = new FileReader("input.txt");
+        //Creates buffer reader
+            BufferedReader br = new BufferedReader(fReader);
         try {
-            // Open the file
-            FileInputStream fstream = new FileInputStream("input.txt");
-            // Get the object of DataInputStream
-            DataInputStream in = new DataInputStream(fstream);
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+       
+          //runs configuration
             proto.run_configuration(br);
+            //runs game commands
             proto.run_game(br);
-            in.close();
+           
         }
         catch (Exception e) {//Catch exception if any
             System.err.println("Error: " + e.getMessage());
         }
+        finally{
+        	//close unmanaged resource
+        	 br.close();
+        	
+        }
     }
 
-
+    //Configuartion
     public void run_configuration(BufferedReader br) throws java.io.IOException {
         String strLine;
         int x;
         int y;
+        //Determining the type of command
         while( (strLine = br.readLine()) != null) {
             int nbCmd = isConfiguration(strLine);
             switch(nbCmd) {
