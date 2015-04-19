@@ -28,6 +28,7 @@ public class Segment implements ISegment {
     }
     
     public void remove(AbstractObstacle obj){
+        SObs.remove(obj);
     		
     }
   
