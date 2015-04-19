@@ -10,7 +10,7 @@ public class Writer  {
 	public static FileWriter fw;
 	private static BufferedWriter bw;
 	
-	Writer() throws IOException{
+	public static void createWriter() throws IOException{
 	f= new File("ouput.txt");
 	fw= new FileWriter(f);
 	bw = new BufferedWriter(fw);

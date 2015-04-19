@@ -42,8 +42,9 @@ public class prototype {
     Matcher matcher;
 
 
-    public prototype() {
+    public prototype() throws IOException {
         game = new Game();
+        Writer.createWriter();
     }
 
     // check if string s respect a pattern of a configuration command. Return the number of the command(-1). Else return -1
