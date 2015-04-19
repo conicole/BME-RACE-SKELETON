@@ -5,11 +5,13 @@ public class Track {
     int length;
     int area = height*length;
 
-    public Track(int l,int h) {
+    public Track(int h,int l) {
         height = h;
         length = l;
         createTrack();
     }
+
+
 
     private void createTrack(){
         tabSeg = new Segment[height][length];
@@ -45,5 +47,9 @@ public class Track {
     
     public int getLength(){
     	return length;
+    }
+
+    public void setFinish(int x,int y){
+        getSegment(x,y).setInFinishLine();
     }
 }

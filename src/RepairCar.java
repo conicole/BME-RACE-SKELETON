@@ -1,5 +1,5 @@
 
-public class RepairCar extends Oil {
+public class RepairCar implements  ICar {
 
 	int SpeedX = 1;
 	int SpeedY = 1;
@@ -13,16 +13,30 @@ public class RepairCar extends Oil {
 		s.addObstacle(this);
 		id=i;
 	}
-	
-	public Segment getPosition(){
+
+
+
+    public void setPosition(Segment position) {
+        this.position = position;
+    }
+
+    public void accelerate() {
+
+    }
+
+    public Segment getPosition(){
 		return position;
 	}
 	
 	public int getId(){
 		return id;
 	}
-	
-	///Cleans the segments which contains patches.
+    public String getID(){
+        return Integer.toString(id);
+    }
+
+
+    ///Cleans the segments which contains patches.
 	void cleaning(){
 		position.clear(this);
 	}
@@ -61,7 +75,7 @@ public class RepairCar extends Oil {
 		else LifeTime--;
 	}
 	
-	void hitCar(){
+	public void hitCar(){
 		//position.remove(this);
 		position.addObstacle(new Oil());
 		Disappear();
@@ -76,5 +90,78 @@ public class RepairCar extends Oil {
 		// TODO Auto-generated method stub
 		return SpeedX;
 	}
+
+    public void brake() {
+
+    }
+
+    public void stop(){
+
+    }
+
+    public void hitGlue(){
+
+    }
+
+    public void hitOil(){
+
+    }
+
+    public void hitObstacle(){
+
+    }
+
+
+    public boolean HasNoMoreEffect(){
+        return false;
+    }
+
+    public String type(){
+        return null;
+    }
+
+    @Override
+    public int effectLeft() {
+        return 1;
+    }
+
+
+    public void updateCarPosition(){
+        // algo to implement TODO
+    }
+
+    public void goLeft(){
+
+    }
+
+    public void goRight(){
+
+    }
+
+    public void releaseOil(){
+
+    }
+
+    public void releaseGlue(){
+
+    }
+
+    public void collisionWithRepairCar(RepairCar rc) {
+
+    }
+
+    public SpeedVector getSpeedVector(){
+        return null;
+    }
+
+
+
+    public void ObstacleHitted(ICar c){
+
+    }
+
+    public void outOfTrack() {
+
+    }
 
 }

@@ -10,24 +10,15 @@ public class Game {
 
     public Game(){
         this.track = new Track(10,10);
-    }
-    public void createGame()
-    {
-        track = new Track();
-//        car1 = new Car(this);
-//        car2 = new Car(this);
-//        car1.setPosition(track.gets1());
-//        car2.setPosition(track.gets2());
-//        track.gets3().addObstacle(new Obstacle());
+        tabCar=new ICar[5];
+        tabRepairCar=new RepairCar[5];
+        nbCar=0;
+        nbRepairCar=0;
     }
 
     public void setTrack(int x,int y)
     {
     	track=new Track(x,y);
-    	tabCar=new ICar[5];
-    	tabRepairCar=new RepairCar[5];
-    	nbCar=0;
-    	nbRepairCar=0;
     }
 
     public Track getTrack(){
@@ -88,10 +79,26 @@ public class Game {
     	track.getSegment(x,y).setOutOfTrack();
     }
 
+
+    // create the finish line, horizontal only now.
     public void set_finish_line(int x1,int y1, int x2, int y2){
-        //todo
+        int lg = x2 - x1;
+        for(int i = 0; i <= lg; i++){
+            track.setFinish(x1,y1);
+            x1++;
+        }
     }
 	public RepairCar getRepairCar(int i) {
-		return tabRepairCar[i];
+		return (RepairCar)tabCar[i];
 	}
+
+    // run a step in the game : move all the object according to their speed
+    public void runStep(){
+        for(int i = 0; i < nbCar; i++){
+            tabCar[i].updateCarPosition();
+        }
+       /* for(int i = 0; i < nbRepairCar; i++){
+            tabRepairCar[i].updateCarPosition();
+        }*/
+    }
 }

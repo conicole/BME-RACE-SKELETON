@@ -20,6 +20,8 @@ public class Car implements  ICar{
     }
     
     Car(Game game,int i,int j, int n){
+        Sg = new Stack<Glue>();
+        So = new Stack<Oil>();
         g=game;  
         sv = new SpeedVector();
         position=game.getTrack().getSegment(i,j);
@@ -136,7 +138,6 @@ public class Car implements  ICar{
     	return null;
     }
 
-	@Override
 	public int effectLeft() {
 		return 1;
 	}

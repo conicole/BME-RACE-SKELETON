@@ -3,14 +3,17 @@ import java.util.*;
 public class Segment implements ISegment {
   private int x;
   private int y;
-  public List<AbstractObstacle> SObs;
+  public ArrayList<AbstractObstacle> SObs;
   public boolean isOutOfTrack;
+  public boolean isFinishLine;
 
 
     public Segment(int i,int j){
+        isFinishLine = false;
         x = i;
         y=j;
         isOutOfTrack = false;
+        SObs = new ArrayList<>();
     }
 
     public int getX(){
@@ -29,7 +32,6 @@ public class Segment implements ISegment {
     }
   
   public void addObstacle(AbstractObstacle o){
-	  System.out.println("Segment : add an obstacle on the segment");
 	  SObs.add(o);
   }
   
@@ -58,6 +60,10 @@ public class Segment implements ISegment {
 	  for(int i=0;i<SObs.size();i++){
 		  SObs.get(i).collisionWithRepairCar(rc);
 	  }
+  }
+
+  public void setInFinishLine(){
+      isFinishLine = true;
   }
   
 }
