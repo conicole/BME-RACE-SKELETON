@@ -204,5 +204,14 @@ public class Writer  {
 			
 		}
 	}
+
+	public static void write(String string) {
+		try {
+			bw.append(string);
+		} catch (IOException e) {
+			
+		}
+		
+	}
 	
 }
