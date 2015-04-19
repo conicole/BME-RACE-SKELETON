@@ -191,12 +191,12 @@ public class Writer  {
 			///Not very good, the car are in the list, so they are displaying 2 times.
 			for(int i=0;i<t.getHeight();i++){
 				
-				for(int j=0;i<t.getLength();j++){
+				for(int j=0;j<t.getLength();j++){
 					Segment s = t.getSegment(i,j);
-					
 						for(AbstractObstacle o : s.SObs){
+                            System.out.println( "size : "+ s.SObs.size() );
 							o.print(i,j);
-							bw.newLine();
+							//bw.newLine();
 						}		
 				}
 			}
@@ -211,7 +211,7 @@ public class Writer  {
 			bw.append(string);
 			bw.newLine();
 		} catch (IOException e) {
-			
+			System.err.println( "Error with writing : " + e.getMessage());
 		}
 		
 	}
