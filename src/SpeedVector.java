@@ -57,7 +57,7 @@ public class SpeedVector {
 
     void stop(){
     	SpeedX=0;
-   	    SpeedY=0;
+   	    SpeedX=0;
     }
     
     public int getSpeedX(){

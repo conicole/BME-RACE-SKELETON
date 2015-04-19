@@ -28,7 +28,7 @@ public class Segment implements ISegment {
     }
     
     public void remove(AbstractObstacle obj){
-    		SObs.remove(obj);
+    		
     }
   
   public void addObstacle(AbstractObstacle o){
@@ -39,12 +39,11 @@ public class Segment implements ISegment {
   // a car is coming | manage collision
   public void CarIsComing(ICar c)
   {
+	 
 	  if(!SObs.isEmpty()){
 		  for(int i=0;i<SObs.size();i++){
-		    if(SObs.get(i)!=c){
-
-                SObs.get(i).ObstacleHitted(c);
-            }
+		    if(SObs.get(i)!=c)
+			  SObs.get(i).ObstacleHitted(c);
 		     if(SObs.get(i).HasNoMoreEffect()) SObs.remove(i);
 		  }
 	  }

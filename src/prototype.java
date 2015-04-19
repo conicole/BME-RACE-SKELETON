@@ -35,8 +35,7 @@ public class prototype {
             "Brake ([0-9]*)",
             "Release_Oil ([0-9]*)",
             "Release_Glue ([0-9]*)",
-            "Summarize",
-            "\\s*" // manage white line
+            "Summarize"
     };
 
     Game game;
@@ -58,6 +57,7 @@ public class prototype {
                 res = i;
             }
         }
+        System.out.println(res);
         return res;
     }
 
@@ -183,41 +183,38 @@ public class prototype {
     public void ComputeInputCmd(int nbCmd ){
         int x;
         int y;
-        
         switch(nbCmd) {
             case 0:
                 return;
             case 1:
             	x = Integer.parseInt(this.matcher.group(1));
-                game.getCar(x-1).goLeft();
+                game.getCar(x).goLeft();
                 break;
             case 2:
             	x = Integer.parseInt(this.matcher.group(1));
-                game.getCar(x-1).goRight();
+                game.getCar(x).goRight();
                 break;
             case 3:
             	x = Integer.parseInt(this.matcher.group(1));
-                game.getCar(x-1).accelerate();
+                game.getCar(x).accelerate();
                 break;
             case 4:
             	x = Integer.parseInt(this.matcher.group(1));
-                game.getCar(x-1).brake();
+                game.getCar(x).brake();
                 break;
             case 5:
             	x = Integer.parseInt(this.matcher.group(1));
-                game.getCar(x-1).releaseOil();
+                game.getCar(x).releaseOil();
                 break;
             case 6:
             	x = Integer.parseInt(this.matcher.group(1));
-                game.getCar(x-1).releaseGlue();
+                game.getCar(x).releaseGlue();
                 break;
             case 7:
                 Writer.summarize(game);
                 break;
-            case 8:
-                break;
             default:
-                    System.out.println("Error : cmd doesn't existe" );
+                System.out.println("error");
                 break;
         }
     }

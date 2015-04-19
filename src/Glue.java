@@ -39,10 +39,6 @@ public int effectLeft() {
 	// TODO Auto-generated method stub
 	return effectLeft();
 }
-
-public void print(int x, int y) {
-	Writer.write("Glue "+getId()+" Position "+ x +" "+ y+" Effect_Left "+effectLeft);
-}
     
     
 }
