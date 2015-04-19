@@ -36,7 +36,7 @@ public class prototype {
             "Release_Oil ([0-9]*)",
             "Release_Glue ([0-9]*)",
             "Summarize",
-            "\\s*" // manage white line
+            "\\s*", // manage white line
             "-"
     };
 
