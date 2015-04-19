@@ -210,7 +210,7 @@ public class prototype {
                 game.getCar(x).releaseGlue();
                 break;
             case 7:
-                //Summarize
+                Writer.summarize(game);
                 break;
             default:
                 System.out.println("error");
