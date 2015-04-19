@@ -37,6 +37,7 @@ public class prototype {
             "Release_Glue ([0-9]*)",
             "Summarize",
             "\\s*" // manage white line
+            "-"
     };
 
     Game game;
