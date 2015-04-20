@@ -22,8 +22,10 @@ public class SpeedVector {
 	    	   SpeedX=r*Math.sin(teta);
     	   }
     	   else r=MINSPEED;*/
-    if(a>-1)
+    
     	SpeedY-=a;
+    	if(SpeedY<0)
+    		SpeedY=0;
     }
  
     void increase(int a){
@@ -35,8 +37,10 @@ public class SpeedVector {
 	    	   SpeedX=r*Math.sin(teta);
  	   }
  	   else r=MAXSPEED;*/
-    	 if(a<5)
+    	
     	SpeedY+=a;
+    	 if(SpeedY>10)
+     		SpeedY=10;
     }
     
     void turnRight(){
@@ -46,6 +50,8 @@ public class SpeedVector {
 	   SpeedX=r*Math.cos(teta);
 	   SpeedX=r*Math.sin(teta);*/
     	SpeedX++;
+    	if(SpeedX>10)
+     		SpeedX=10;
     }
  
     void turnLeft(){
@@ -55,6 +61,8 @@ public class SpeedVector {
  	   SpeedX=r*Math.cos(teta);
  	   SpeedX=r*Math.sin(teta);*/
     	SpeedX--;
+    	if(SpeedX<0)
+     		SpeedX=0;
     }
 
     void stop(){
