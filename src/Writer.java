@@ -194,6 +194,8 @@ public class Writer  {
                     }
                 }
             }
+            bw.append("---------------------------------------");
+            bw.newLine();
         } catch(IOException e){
             System.err.println("Error during summarize" + e.getMessage());
 
