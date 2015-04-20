@@ -243,6 +243,8 @@ public class prototype {
                 break;
             case 8:
                 break;
+            case 9:
+                break;
             default:
                     System.out.println("Error : cmd doesn't existe" );
                 break;
