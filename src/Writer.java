@@ -220,4 +220,13 @@ public class Writer  {
 
     }
 
+    public static void write_win(int i){
+        try {
+            bw.append("Car : " + (i+1) + " wins the race" );
+            bw.newLine();
+        } catch (IOException e) {
+            System.err.println( "Error with writing : " + e.getMessage());
+        }
+    }
+
 }

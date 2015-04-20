@@ -26,7 +26,7 @@ public class prototype {
             "Add_Repair_Car ([0-9]*) ([0-9]*)",
             "CreateGame ([0-9]*) ([0-9]*)",
             "Add_Grass ([0-9]) ([0-9])",
-            "Create_Finish_Line ([0-9] )+)"
+            "Create_Finish_Line ([0-9]*) ([0-9]*)"
     };
   //Stores all the syntax of the input language configuration
     public static String[] cmdPatterns = {"End",
@@ -167,14 +167,17 @@ public class prototype {
                     break;
                 case 10:
                 	//Seting up finish line
-                	int i=1;
+               /* 	int i=1;
                 	while(this.matcher.group(i) != null && this.matcher.group(i+1) != null){
                     int x1 = Integer.parseInt(this.matcher.group(i));
                     int y1 = Integer.parseInt(this.matcher.group(i+1));
                       game.set_finish_line(x1,y1);
                       i=+2;
                 	}
-
+*/
+                    x = Integer.parseInt(this.matcher.group(1));
+                    y = Integer.parseInt(this.matcher.group(2));
+                    game.set_finish_line(x,y);
                     break;
                 default:
                 	//If error occurs
@@ -187,10 +190,11 @@ public class prototype {
     //Runs the game
     public void run_game(BufferedReader br) throws java.io.IOException {
         String strLine;
-        while( (strLine = br.readLine()) != null ) {
+        boolean gameOn = true;
+        while( ((strLine = br.readLine()) != null ) && gameOn) {
             int nbCmd = isInput(strLine);
             this.ComputeInputCmd(nbCmd);
-            game.UpdateGame();
+            gameOn = game.UpdateGame();
         }
     }
 

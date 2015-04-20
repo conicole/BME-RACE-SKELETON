@@ -68,7 +68,7 @@ public class Segment implements ISegment {
 	  }
   }
 
-  //checks if is finishline
+  //set as finish line
   public void setInFinishLine(){
       isFinishLine = true;
   }

@@ -90,7 +90,6 @@ public class Car implements  ICar{
     //sets that this car is the winner
     public void setWinner(boolean b){
     	winner=b;
-    	
     }
     
 // updates the car position

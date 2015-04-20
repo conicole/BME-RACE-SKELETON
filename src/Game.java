@@ -214,12 +214,16 @@ private Track track;
 	
 
     // run a step in the game : move all the object according to their speed
-    public void UpdateGame(){
+    // return while nobody wins
+    public boolean UpdateGame(){
         for(int i = 0; i < nbCar; i++){
+            if(tabCar[i].isWinner()){
+                Writer.write_win(i);
+                return false;
+            }
             tabCar[i].updateCarPosition();
         }
-        
-           computeRepairCarMove();
-        
+        computeRepairCarMove();
+        return true;
     }
 }
