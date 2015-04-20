@@ -100,9 +100,9 @@ private Track track;
     	int y = c.getSpeedVector().getSpeedY()+c.getPosition().getY();
 
     	if(x<0) x=0;
-    	if(x>=h) x=h;
+    	if(x>=h) x=h-1;
     	if(y<0) y=0;
-    	if(y>=l) x=l;
+    	if(y>=l) y=l-1;
 
     	Segment newSegment = track.getSegment(x, y);
     	
