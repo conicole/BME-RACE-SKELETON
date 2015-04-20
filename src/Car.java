@@ -94,8 +94,17 @@ public class Car implements  ICar{
     
 // updates the car position
     public void updateCarPosition(){
-        g.getTrack().remove(this, position);
-        position = g.nextSegment(this);
+
+       // g.getTrack().remove(this, position);
+        //position = g.nextSegment(this);
+
+        Segment newpos = g.nextSegment(this);
+        if( newpos.equals(this.position)) {
+        }
+        else{
+            g.getTrack().remove(this,position);
+            this.position = newpos;
+        }
     }
 //releases oil
     public void releaseOil(){

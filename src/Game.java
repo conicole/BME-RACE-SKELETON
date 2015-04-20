@@ -105,8 +105,11 @@ private Track track;
     	if(y>=l) y=l-1;
 
     	Segment newSegment = track.getSegment(x, y);
-    	
-    	track.updateCarPosition(c,newSegment);
+
+        if ( ! (newSegment.equals(c.getPosition()))) {
+            track.updateCarPosition(c, newSegment);
+        }
+
     	return newSegment;
     }
 
