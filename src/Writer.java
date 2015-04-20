@@ -32,7 +32,7 @@ public class Writer  {
             bw.append("Car "+c.getId()+" Moved_Left ");
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
     //writes go right
@@ -41,7 +41,7 @@ public class Writer  {
             bw.append("Car "+c.getId()+" Moved_Right ");
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
     //outputs acceleration
@@ -50,7 +50,7 @@ public class Writer  {
             bw.append("Car "+c.getId()+" Accelerated ");
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
     //outputs brake
@@ -59,7 +59,7 @@ public class Writer  {
             bw.append("Car "+c.getId()+" Braked ");
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
     //ouputs when repair car moves
@@ -68,7 +68,7 @@ public class Writer  {
             bw.append("Repair Car "+c.getId()+" "+i+ " "+ j);
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
 
@@ -78,7 +78,7 @@ public class Writer  {
             bw.append("Car "+c.getId()+" Out_Of_Track ");
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
     //Output for release of oil
@@ -87,7 +87,7 @@ public class Writer  {
             bw.append("Car "+c.getId()+" Released_Oil "+o.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
   //Output for release of glue
@@ -96,7 +96,7 @@ public class Writer  {
             bw.append("Car "+c.getId()+" Released_Glue "+g.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
   //Output for collision with oil
@@ -105,7 +105,7 @@ public class Writer  {
             bw.append("Car "+c.getId()+" Collided_With Oil "+o.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
   //Output for collision with glue
@@ -114,7 +114,7 @@ public class Writer  {
             bw.append("Car "+c.getId()+" Collided_With Glue "+g.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
   //Output for collision with repair cars
@@ -123,7 +123,7 @@ public class Writer  {
             bw.append("Car "+c.getId()+" Collided_With Repair Car "+rc.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
 
@@ -133,7 +133,7 @@ public class Writer  {
             bw.append("Car "+c.getId()+" Collided_With Car "+c2.getID()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
 
@@ -143,7 +143,7 @@ public class Writer  {
             bw.append("RepairCar "+c.getId()+" Cleaned_Patch_of Oil "+o.getId()+" From "+c.getPosition().getX()+" "+c.getPosition().getY());
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
  
@@ -153,7 +153,7 @@ public class Writer  {
             bw.append("RepairCar "+c.getId()+" Cleaned_Patch_of Glue "+g.getId()+" From "+c.getPosition().getX()+" "+c.getPosition().getY());
             bw.newLine();
         } catch(IOException e){
-
+        	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
 

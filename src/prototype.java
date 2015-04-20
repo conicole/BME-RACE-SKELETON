@@ -105,7 +105,7 @@ public class prototype {
     }
 
     //Configuartion
-    public void run_configuration(BufferedReader br) throws java.io.IOException {
+    public void run_configuration(BufferedReader br) throws java.io.IOException, ClassNotFoundException {
         String strLine;
         int x;
         int y;
@@ -249,15 +249,37 @@ public class prototype {
         }
     }
 
-    public void save(String name){
+    public void save(String name) throws IOException{
         // todo
-
+    	FileOutputStream f =
+    		new FileOutputStream(name);
+    	ObjectOutputStream out =
+    		new ObjectOutputStream(f);
+    	try {
+    	
+    		out.writeObject(game);
+    		
+    	}
+    	finally{
+    	out.close();	
+    	}
     }
 
 
-    public void load(String name){
-        // todo
-
+    public Game load(String name) throws IOException, ClassNotFoundException{
+    	FileInputStream f =
+    		new FileInputStream(name);
+    		ObjectInputStream in =
+    		new ObjectInputStream(f);
+    	try {
+    		
+    		Game o_ins = (Game)in.readObject();
+    		
+    		return o_ins;
+    		}
+    	finally{
+    		in.close();
+    	}
     }
 }
 

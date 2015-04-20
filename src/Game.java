@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -5,9 +6,13 @@ import java.util.Random;
 import sun.security.util.Length;
 
 
-public class Game {
+public class Game  implements Serializable {
   
-  private Track track;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Track track;
   private ICar[] tabCar;
   int nbCar;
   private List<RepairCar> tabRepairCar;
