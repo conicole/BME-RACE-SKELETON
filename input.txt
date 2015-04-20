@@ -1,5 +1,8 @@
-CreateGame 1 2
-Add_Car 0 0 
+CreateGame 1 4 
+Add_Car 0 0
+Add_Glue 0 1 
 Launch
-Accelerate
+Summarize
+Accelerate 1
+Summarize
 End

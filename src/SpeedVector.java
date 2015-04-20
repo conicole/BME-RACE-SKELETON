@@ -22,6 +22,7 @@ public class SpeedVector {
 	    	   SpeedX=r*Math.sin(teta);
     	   }
     	   else r=MINSPEED;*/
+    if(a>-1)
     	SpeedY-=a;
     }
  
@@ -34,6 +35,7 @@ public class SpeedVector {
 	    	   SpeedX=r*Math.sin(teta);
  	   }
  	   else r=MAXSPEED;*/
+    	 if(a<5)
     	SpeedY+=a;
     }
     

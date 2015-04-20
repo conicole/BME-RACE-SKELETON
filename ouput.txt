@@ -1,0 +1,10 @@
+-------------Summarize-----------------
+Game : 1 4
+Car 0 Position 0 0 Speed 0 0
+Glue 5 Position 0 1 Effect_Left 4
+Car 0 Accelerated 
+Car 0 Collided_With Glue 5 At 0 0
+-------------Summarize-----------------
+Game : 1 4
+Glue 5 Position 0 1 Effect_Left 3
+Car 0 Position 0 1 Speed 0 -1
