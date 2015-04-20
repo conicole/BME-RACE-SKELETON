@@ -4,5 +4,5 @@ Add_Glue 0 1
 Launch
 Summarize
 Accelerate 1
-Summarize
 End
+

@@ -136,6 +136,14 @@ public class Writer  {
         	  System.err.println("Error during summarize" + e.getMessage());
         }
     }
+    public static void writefinish(Car c, Oil o){
+    	  try{
+              bw.append("Car "+c.getId()+" Wins race At "+c.getPosition().getX()+" "+c.getPosition().getY());
+              bw.newLine();
+          } catch(IOException e){
+          	  System.err.println("Error during summarize" + e.getMessage());
+          }
+    }
 
 // output for cleaning oil by repair car
     public static void writeCleanOil(RepairCar c, Oil o){
