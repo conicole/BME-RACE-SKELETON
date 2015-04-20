@@ -30,7 +30,6 @@ public class Segment implements ISegment {
     //removes obstacles
     public void remove(AbstractObstacle obj){
         SObs.remove(obj);
-    		
     }
   //adds obstacles
   public void addObstacle(AbstractObstacle o){

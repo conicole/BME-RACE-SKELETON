@@ -44,8 +44,8 @@ public class Car implements  ICar{
   //checks if obstacle hit
     public void ObstacleHitted(ICar c){
         c.hitCar();
-        this.accelerate();
         Writer.writeCollisionCar(this,c);
+        this.accelerate();
     }
     //checks if car hit
     public void hitCar(){
