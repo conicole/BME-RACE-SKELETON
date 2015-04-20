@@ -10,6 +10,7 @@ public class Writer  {
     public static FileWriter fw;
     private static BufferedWriter bw;
 
+    //Creates the static writer object
     public static void createWriter() throws IOException{
         f= new File("ouput.txt");
         fw= new FileWriter(f);
@@ -18,14 +19,14 @@ public class Writer  {
     }
 
 
-
+    //closes connection
     public static void close() throws IOException{
         bw.flush();
         bw.close();
     }
 
 
-
+    //write go left
     public static void writeGoLeft(Car c){
         try{
             bw.append("Car "+c.getId()+" Moved_Left ");
@@ -34,7 +35,7 @@ public class Writer  {
 
         }
     }
-
+    //writes go right
     public static void writeGoRight(Car c){
         try{
             bw.append("Car "+c.getId()+" Moved_Right ");
@@ -43,7 +44,7 @@ public class Writer  {
 
         }
     }
-
+    //outputs acceleration
     public static void writeAccelerrate(Car c){
         try{
             bw.append("Car "+c.getId()+" Accelerated ");
@@ -52,7 +53,7 @@ public class Writer  {
 
         }
     }
-
+    //outputs brake
     public static void writeBrake(Car c){
         try{
             bw.append("Car "+c.getId()+" Braked ");
@@ -61,23 +62,17 @@ public class Writer  {
 
         }
     }
+    //ouputs when repair car moves
+    public static void Move(RepairCar c, int i,int j){
+    	try{
+            bw.append("Repair Car "+c.getId()+" "+i+ " "+ j);
+            bw.newLine();
+        } catch(IOException e){
 
-    public static void writeGoLeft(RepairCar c, int i){
-
+        }
     }
 
-    public static void writeGoRight(RepairCar c, int i){
-
-    }
-
-    public static void writeAcceleratet(RepairCar c, int i){
-
-    }
-
-    public static void writeBrake(RepairCar c, int i){
-
-    }
-
+    
     public static void writeOutOfTrack(Car c){
         try{
             bw.append("Car "+c.getId()+" Out_Of_Track ");
@@ -86,7 +81,7 @@ public class Writer  {
 
         }
     }
-
+    //Output for release of oil
     public static void writeReleaseOil(Car c, Oil o){
         try{
             bw.append("Car "+c.getId()+" Released_Oil "+o.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
@@ -95,7 +90,7 @@ public class Writer  {
 
         }
     }
-
+  //Output for release of glue
     public static void writeReleaseGlue(ICar c, Glue g){
         try{
             bw.append("Car "+c.getId()+" Released_Glue "+g.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
@@ -104,7 +99,7 @@ public class Writer  {
 
         }
     }
-
+  //Output for collision with oil
     public static void writeCollisionOil(ICar c,Oil o){
         try{
             bw.append("Car "+c.getId()+" Collided_With Oil "+o.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
@@ -113,7 +108,7 @@ public class Writer  {
 
         }
     }
-
+  //Output for collision with glue
     public static void writeCollisionGlue(ICar c, Glue g){
         try{
             bw.append("Car "+c.getId()+" Collided_With Glue "+g.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
@@ -122,7 +117,7 @@ public class Writer  {
 
         }
     }
-
+  //Output for collision with repair cars
     public static void writeCollisionRepairCar(Car c,RepairCar rc){
         try{
             bw.append("Car "+c.getId()+" Collided_With Repair Car "+rc.getId()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
@@ -132,6 +127,7 @@ public class Writer  {
         }
     }
 
+    //Output for collision between cars
     public static void writeCollisionCar(Car c,ICar c2){
         try{
             bw.append("Car "+c.getId()+" Collided_With Car "+c2.getID()+" At "+c.getPosition().getX()+" "+c.getPosition().getY());
@@ -141,7 +137,7 @@ public class Writer  {
         }
     }
 
-
+// output for cleaning oil by repair car
     public static void writeCleanOil(RepairCar c, Oil o){
         try{
             bw.append("RepairCar "+c.getId()+" Cleaned_Patch_of Oil "+o.getId()+" From "+c.getPosition().getX()+" "+c.getPosition().getY());
@@ -150,9 +146,10 @@ public class Writer  {
 
         }
     }
-
+ 
     public static void writeCleanGlue(RepairCar c, Glue g){
-        try{
+    // output for cleaning glue by repair car
+    	try{
             bw.append("RepairCar "+c.getId()+" Cleaned_Patch_of Glue "+g.getId()+" From "+c.getPosition().getX()+" "+c.getPosition().getY());
             bw.newLine();
         } catch(IOException e){
@@ -163,7 +160,7 @@ public class Writer  {
     public static void writeRepairCarBecomesOil(RepairCar rc){
 
     }
-
+    //summerize
     public static void summarize(Game g){
         try{
             bw.append("-------------Summarize-----------------");
@@ -186,7 +183,7 @@ public class Writer  {
             Track t=g.getTrack();
 
 
-            ///Not very good, the car are in the list, so they are displaying 2 times.
+            //Prints out output to file
             for(int i=0;i<t.getHeight();i++){
 
                 for(int j=0;j<t.getLength();j++){

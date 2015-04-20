@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import sun.security.util.Length;
 
 
 public class Game {
@@ -38,6 +41,38 @@ public class Game {
     	tabRepairCar.add(new RepairCar(s, nbRepairCar));
     	nbRepairCar++;
     }
+   
+    //Generates random number
+    private static int rand(int aStart, int aEnd){
+    	Random aRandom = new Random();
+    	if (aStart > aEnd) {
+          throw new IllegalArgumentException("Start cannot exceed End.");
+        }
+        //get the range, casting to long to avoid overflow problems
+        long range = (long)aEnd - (long)aStart + 1;
+        // compute a fraction of the range, 0 <= frac < range
+        long fraction = (long)(range * aRandom.nextDouble());
+        int randomNumber =  (int)(fraction + aStart);    
+       return (int)randomNumber;
+      }
+      
+      
+    
+    
+    public void generateRepairCar(){
+    	int x=rand(0,track.getHeight());
+    	int y=rand(0,track.getLength());
+    	//just to reduce the probability of generation
+    	int z=rand(0,4);
+    	Segment sg=track.getSegment(x,y);
+    	//generates if the segment is on the track and empty
+    	if (!sg.isOutOfTrack && !sg.hasObstacle()&& z==4){
+    		Segment s=track.getSegment(x, y);
+    		tabRepairCar.add(new RepairCar(s, nbRepairCar));
+    		nbRepairCar++;
+    	}	
+    	
+    }
 
     public ICar getCar(int n) throws IndexOutOfBoundsException
     {
@@ -58,14 +93,12 @@ public class Game {
     	
     	int x = c.getSpeedVector().getSpeedX()+c.getPosition().getX();
     	int y = c.getSpeedVector().getSpeedY()+c.getPosition().getY();
-    	//System.out.println(x);
-    	//System.out.println(y);
+
     	if(x<0) x=0;
     	if(x>=h) x=h;
     	if(y<0) y=0;
     	if(y>=l) x=l;
-    	//System.out.println(x);
-    	//System.out.println(y);
+
     	Segment newSegment = track.getSegment(x, y);
     	
     	track.updateCarPosition(c,newSegment);
@@ -105,19 +138,75 @@ public class Game {
 	}
 	
 	public void computeRepairCarMove(){
-	for(int i=0;i<nbRepairCar;i++)
-	{//Removes repair car if life time is 0
+	   for(int i=0;i<nbRepairCar;i++)
+	    {
+		//Removes repair car if life time is 0
 		if(tabRepairCar.get(i).getLifetime()==0){
 			tabRepairCar.remove(i);
 		}
 		
-	
-	
-	    
-	
-	
-	 }
+		
+		
+	    }
 	}
+	
+	
+	/*public static Segment[] SP(Track t, int x, int y){
+		
+		int[][] dist = new int[t.getHeight()][t.getLength()];
+	    
+		dist[x][y] = 0;
+		Prev[x][y] prev ;
+		Segment source = t.getSegment(x, y);
+		
+        for (int i = x; i < t.getHeight(); i++) {
+            for (int j = y; j < t.getLength(); j++) {
+                if(source != t.getSegment(i, j))
+            	{
+                	tabSeg[i][j] = new Segment(i,j);
+                	}
+            }
+         
+        }
+		
+		return null;
+		
+	}
+	
+
+	
+	      // Dijkstra's algorithm to find shortest path from s to all other nodes
+	      public static int [] dijkstra (WeightedGraph G, int s) {
+	         final int [] dist = new int [G.size()];  // shortest known distance from "s"
+	         final int [] pred = new int [G.size()];  // preceeding node in path
+	         final boolean [] visited = new boolean [G.size()]; // all false initially
+	   
+	         for (int i=0; i<dist.length; i++) {
+	           dist[i] = Integer.MAX_VALUE;
+	        }
+	        dist[s] = 0;
+	  
+	        for (int i=0; i<dist.length; i++) {
+	           final int next = minVertex (dist, visited);
+	           visited[next] = true;
+	  
+	           // The shortest path to next is dist[next] and via pred[next].
+	  
+	           final int [] n = G.neighbors (next);
+	           for (int j=0; j<n.length; j++) {
+	              final int v = n[j];
+	              final int d = dist[next] + G.getWeight(next,v);
+	              if (dist[v] > d) {
+	                 dist[v] = d;
+	                 pred[v] = next;
+	              }
+	           }
+	        }
+	        return pred;  // (ignore pred[s]==0!)
+	     }*/
+	
+	
+	
 
     // run a step in the game : move all the object according to their speed
     public void UpdateGame(){

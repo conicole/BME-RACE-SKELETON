@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 
 public class prototype {
 
+	//Stores all the syntax of the input language
     public static String[] cfgPatterns = {
             "Launch",
             "Save ([a-z]*)",
@@ -27,7 +28,7 @@ public class prototype {
             "Add_Grass ([0-9]) ([0-9])",
             "Create_Finish_Line ([0-9]) ([0-9]) ([0-9]) ([0-9]) ([0-9]) ([0-9]) ([0-9]) ([0-9])"
     };
-
+  //Stores all the syntax of the input language configuration
     public static String[] cmdPatterns = {"End",
             "Left ([0-9]*)",
             "Right ([0-9]*)",
@@ -115,47 +116,57 @@ public class prototype {
                 case 0:
                     return;
                 case 1:
+                	//saving config
                     this.save(matcher.group(1));
                     break;
                 case 2:
+                	//Loading config
                     this.load(matcher.group(1));
                     break;
                 case 3:
+                	//Adding glue
                     x = Integer.parseInt(this.matcher.group(1));
                     y = Integer.parseInt(this.matcher.group(2));
                     game.init_add_glue(x,y);
                     break;
                 case 4:
+                	//adding oil
                     x = Integer.parseInt(this.matcher.group(1));
                     y = Integer.parseInt(this.matcher.group(2));
                     game.init_add_oil(x,y);
                     break;
                 case 5:
+                	//Adding Obstacles
                     x = Integer.parseInt(this.matcher.group(1));
                     y = Integer.parseInt(this.matcher.group(2));
                     game.init_add_obs(x, y);
                     break;
                 case 6:
+                	//Creating car
                     x = Integer.parseInt(this.matcher.group(1));
                     y = Integer.parseInt(this.matcher.group(2));
                     game.add_car(x, y);
                     break;
                 case 7:
+                	//Creating RepairCar
                     x = Integer.parseInt(this.matcher.group(1));
                     y = Integer.parseInt(this.matcher.group(2));
                     game.add_repairCar(x, y);
                     break;
                 case 8:
+                	//Creating Track
                     x = Integer.parseInt(this.matcher.group(1));
                     y = Integer.parseInt(this.matcher.group(2));
                     game.setTrack(x,y);
                     break;
                 case 9:
+                	//setting up track
                     x = Integer.parseInt(this.matcher.group(1));
                     y = Integer.parseInt(this.matcher.group(2));
                     game.sow_grass(x,y);
                     break;
                 case 10:
+                	//Seting up finish line
                     int x1 = Integer.parseInt(this.matcher.group(1));
                     int y1 = Integer.parseInt(this.matcher.group(2));
                     int x2 = Integer.parseInt(this.matcher.group(3));
@@ -170,12 +181,14 @@ public class prototype {
                     game.set_finish_line(x4,y4);
                     break;
                 default:
+                	//If error occurs
                     System.out.println("Error on Config pattern");
                     break;
             }
         }
     }
 
+    //Runs the game
     public void run_game(BufferedReader br) throws java.io.IOException {
         String strLine;
         while( (strLine = br.readLine()) != null ) {
@@ -187,7 +200,7 @@ public class prototype {
 
 
 
-    
+    //determines what each commands does
     public void ComputeInputCmd(int nbCmd ){
         int x;
         int y;
@@ -195,30 +208,37 @@ public class prototype {
             case 0:
                 return;
             case 1:
+            	//go left
             	x = Integer.parseInt(this.matcher.group(1));
                 game.getCar(x-1).goLeft();
                 break;
             case 2:
+            	//go right
             	x = Integer.parseInt(this.matcher.group(1));
                 game.getCar(x-1).goRight();
                 break;
             case 3:
+            	//accelerate
             	x = Integer.parseInt(this.matcher.group(1));
                 game.getCar(x-1).accelerate();
                 break;
             case 4:
+            	//accelerate
             	x = Integer.parseInt(this.matcher.group(1));
                 game.getCar(x-1).brake();
                 break;
             case 5:
+            	//release oil
             	x = Integer.parseInt(this.matcher.group(1));
                 game.getCar(x-1).releaseOil();
                 break;
             case 6:
+            	//release glue
             	x = Integer.parseInt(this.matcher.group(1));
                 game.getCar(x-1).releaseGlue();
                 break;
             case 7:
+            	//create summmary
                 Writer.summarize(game);
                 break;
             case 8:

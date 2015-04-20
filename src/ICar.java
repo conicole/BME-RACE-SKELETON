@@ -20,4 +20,6 @@ public interface ICar extends AbstractObstacle {
    public Segment getPosition();
    public int getId();
    public String getID();
+   public void setWinner(boolean b);
+   public boolean isWinner();
 }

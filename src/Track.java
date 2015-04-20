@@ -1,19 +1,27 @@
 
 public class Track {
+	//Fields
 	Segment[][] tabSeg;
     int height;
     int length;
-    int area = height*length;
-
+    
+    //Constructor
     public Track(int h,int l) {
         height = h;
         length = l;
         createTrack();
-    
+        
     }
+    
+    public Segment[][] getTrack(){
+    	return tabSeg;
+    	
+    }
+    
+    
 
 
-
+    //create track
     private void createTrack(){
         tabSeg = new Segment[height][length];
         for (int i = 0; i < height; i++) {

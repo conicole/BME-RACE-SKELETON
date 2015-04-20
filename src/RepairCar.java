@@ -6,27 +6,24 @@ public class RepairCar extends Oil  {
     int LifeTime;
     Segment position;
     int id;
-
+    //constructor
     RepairCar(Segment s, int i){
         position=s;
         LifeTime=4;
         s.addObstacle(this);
         id=i;
     }
-
+    //set position
     public void setPosition(Segment position) {
         this.position = position;
     }
 
   
-
+    //get position
     public Segment getPosition(){
         return position;
     }
-
-    public int getId(){
-        return id;
-    }
+    	//gets id
     public String getID(){
         return Integer.toString(id);
     }
@@ -39,7 +36,7 @@ public class RepairCar extends Oil  {
 
     ///Makes the Car to disapperar from the track when its lifetime is 0.
     void  Disappear(){
-      
+      //Gui
     }
 
     ///Creates the RepairCar and specifies its how long it will be on the Track
@@ -70,14 +67,12 @@ public class RepairCar extends Oil  {
         if(LifeTime==0);
         else LifeTime--;
     }
+    //collision with car
     public void hitCar(){
-        //position.remove(this);
         position.addObstacle(new Oil());
-        Disappear();
-    }
-
-    public String type(){
-        return null;
+    	LifeTime=0;
+        
+        //Disappear();
     }
 
     public void print(int x, int y){
