@@ -249,6 +249,8 @@ public class prototype {
         }
     }
 
+    
+    //save config file
     public void save(String name) throws IOException{
         // todo
     	FileOutputStream f =
@@ -265,7 +267,7 @@ public class prototype {
     	}
     }
 
-
+ //load game from config file
     public Game load(String name) throws IOException, ClassNotFoundException{
     	FileInputStream f =
     		new FileInputStream(name);
