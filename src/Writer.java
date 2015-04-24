@@ -229,4 +229,13 @@ public class Writer  {
         }
     }
 
+    public static void write_empty(){
+        try {
+            bw.append("No more Car in the race" );
+            bw.newLine();
+        } catch (IOException e) {
+            System.err.println( "Error with writing : " + e.getMessage());
+        }
+    }
+
 }

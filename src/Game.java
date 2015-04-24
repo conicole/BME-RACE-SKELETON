@@ -13,7 +13,7 @@ public class Game  implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 private Track track;
-  private ICar[] tabCar;
+  private ArrayList<Car> tabCar;
   int nbCar;
   private List<RepairCar> tabRepairCar;
   int nbRepairCar;
@@ -21,8 +21,8 @@ private Track track;
 
     public Game(){
          
-        tabCar=new ICar[5];
-        tabRepairCar =new ArrayList<RepairCar>(5);
+        tabCar=new ArrayList<Car>();
+        tabRepairCar =new ArrayList<RepairCar>();
         nbCar=0;
         nbRepairCar=0;
     }
@@ -37,7 +37,7 @@ private Track track;
     }
 
     public void add_car(int x,int y){
-    	tabCar[nbCar]=new Car(this,x,y,nbCar);
+    	tabCar.add( new Car(this,x,y,nbCar));
     	nbCar++;
     }
 
@@ -82,7 +82,7 @@ private Track track;
     public ICar getCar(int n) throws IndexOutOfBoundsException
     {
         try{
-            return tabCar[n];
+            return tabCar.get(n);
         }
         catch (IndexOutOfBoundsException e)
         {
@@ -138,11 +138,15 @@ private Track track;
             track.setFinish(x,y);
          
         }
-  
+
+    public void deleteCar(ICar car){
+        this.tabCar.remove(car.getId());
+        nbCar--;
+    }
     
     
 	public RepairCar getRepairCar(int i) {
-		return (RepairCar)tabCar[i];
+		return tabRepairCar.get(i);
 	}
 	
 	public void computeRepairCarMove(){
@@ -219,12 +223,16 @@ private Track track;
     // run a step in the game : move all the object according to their speed
     // return while nobody wins
     public boolean UpdateGame(){
+        if( (nbCar + nbRepairCar) == 0 ){
+            Writer.write_empty();
+            return false;
+        }
         for(int i = 0; i < nbCar; i++){
-            if(tabCar[i].isWinner()){
+            if(tabCar.get(i).isWinner()){
                 Writer.write_win(i);
                 return false;
             }
-            tabCar[i].updateCarPosition();
+            tabCar.get(i).updateCarPosition();
         }
         computeRepairCarMove();
         return true;

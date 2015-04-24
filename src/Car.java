@@ -134,7 +134,7 @@ public class Car implements  ICar{
 
     //remove car from race
     public void outOfTrack(){
-    	g.getTrack().remove(this, position);
+    	g.deleteCar(this);
     }
     //collision with repair car
     public void collisionWithRepairCar(RepairCar rc){
