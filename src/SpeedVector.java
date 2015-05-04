@@ -14,7 +14,7 @@ public class SpeedVector {
     	SpeedX=0;
     	SpeedY=0;
     	r=0;
-    	teta =-90;
+    	teta =90;
     }
 
     void decrease(int a){
