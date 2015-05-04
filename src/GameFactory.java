@@ -69,6 +69,11 @@ public class GameFactory {
                 g.sow_grass(i,j);
             }
         }
+        
+        //finish line
+        for (int i=sizeX-2;i<sizeX;i++)
+        	for(int j=30;j<45;j++)
+        		g.set_finish_line(i, j);
 
         return g;
 
