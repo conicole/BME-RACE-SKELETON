@@ -31,38 +31,26 @@ public class SegView extends JPanel {
         segment = s;
     }
 
+    public void updateComponent(){
+        if( segment.hasObstacle() ){
+            for(int i=0;i<segment.SObs.size();i++) {
+                    this.add(this.add(segment.SObs.get(i).getView()));
+            }
+
+        }
+        else {
+            System.out.println(segment.SObs.size());
+        }
+    }
+
     public void paintComponent(Graphics g){
         //x1, y1, width, height
         g.setColor(Color.gray);
-        if(!car) {
-            g.fillRect(0, 0, 50, 20);
-        }
-        else{
-                try {
-                    BufferedImage image = ImageIO.read(new File("car.png"));
-
-                  //   AffineTransform af = AffineTransform.getRotateInstance(Math.toRadians(30), 0, 0);
+       g.fillRect(0, 0, 20,20);
+       // g.fillRect(0, 0, 50, 20);
+        //System.out.println("ok");
+        //g.fillOval(0,0,10,10);
 
 
-                    g.drawImage(image, 0, 0, 50, 25, Color.gray, this);
-                  //  g.dra7
-                //    AffineTransform identity = new AffineTransform();
-
-                 //   Graphics2D g2d = (Graphics2D)g;
-                //    AffineTransform trans = new AffineTransform();
-               //     trans.setTransform(identity);
-                 //   trans.rotate( Math.toRadians(45) );
-               //     trans.scale(0.2,0.2);
-               //     g2d.drawImage(image, trans, this);
-
-
-
-
-                            //Pour une image de fond
-                            //g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
     }
 }

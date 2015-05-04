@@ -37,4 +37,11 @@ public class Obstacle implements AbstractObstacle{
     public void print(int x, int y) {
         Writer.write("Obstacle "+getId()+" Position "+ x +" "+ y+" Effect_Left "+effectLeft);
     }
+
+
+    public AbstractObstacleView getView(){
+        // todooo
+        return new CarView(new Car());
+    }
+
 }

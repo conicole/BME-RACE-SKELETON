@@ -249,4 +249,8 @@ private Track track;
         computeRepairCarMove();
         return true;
     }
+
+    public TrackView getTrackView(){
+        return track.getView();
+    }
 }

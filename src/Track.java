@@ -70,4 +70,12 @@ public class Track {
     public void  setView(TrackView tv) {
         view = tv;
     }
+
+    public TrackView getView(){
+        return view;
+    }
+
+    public void updateview(){
+        this.view.segTab[0][0].updateComponent();
+    }
 }

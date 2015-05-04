@@ -7,15 +7,17 @@ import java.awt.*;
 public class TrackView extends JPanel implements IView  {
 
     private Track track;
-    private SegView[][] segTab;
+    public SegView[][] segTab;
+
+    private GridLayout grid;
 
 
-    int taillex = 10;
-    int tailley = 5;
+    int taillex = 30;
+    int tailley = 20;
 
     public TrackView(Track tr, int sizeX,int sizeY){
         track = tr;
-        GridLayout grid = new GridLayout(sizeX,sizeY);
+        grid = new GridLayout(sizeX,sizeY);
         this.setLayout(grid);
     }
 
@@ -23,6 +25,9 @@ public class TrackView extends JPanel implements IView  {
         segTab = tabSegV;
     }
 
+    public void addToLayout(Component c){
+        this.add(c);
+    }
 
     // constructor for test, to delete
     public TrackView(){
