@@ -45,8 +45,26 @@ public class SegView extends JPanel {
 
     public void paintComponent(Graphics g){
 
-        //x1, y1, width, height
-        g.setColor(Color.gray);
+        if(segment.isOutOfTrack){
+            g.setColor(new Color(0,102,0));
+        }
+        else if(segment.isFinishLine){
+            int CHECKER_SIZE = 5;
+
+            g.setColor(Color.white);
+            g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(Color.BLACK);
+            for (int stripeX = 0; stripeX < getWidth(); stripeX += CHECKER_SIZE) {
+                for (int y = 0, row = 0; y < getHeight(); y += CHECKER_SIZE/2, ++row) {
+                    int x = (row % 2 == 0) ? stripeX : (stripeX + CHECKER_SIZE/2);
+                    g.fillRect(x, y, CHECKER_SIZE/2, CHECKER_SIZE/2);
+                }
+            }
+        }
+
+        else{
+            g.setColor(Color.gray);
+        }
         g.fillRect(0, 0, 20,20);
 
     }

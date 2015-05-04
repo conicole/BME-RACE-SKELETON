@@ -19,7 +19,7 @@ public class GUI extends JFrame {
        // this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setSize(1050, 650);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-       // setResizable(false);
+        setResizable(false);
     }
 
     public void buildGame(int sizeX,int sizeY){
