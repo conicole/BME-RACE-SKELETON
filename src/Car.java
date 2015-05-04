@@ -56,23 +56,19 @@ public class Car implements  ICar{
 //accelerate
     public void accelerate(){
         sv.increase(1);
-        Writer.writeAccelerrate(this);
     }
 
 //brake
     public void brake(){
         sv.decrease(1);
-        Writer.writeBrake(this);
     }
 //goleft
     public void goLeft(){
         sv.turnLeft();
-        Writer.writeGoLeft(this);
     }
 //goright
     public void goRight(){
         sv.turnRight();
-        Writer.writeGoRight(this);
     }
 //stop
     public void stop(){

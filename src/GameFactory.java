@@ -38,9 +38,10 @@ public class GameFactory {
 
 
         // add a car
-        Car c = new Car(g,28,10,0);
+        Car c = new Car(g,10,10,0);
         CarView crv = new CarView(c);
         c.setView(crv);
+        g.add_car(c);
 
 
         // Update track according element on.
@@ -68,6 +69,15 @@ public class GameFactory {
                 g.sow_grass(i,j);
             }
         }
+
+
+        // set finish line
+        for(int j = 30; j < 45; j++){
+            g.set_finish_line(25,j);
+        }
+
+
+
 
         return g;
 

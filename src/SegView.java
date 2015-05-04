@@ -47,9 +47,10 @@ public class SegView extends JPanel {
 
         if(segment.isOutOfTrack){
             g.setColor(new Color(0,102,0));
+            g.fillRect(0, 0, 20,20);
         }
         else if(segment.isFinishLine){
-            int CHECKER_SIZE = 5;
+            int CHECKER_SIZE = 10;
 
             g.setColor(Color.white);
             g.fillRect(0, 0, getWidth(), getHeight());
@@ -64,8 +65,9 @@ public class SegView extends JPanel {
 
         else{
             g.setColor(Color.gray);
+            g.fillRect(0, 0, 20,20);
         }
-        g.fillRect(0, 0, 20,20);
+
 
     }
 }

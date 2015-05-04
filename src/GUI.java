@@ -41,5 +41,14 @@ public class GUI extends JFrame {
 
 
 
+        g.game.getCar(0).accelerate();
+
+        RunnerGame rg = new RunnerGame(g.game);
+
+        rg.run();
+
+
+
+
     }
 }

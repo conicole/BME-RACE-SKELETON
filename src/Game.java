@@ -236,12 +236,10 @@ private Track track;
     // return while nobody wins
     public boolean UpdateGame(){
         if( (nbCar + nbRepairCar) == 0 ){
-            Writer.write_empty();
             return false;
         }
         for(int i = 0; i < nbCar; i++){
             if(tabCar.get(i).isWinner()){
-                Writer.write_win(i);
                 return false;
             }
             tabCar.get(i).updateCarPosition();
