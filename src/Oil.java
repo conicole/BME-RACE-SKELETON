@@ -25,6 +25,7 @@ public class Oil implements AbstractObstacle{
     public void collisionWithRepairCar(RepairCar rc){
 
     }
+    
     public boolean HasNoMoreEffect(){
         return effectLeft==0;
     }

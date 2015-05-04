@@ -7,6 +7,7 @@ public class RepairCar extends Oil  {
     Segment position;
     int id;
     long tStart;
+    private RepairCarView view;
     
     //constructor
     RepairCar(Segment s, int i){
@@ -91,5 +92,13 @@ public class RepairCar extends Oil  {
     
         Writer.write("RepairCar "+getId()+" Position "+ x +" "+ y +" Speed "+ SpeedX +" "+ SpeedY);
     }
+    
+    public void setView(RepairCarView Repaircarview) {   view =Repaircarview; }
+
+
+    public AbstractObstacleView getView(){
+        return view;
+    }
+
 
 }

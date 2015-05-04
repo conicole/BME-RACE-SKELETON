@@ -157,7 +157,7 @@ public class Car implements  ICar{
     }
 //get type
     public String type(){
-        return null;
+        return "car";
     }
 //check if effect left
     public int effectLeft() {

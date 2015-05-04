@@ -19,7 +19,7 @@ public class RunnerGame extends Thread {
 
             try {
                 sleep(80);
-               // game.UpdateGame();
+                game.UpdateGame();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

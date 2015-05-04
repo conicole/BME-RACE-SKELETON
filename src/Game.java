@@ -86,8 +86,15 @@ private Track track;
     	Segment sg=track.getSegment(x,y);
     	//generates if the segment is on the track and empty
     	if (!sg.isOutOfTrack && !sg.hasObstacle()&& z==4){
-    		Segment s=track.getSegment(x, y);
-    		tabRepairCar.add(new RepairCar(s, nbRepairCar));
+    		
+    		RepairCar rc1 =new RepairCar(sg, nbRepairCar);
+    		
+    		tabRepairCar.add(rc1);
+    		
+            RepairCarView rcv = new RepairCarView(rc1);
+           
+            rc1.setView(rcv); 
+           
     		nbRepairCar++;
     	}	
     	
@@ -186,78 +193,120 @@ private Track track;
 
 	
 	public static Segment SP(Track t, Segment s) {
-        List<Vertex> path = null;
-
-        Vertex[][] v = null;
+       
+		List<Vertex> path = null;
+        boolean job=false;
+        Vertex[][] v = new Vertex[t.height][t.length];
         for (int i = 0; i < t.height; i++) {
-            for (int j = 0; j < t.length; i++) {
-                v[i][j] = new Vertex(new Segment(i, j));
-
-                //[][=][]
-                //[][x][]
-                //[][][]
-                if (!v[i + 1][j].getSegment().isOutOfTrack)
-                    v[i][j].adjacencies.add(new Edge(v[i + 1][j]));
-
-                //[][][=]
-                //[][x][]
-                //[][][]
-                if (!v[i + 1][j + 1].getSegment().isOutOfTrack)
-                    v[i][j].adjacencies.add(new Edge(v[i + 1][j + 1]));
-
-                //[][][]
-                //[][x][]
-                //[=][][]
-                if (!v[i - 1][j - 1].getSegment().isOutOfTrack)
-                    v[i][j].adjacencies.add(new Edge(v[i - 1][j - 1]));
-
-
-                //[][][]
-                //[][x][]
-                //[][=][]
-                if (!v[i - 1][j].getSegment().isOutOfTrack)
-                    v[i][j].adjacencies.add(new Edge(v[i - 1][j]));
-
-
-                //[][-][]
-                //[=][x][]
-                //[][][]
-
-                if (!v[i][j - 1].getSegment().isOutOfTrack)
-                    v[i][j].adjacencies.add(new Edge(v[i][j - 1]));
-
-
-                //[][][]
-                //[][x][]
-                //[][][=]
-                if (!v[i - 1][j + 1].getSegment().isOutOfTrack)
-                    v[i][j].adjacencies.add(new Edge(v[i - 1][j + 1]));
-
-
-                //[=][-][]
-                //[][x][]
-                //[][][]
-                if (!v[i + 1][j - 1].getSegment().isOutOfTrack)
-                    v[i][j].adjacencies.add(new Edge(v[i - 1][j + 1]));
-            }
-
-        }
-
-        Dijkstra.computePaths(new Vertex(s));
-
-
-        for (int i = 0; i < t.height; i++) {
-            for (int j = 0; j < t.length; i++) {
-                System.out.println("Distance to target: " + v[i][j].minDistance);
-                path = Dijkstra.getShortestPathTo(v[i][j]);
-                System.out.println("Path: " + path);
+            for (int j = 0; j < t.length; j++) {
+            	v[i][j] = new Vertex(t.getSegment(i, j));
+            	//Stores an abitrary cell with glue or oil
+            	for (AbstractObstacle l :  t.getSegment(i, j).SObs){
+            	 if (l.type().equalsIgnoreCase("oil")||l.type().equalsIgnoreCase("glue"))
+            	 {
+            		 if (job==false) job=true;
+            	 } 
+            	}
             }
         }
+        
+        
+        if(job){
+        //building adjacency list
+        for (int i = 0; i < t.height; i++) {
+            for (int j = 0; j < t.length; j++) {
+            
+             
+                	 //[][=][]
+                    //[][x][]
+                    //[][][]
+            	  if(i+1 < t.height){    
+            	    if (v[i + 1][j]!=null && !v[i + 1][j].getSegment().isOutOfTrack)
+                        v[i][j].adjacencies.add(new Edge(v[i + 1][j]));
+            	  }
+                    //[][][=]
+                    //[][x][]
+                    //[][][]
+            	  if(i+1 < t.height && j+1 < t.length){ 
+                    if (!v[i + 1][j + 1].equals(null)  &&  !v[i + 1][j + 1].getSegment().isOutOfTrack)
+                        v[i][j].adjacencies.add(new Edge(v[i + 1][j + 1]));
+            	  }
+            	  
+            	 //[][][]
+                  //[][x][=]
+                  //[][][]
+          	  if( j+1 < t.length){ 
+                  if (!v[i][j + 1].equals(null)  &&  !v[i][j + 1].getSegment().isOutOfTrack)
+                      v[i][j].adjacencies.add(new Edge(v[i][j + 1]));
+          	  }
+                    //[][][]
+                    //[][x][]
+                    //[=][][]
+            	  if(i-1 >= 0 && j-1 >=0){ 
+                    if (v[i - 1][j - 1] != null && !v[i - 1][j - 1].getSegment().isOutOfTrack)
+                        v[i][j].adjacencies.add(new Edge(v[i - 1][j - 1]));
+            	  }
 
-        return path.get(1).getSegment();
-    }
-		
+                    //[][][]
+                    //[][x][]
+                    //[][=][]
+            	  if(i-1 >= 0){ 
+                    if (v[i - 1][j] != null && !v[i - 1][j].getSegment().isOutOfTrack)
+                        v[i][j].adjacencies.add(new Edge(v[i - 1][j]));
+            	  }
 
+                    //[][-][]
+                    //[=][x][]
+                    //[][][]
+            	  if(j-1 >=0){ 
+                    if (v[i][j - 1] != null &&!v[i][j - 1].getSegment().isOutOfTrack)
+                        v[i][j].adjacencies.add(new Edge(v[i][j - 1]));
+            	  }
+
+                    //[][][]
+                    //[][x][]
+                    //[][][=]
+                  if(i-1 >= 0 && j+1 <t.length){ 
+                    if (v[i-1][j + 1] != null &&!v[i - 1][j + 1].getSegment().isOutOfTrack)
+                        v[i][j].adjacencies.add(new Edge(v[i - 1][j + 1]));
+                  }
+
+                    //[=][-][]
+                    //[][x][]
+                    //[][][]
+                  if(j-1 >= 0 && i+1 <t.height){ 
+                    if (v[i + 1][j - 1] != null && !v[i + 1][j - 1].getSegment().isOutOfTrack)
+                        v[i][j].adjacencies.add(new Edge(v[i + 1][j - 1]));
+                  }
+             }
+
+               
+            
+
+        }
+        
+  
+        
+        Dijkstra.computePaths(v[s.getX()][s.getY()]);
+        Vertex min= v[4][2];
+        for (int i=0;i<t.height;i++){
+       	 for (int j=0;j<t.length;j++)
+   	     {
+       		//gets min distance to a segment with min distance that contain glue or oil
+           if(v[i][j].minDistance < min.minDistance && v[i][j].getSegment().hasObstacle() &&(v[i][j].getSegment().SObs.contains(new Oil()))||v[i][j].getSegment().SObs.contains(new Glue())){
+           	min= v[i][j];
+           }
+   	    System.out.println("Distance to target: " + v[i][j].minDistance);
+   	    path = Dijkstra.getShortestPathTo(v[i][j]);
+   	    System.out.println("Path: " + i + " " + j);
+   	        }
+          }
+   		
+   		
+        
+        }
+		return path.get(1).getSegment();
+	}
 
     // run a step in the game : move all the object according to their speed
     // return while nobody wins
@@ -271,7 +320,8 @@ private Track track;
             }
             tabCar.get(i).updateCarPosition();
         }
-       // computeRepairCarMove();
+        generateRepairCar();
+        computeRepairCarMove();
         return true;
     }
 
