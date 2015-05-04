@@ -63,16 +63,12 @@ private Track track;
    
     //Generates random number
     private static int rand(int aStart, int aEnd){
-    	Random aRandom = new Random();
-    	if (aStart > aEnd) {
-          throw new IllegalArgumentException("Start cannot exceed End.");
-        }
-        //get the range, casting to long to avoid overflow problems
-        long range = (long)aEnd - (long)aStart + 1;
-        // compute a fraction of the range, 0 <= frac < range
-        long fraction = (long)(range * aRandom.nextDouble());
-        int randomNumber =  (int)(fraction + aStart);    
-       return (int)randomNumber;
+    	Random r = new Random();
+    	int Low = aStart;
+    	int High = aEnd;
+    
+    	
+    	return r.nextInt((High+1)-Low) + Low;
       }
       
       
@@ -83,6 +79,7 @@ private Track track;
     	int y=rand(0,track.getLength());
     	//just to reduce the probability of generation
     	int z=rand(0,4);
+    	
     	Segment sg=track.getSegment(x,y);
     	//generates if the segment is on the track and empty
     	if (!sg.isOutOfTrack && !sg.hasObstacle()&& z==4){
@@ -96,6 +93,7 @@ private Track track;
             rc1.setView(rcv); 
            
     		nbRepairCar++;
+    		
     	}	
     	
     }
@@ -288,24 +286,27 @@ private Track track;
   
         
         Dijkstra.computePaths(v[s.getX()][s.getY()]);
-        Vertex min= v[4][2];
-        for (int i=0;i<t.height;i++){
-       	 for (int j=0;j<t.length;j++)
-   	     {
-       		//gets min distance to a segment with min distance that contain glue or oil
-           if(v[i][j].minDistance < min.minDistance && v[i][j].getSegment().hasObstacle() &&(v[i][j].getSegment().SObs.contains(new Oil()))||v[i][j].getSegment().SObs.contains(new Glue())){
-           	min= v[i][j];
-           }
-   	    System.out.println("Distance to target: " + v[i][j].minDistance);
-   	    path = Dijkstra.getShortestPathTo(v[i][j]);
-   	    System.out.println("Path: " + i + " " + j);
-   	        }
+    //    Vertex min= v[4][2];
+        path = Dijkstra.getShortestPathTo(v[13][35]);
+        for (int i=0;i<path.size();i++){
+        	
+        	System.out.println(path.get(i).getSegment().getX() +" "+path.get(i).getSegment().getY());
+//       	 for (int j=0;j<t.length;j++)
+//   	     {
+//       		//gets min distance to a segment with min distance that contain glue or oil
+//           if(v[i][j].minDistance < min.minDistance && v[i][j].getSegment().hasObstacle() &&(v[i][j].getSegment().SObs.contains(new Oil()))||v[i][j].getSegment().SObs.contains(new Glue())){
+//           	min= v[i][j];
+//           }
+//   	    System.out.println("Distance to target: " + v[i][j].minDistance);
+//   	    path = Dijkstra.getShortestPathTo(v[13][35]);
+//   	    System.out.println("Path: " + i + " " + j);
+//   	        }
           }
    		
    		
         
         }
-		return path.get(1).getSegment();
+        return path.get(0).getSegment();
 	}
 
     // run a step in the game : move all the object according to their speed
