@@ -9,7 +9,7 @@ public class Track {
     public Track(int h,int l) {
         height = h;
         length = l;
-        createTrack();
+
         
     }
     
@@ -76,6 +76,6 @@ public class Track {
     }
 
     public void updateview(){
-        this.view.segTab[0][0].updateComponent();
+        this.view.updateView();
     }
 }
