@@ -46,12 +46,15 @@ public class KeyboardInput implements KeyListener {
 
 
     public synchronized void poll() {
-
         for( int i = 0; i < KEY_COUNT; ++i ) {
+
 
             // Set the key state
 
             if( currentKeys[ i ] ) {
+
+
+
 
                 // If the key is down now, but was not
 
@@ -98,7 +101,6 @@ public class KeyboardInput implements KeyListener {
 
     public synchronized void keyPressed( KeyEvent e ) {
         int keyCode = e.getKeyCode();
-        System.out.println("yavul");
         if( keyCode >= 0 && keyCode < KEY_COUNT ) {
 
             currentKeys[ keyCode ] = true;
@@ -109,15 +111,21 @@ public class KeyboardInput implements KeyListener {
 
 
 
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+
+    public synchronized void keyReleased( KeyEvent e ) {
+
+        int keyCode = e.getKeyCode();
+
+        if( keyCode >= 0 && keyCode < KEY_COUNT ) {
+
+            currentKeys[ keyCode ] = false;
+
+        }
+
+    }
 
 
 
-	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		

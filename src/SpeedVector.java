@@ -39,7 +39,7 @@ public class SpeedVector {
  	   else r=MAXSPEED;*/
 
     	SpeedY+=a;
-        System.out.println(SpeedY);
+
     	 if(SpeedY>10)
      		SpeedY=10;
     }

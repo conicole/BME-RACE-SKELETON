@@ -14,16 +14,16 @@ public class RunnerGame extends Thread {
         game = g;
     }
 
-
+    public RunnerGame() { }
     public void run() {
-        while(true){
+
             try {
                 sleep(80);
-                game.UpdateGame();
+               // game.UpdateGame();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
         }
-    }
 }
+
