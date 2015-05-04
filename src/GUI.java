@@ -1,4 +1,5 @@
 import javax.swing.*;
+
 import java.awt.*;
 
 /**
@@ -8,10 +9,11 @@ public class GUI extends JFrame {
 
     Game game;
     Controller controller;
+    KeyboardInput keyboard = new KeyboardInput();
+    
 
     public GUI() {
-    	controller = new Controller();
-    	
+    	controller = new Controller(keyboard);
         this.setTitle("BME - RACE");
         //Instanciation d'un objet JPanel
        // TrackView trv = new TrackView();

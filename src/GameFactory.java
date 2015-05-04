@@ -39,6 +39,7 @@ public class GameFactory {
 
         // add a car
         Car c = new Car(g,28,10,0);
+        g.add_car(c);
         CarView crv = new CarView(c);
         c.setView(crv);
 
@@ -68,6 +69,11 @@ public class GameFactory {
                 g.sow_grass(i,j);
             }
         }
+        
+        //Finish Line
+        for(int i = sizeX-2; i <sizeX ; i++)
+        	for(int j = 30; j < 45; j++)
+        		g.set_finish_line(i, j);
 
         return g;
 
