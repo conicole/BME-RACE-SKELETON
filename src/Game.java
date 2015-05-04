@@ -120,8 +120,13 @@ private Track track;
 
     	Segment newSegment = track.getSegment(x, y);
 
-        if ( ! (newSegment.equals(c.getPosition()))) {
+        if ( !(newSegment.equals(c.getPosition()))) {
             track.updateCarPosition(c, newSegment);
+        }
+
+        else{
+       //     System.out.println(  " y :" + c.getPosition().getY() + " sv : " + c.getSpeedVector().getSpeedY() );
+
         }
 
     	return newSegment;
@@ -258,12 +263,10 @@ private Track track;
     // return while nobody wins
     public boolean UpdateGame(){
         if( (nbCar + nbRepairCar) == 0 ){
-            Writer.write_empty();
             return false;
         }
         for(int i = 0; i < nbCar; i++){
             if(tabCar.get(i).isWinner()){
-                Writer.write_win(i);
                 return false;
             }
             tabCar.get(i).updateCarPosition();

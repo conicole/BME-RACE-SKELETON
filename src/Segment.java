@@ -59,7 +59,6 @@ public class Segment implements ISegment {
 	  if(isOutOfTrack) {
 		  c.outOfTrack();
 	  }
-
         view.updateComponent();
         view.repaint();
   }
