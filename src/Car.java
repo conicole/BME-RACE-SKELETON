@@ -10,6 +10,8 @@ public class Car implements  ICar{
     public Stack<Glue> Sg;
     public Stack<Oil> So;
     public final int AMMUNITION = 4;
+    private CarView view;
+
  //constructor
     Car(){
         sv = new SpeedVector();
@@ -56,6 +58,7 @@ public class Car implements  ICar{
         sv.increase(1);
         Writer.writeAccelerrate(this);
     }
+
 //brake
     public void brake(){
         sv.decrease(1);
@@ -174,6 +177,8 @@ public class Car implements  ICar{
 	public boolean isWinner() {
 		return winner;
 	}
+
+    public void setView(CarView carview) { view = carview; }
 
 
 }

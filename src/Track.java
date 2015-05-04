@@ -4,7 +4,7 @@ public class Track {
 	Segment[][] tabSeg;
     int height;
     int length;
-    
+    private TrackView view;
     //Constructor
     public Track(int h,int l) {
         height = h;
@@ -17,8 +17,10 @@ public class Track {
     	return tabSeg;
     	
     }
-    
-    
+
+    public void setTabSeg(Segment[][] tbS){
+        tabSeg = tbS;
+    }
 
 
     //create track
@@ -63,5 +65,9 @@ public class Track {
 
     public void setFinish(int x,int y){
         getSegment(x,y).setInFinishLine();
+    }
+
+    public void  setView(TrackView tv) {
+        view = tv;
     }
 }

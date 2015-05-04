@@ -6,6 +6,7 @@ public class Segment implements ISegment {
   public ArrayList<AbstractObstacle> SObs;
   public boolean isOutOfTrack;
   public boolean isFinishLine;
+    private SegView view;
 
 //constructor
     public Segment(int i,int j){
@@ -72,6 +73,10 @@ public class Segment implements ISegment {
   public void setInFinishLine(){
       isFinishLine = true;
   }
+
+    public void setView(SegView sgV){
+        view =sgV;
+    }
   
   
   

@@ -16,13 +16,16 @@ public class GUI extends JFrame {
         this.setContentPane(trv);
        // this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setSize(1000,700);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
-        setResizable(false);
+        //setResizable(false);
     }
+
 
 
     public static void main(String args[]) {
         GUI g = new GUI();
+
 
     }
 }

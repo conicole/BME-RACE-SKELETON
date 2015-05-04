@@ -20,17 +20,23 @@ private Track track;
 
 
     public Game(){
-         
         tabCar=new ArrayList<Car>();
         tabRepairCar =new ArrayList<RepairCar>();
         nbCar=0;
         nbRepairCar=0;
+
     }
 
     public void setTrack(int x,int y)
     {
     	track = new Track(x,y);
     }
+
+
+    public void setTrack(Track trc){
+        track = trc;
+    }
+
 
     public Track getTrack(){
         return track;
@@ -40,6 +46,12 @@ private Track track;
     	tabCar.add( new Car(this,x,y,nbCar));
     	nbCar++;
     }
+
+    public void add_car(Car c){
+        tabCar.add(c);
+        nbCar++;
+    }
+
 
     public void add_repairCar(int x,int y){
     	Segment s=track.getSegment(x, y);
