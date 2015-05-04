@@ -257,7 +257,7 @@ private Track track;
         return path.get(1).getSegment();
     }
 		
-*/
+
 
     // run a step in the game : move all the object according to their speed
     // return while nobody wins
