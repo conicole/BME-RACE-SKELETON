@@ -31,8 +31,6 @@ public class GameFactory {
         track.setView(trView);
         g.setTrack(track);
 
-
-
         // add a car
         Car c = new Car(g,2,2,0);
         CarView crv = new CarView(c);
