@@ -6,12 +6,15 @@ public class RepairCar extends Oil  {
     int LifeTime;
     Segment position;
     int id;
+    long tStart;
+    
     //constructor
     RepairCar(Segment s, int i){
         position=s;
         LifeTime=4;
         s.addObstacle(this);
         id=i;
+        tStart = System.currentTimeMillis();//Sets the time the car was added
     }
     //set position
     public void setPosition(Segment position) {
@@ -64,8 +67,17 @@ public class RepairCar extends Oil  {
 
     ///Used to decrease the lifetime of the repairCar Object.
     void Age(){
-        if(LifeTime==0);
-        else LifeTime--;
+        if(LifeTime!=0)
+        {
+        	long elapse = System.currentTimeMillis()-tStart;
+        	
+        	elapse = (long) (elapse / 1000.0);
+        	if (elapse>1.0){
+        		LifeTime--;
+        		tStart=System.currentTimeMillis();
+        	}
+        }
+       
     }
     //collision with car
     public void hitCar(){
