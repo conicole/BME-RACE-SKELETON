@@ -1,8 +1,5 @@
 //import com.sun.tools.javac.util.List;
-
-import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.*;
 import java.util.*;
 
 import javax.swing.JFrame;
@@ -12,10 +9,12 @@ public class Controller extends JFrame{
 	ArrayList<IView> views;
 	Game game;
 	TrackView track;
-	KeyboardInput keyboard = new KeyboardInput();
+	KeyboardInput keyboard;
 
-	public Controller(){
-		addKeyListener( keyboard );
+	public Controller(KeyboardInput k){
+		setIgnoreRepaint( true );
+		keyboard=k;
+		addKeyListener(keyboard);
 	}
 	
 	public void addViews(IView v){
@@ -32,15 +31,18 @@ public class Controller extends JFrame{
 	
 	public void run(){
 		
-		while(! keyboard.keyDownOnce( KeyEvent.VK_ENTER ) ){
+		//while(! keyboard.keyDownOnce( KeyEvent.VK_ENTER ) ){
 			///Wait launch the game
-			keyboard.poll();
-		}
+		//	keyboard.poll();
+		//}
 		
 		
 		while(true){
 			keyboard.poll();
-			if( keyboard.keyDownOnce( KeyEvent.VK_ESCAPE ) )  break;
+			if( keyboard.keyDownOnce( KeyEvent.VK_ESCAPE ) ) {
+				System.out.println("bybye");
+				break;
+			}
 			processInput();
 			game.UpdateGame();
 		}

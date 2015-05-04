@@ -90,7 +90,6 @@ public class KeyboardInput implements KeyListener {
 
 
     public boolean keyDownOnce( int keyCode ) {
-
         return keys[ keyCode ] == KeyState.ONCE;
 
     }
@@ -98,9 +97,8 @@ public class KeyboardInput implements KeyListener {
 
 
     public synchronized void keyPressed( KeyEvent e ) {
-
         int keyCode = e.getKeyCode();
-
+        System.out.println("yavul");
         if( keyCode >= 0 && keyCode < KEY_COUNT ) {
 
             currentKeys[ keyCode ] = true;

@@ -1,4 +1,5 @@
 import javax.swing.*;
+
 import java.awt.*;
 
 /**
@@ -7,8 +8,12 @@ import java.awt.*;
 public class GUI extends JFrame {
 
     Game game;
+    Controller controller;
+    KeyboardInput keyboard = new KeyboardInput();
+    
 
     public GUI() {
+    	controller = new Controller(keyboard);
         this.setTitle("BME - RACE");
         //Instanciation d'un objet JPanel
        // TrackView trv = new TrackView();
@@ -19,27 +24,32 @@ public class GUI extends JFrame {
        // this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setSize(1050, 650);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+       setResizable(false);
     }
 
     public void buildGame(int sizeX,int sizeY){
         GameFactory gf = new GameFactory();
-         game = gf.createGame(sizeX,sizeY);
-
+        game = gf.createGame(sizeX,sizeY);
+        controller.setGame(game);
         // put the track view as major panel
         this.setContentPane(game.getTrackView());
+        
 
     }
+    
+    public void run(){
+    	controller.run();
+    }
 
-
+    
 
     public static void main(String args[]) {
 
         GUI g = new GUI();
         g.buildGame(30,50);
         g.setVisible(true);
-
-
+        g.game.getTrack().updateview();
+        g.run();
 
         g.game.getCar(0).accelerate();
 

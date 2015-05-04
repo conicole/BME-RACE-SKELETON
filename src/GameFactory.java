@@ -70,15 +70,6 @@ public class GameFactory {
             }
         }
 
-
-        // set finish line
-        for(int j = 30; j < 45; j++){
-            g.set_finish_line(25,j);
-        }
-
-
-
-
         return g;
 
     }
