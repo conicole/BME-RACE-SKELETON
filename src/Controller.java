@@ -1,4 +1,5 @@
 //import com.sun.tools.javac.util.List;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
@@ -110,11 +111,32 @@ public class Controller extends JFrame {
     public static void main(String[] args) {
 
         Controller app = new Controller();
-        app.buildGame(30, 50);
+        StartMenu sm = new StartMenu();
+        app.setContentPane(sm);
+        app.setSize(578, 456);
+        app.setLocationRelativeTo(app.getParent());
         app.setVisible(true);
+
+        while(!app.keyboard.keyDown(KeyEvent.VK_ENTER)) {
+            ///Wait launch the game
+            	app.keyboard.poll();
+
+            //}
+        }
+
+        System.out.println("out");
+
+        app.setVisible(false);
+        app.buildGame(30, 50);
+        app.setSize(1050, 650);
+        app.setLocationRelativeTo(app.getParent());
+        app.setVisible(true);
+
+       // app.setVisible(true);
         app.game.getTrack().updateview();
         app.run();
     }
+
 
 
 }
