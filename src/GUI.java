@@ -7,8 +7,11 @@ import java.awt.*;
 public class GUI extends JFrame {
 
     Game game;
+    Controller controller;
 
     public GUI() {
+    	controller = new Controller();
+    	
         this.setTitle("BME - RACE");
         //Instanciation d'un objet JPanel
        // TrackView trv = new TrackView();
@@ -19,27 +22,30 @@ public class GUI extends JFrame {
        // this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setSize(1000, 700);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-       // setResizable(false);
+       setResizable(false);
     }
 
     public void buildGame(int sizeX,int sizeY){
         GameFactory gf = new GameFactory();
-         game = gf.createGame(sizeX,sizeY);
-
+        game = gf.createGame(sizeX,sizeY);
+        controller.setGame(game);
         // put the track view as major panel
         this.setContentPane(game.getTrackView());
+        
 
     }
+    
+    public void run(){
+    	controller.run();
+    }
 
-
+    
 
     public static void main(String args[]) {
         GUI g = new GUI();
         g.buildGame(20,20);
         g.setVisible(true);
         g.game.getTrack().updateview();
-
-
-
+        g.run();
     }
 }

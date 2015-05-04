@@ -32,10 +32,10 @@ public class Controller extends JFrame{
 	
 	public void run(){
 		
-		while(! keyboard.keyDownOnce( KeyEvent.VK_ENTER ) ){
+		//while(! keyboard.keyDownOnce( KeyEvent.VK_ENTER ) ){
 			///Wait launch the game
-			keyboard.poll();
-		}
+		//	keyboard.poll();
+		//}
 		
 		
 		while(true){

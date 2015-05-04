@@ -50,7 +50,5 @@ public class SegView extends JPanel {
        // g.fillRect(0, 0, 50, 20);
         //System.out.println("ok");
         //g.fillOval(0,0,10,10);
-
-
     }
 }
