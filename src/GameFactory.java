@@ -47,7 +47,7 @@ public class GameFactory {
         // Update track according element on.
         track.updateview();
 
-
+/*
         // Sow grass
         for(int i = 0; i < sizeX; i++){
             for(int j = 0; j < 5; j++) {
@@ -69,7 +69,7 @@ public class GameFactory {
                 g.sow_grass(i,j);
             }
         }
-        
+      */  
         //finish line
         for (int i=sizeX-2;i<sizeX;i++)
         	for(int j=30;j<45;j++)
