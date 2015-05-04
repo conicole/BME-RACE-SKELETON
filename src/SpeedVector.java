@@ -37,8 +37,9 @@ public class SpeedVector {
 	    	   SpeedX=r*Math.sin(teta);
  	   }
  	   else r=MAXSPEED;*/
-    	
+
     	SpeedY+=a;
+        System.out.println(SpeedY);
     	 if(SpeedY>10)
      		SpeedY=10;
     }
