@@ -31,8 +31,15 @@ public class Controller extends JFrame{
 	}
 	
 	public void run(){
-		keyboard.poll();
+		
+		while(! keyboard.keyDownOnce( KeyEvent.VK_ENTER ) ){
+			///Wait launch the game
+			keyboard.poll();
+		}
+		
+		
 		while(true){
+			keyboard.poll();
 			if( keyboard.keyDownOnce( KeyEvent.VK_ESCAPE ) )  break;
 			processInput();
 			game.UpdateGame();
@@ -53,11 +60,31 @@ public class Controller extends JFrame{
 			 game.getCar(1).goRight();
 		 }
 		 
-		 if( keyboard.keyDown( KeyEvent.VK_ALT ) ){
+		 if( keyboard.keyDownOnce( KeyEvent.VK_ALT ) ){
 			 game.getCar(1).releaseOil();
 		 }
-		 if( keyboard.keyDown( KeyEvent.VK_SHIFT ) ){
+		 if( keyboard.keyDownOnce( KeyEvent.VK_SHIFT ) ){
 			 game.getCar(1).releaseGlue();
+		 }
+		 
+		 if( keyboard.keyDown( KeyEvent.VK_S ) ){
+			 game.getCar(2).brake();
+		 }
+		 if( keyboard.keyDown( KeyEvent.VK_Z ) ){
+			 game.getCar(2).accelerate();
+		 }
+		 if( keyboard.keyDown( KeyEvent.VK_A ) ){
+			 game.getCar(2).goLeft();
+		 }
+		 if( keyboard.keyDown( KeyEvent.VK_D ) ){
+			 game.getCar(2).goRight();
+		 }
+		 
+		 if( keyboard.keyDownOnce( KeyEvent.VK_CAPS_LOCK ) ){
+			 game.getCar(2).releaseOil();
+		 }
+		 if( keyboard.keyDownOnce( KeyEvent.VK_TAB ) ){
+			 game.getCar(2).releaseGlue();
 		 }
 		 
 	 }
