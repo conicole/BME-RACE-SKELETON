@@ -1,3 +1,4 @@
+
 import java.io.Serializable;
 //import java.nio.file.Path;
 import java.util.ArrayList;
@@ -166,7 +167,7 @@ private Track track;
 	public RepairCar getRepairCar(int i) {
 		return tabRepairCar.get(i);
 	}
-	
+	/*
 	public void computeRepairCarMove(){
 	   for(int i=0;i<nbRepairCar;i++)
 	    {
@@ -256,51 +257,6 @@ private Track track;
         return path.get(1).getSegment();
     }
 		
-      /*  for (int i = x; i < t.getHeight(); i++) {
-            for (int j = y; j < t.getLength(); j++) {
-                if(source != t.getSegment(i, j))
-            	{
-                	tabSeg[i][j] = new Segment(i,j);
-                	}
-            }
-         
-        }
-		
-	} 
-	
-
-	
-	      // Dijkstra's algorithm to find shortest path from s to all other nodes
-	      public static int [] dijkstra (WeightedGraph G, int s) {
-	         final int [] dist = new int [G.size()];  // shortest known distance from "s"
-	         final int [] pred = new int [G.size()];  // preceeding node in path
-	         final boolean [] visited = new boolean [G.size()]; // all false initially
-	   
-	         for (int i=0; i<dist.length; i++) {
-	           dist[i] = Integer.MAX_VALUE;
-	        }
-	        dist[s] = 0;
-	  
-	        for (int i=0; i<dist.length; i++) {
-	           final int next = minVertex (dist, visited);
-	           visited[next] = true;
-	  
-	           // The shortest path to next is dist[next] and via pred[next].
-	  
-	           final int [] n = G.neighbors (next);
-	           for (int j=0; j<n.length; j++) {
-	              final int v = n[j];
-	              final int d = dist[next] + G.getWeight(next,v);
-	              if (dist[v] > d) {
-	                 dist[v] = d;
-	                 pred[v] = next;
-	              }
-	           }
-	        }
-	        return pred;  // (ignore pred[s]==0!)*/
-
-	
-	
 
 
     // run a step in the game : move all the object according to their speed
@@ -315,7 +271,7 @@ private Track track;
             }
             tabCar.get(i).updateCarPosition();
         }
-        computeRepairCarMove();
+       // computeRepairCarMove();
         return true;
     }
 
