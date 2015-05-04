@@ -9,6 +9,7 @@ public interface  AbstractObstacle{
     public int getId();
     public int effectLeft();
    public void print(int x, int y);
+    public AbstractObstacleView getView();
 
     
 }

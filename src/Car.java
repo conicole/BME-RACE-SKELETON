@@ -181,4 +181,10 @@ public class Car implements  ICar{
     public void setView(CarView carview) { view = carview; }
 
 
+    public AbstractObstacleView getView(){
+        return view;
+    }
+
+
+
 }

@@ -44,5 +44,10 @@ public class Oil implements AbstractObstacle{
         Writer.write("Oil "+getId()+" Position "+ x +" "+ y+" Effect_Left "+effectLeft);
     }
 
+    public AbstractObstacleView getView(){
+        // todooo
+        return new CarView(new Car());
+    }
+
 }
 

@@ -28,41 +28,43 @@ public class SegView extends JPanel {
     }
 
     public SegView(Segment s){
+        setLayout(new BorderLayout());
         segment = s;
     }
 
-    public void paintComponent(Graphics g){
-        //x1, y1, width, height
-        g.setColor(Color.gray);
-        if(!car) {
-            g.fillRect(0, 0, 50, 20);
+    public void updateComponent(){
+        this.removeAll();
+        if( segment.hasObstacle() ){
+            for(int i=0;i<segment.SObs.size();i++) {
+                    this.add(segment.SObs.get(i).getView());
+            }
+
         }
-        else{
-                try {
-                    BufferedImage image = ImageIO.read(new File("car.png"));
 
-                  //   AffineTransform af = AffineTransform.getRotateInstance(Math.toRadians(30), 0, 0);
+    }
 
+    public void paintComponent(Graphics g){
 
-                    g.drawImage(image, 0, 0, 50, 25, Color.gray, this);
-                  //  g.dra7
-                //    AffineTransform identity = new AffineTransform();
+        if(segment.isOutOfTrack){
+            g.setColor(new Color(0,102,0));
+        }
+        else if(segment.isFinishLine){
+            int CHECKER_SIZE = 5;
 
-                 //   Graphics2D g2d = (Graphics2D)g;
-                //    AffineTransform trans = new AffineTransform();
-               //     trans.setTransform(identity);
-                 //   trans.rotate( Math.toRadians(45) );
-               //     trans.scale(0.2,0.2);
-               //     g2d.drawImage(image, trans, this);
-
-
-
-
-                            //Pour une image de fond
-                            //g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-                } catch (IOException e) {
-                    e.printStackTrace();
+            g.setColor(Color.white);
+            g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(Color.BLACK);
+            for (int stripeX = 0; stripeX < getWidth(); stripeX += CHECKER_SIZE) {
+                for (int y = 0, row = 0; y < getHeight(); y += CHECKER_SIZE/2, ++row) {
+                    int x = (row % 2 == 0) ? stripeX : (stripeX + CHECKER_SIZE/2);
+                    g.fillRect(x, y, CHECKER_SIZE/2, CHECKER_SIZE/2);
                 }
             }
+        }
+
+        else{
+            g.setColor(Color.gray);
+        }
+        g.fillRect(0, 0, 20,20);
     }
 }

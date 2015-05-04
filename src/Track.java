@@ -9,7 +9,7 @@ public class Track {
     public Track(int h,int l) {
         height = h;
         length = l;
-        createTrack();
+
         
     }
     
@@ -69,5 +69,13 @@ public class Track {
 
     public void  setView(TrackView tv) {
         view = tv;
+    }
+
+    public TrackView getView(){
+        return view;
+    }
+
+    public void updateview(){
+        this.view.updateView();
     }
 }

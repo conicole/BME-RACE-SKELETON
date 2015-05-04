@@ -25,7 +25,7 @@ public class Segment implements ISegment {
     }
     //checks if there is obstacle
     public boolean hasObstacle(){
-    	return SObs.isEmpty();
+    	return !SObs.isEmpty();
     }
     
     //removes obstacles

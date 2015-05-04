@@ -46,4 +46,11 @@ public class Glue implements AbstractObstacle{
     }
 
 
+    public AbstractObstacleView getView(){
+        // todooo
+        return new CarView(new Car());
+    }
+
+
+
 }
