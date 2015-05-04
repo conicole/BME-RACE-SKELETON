@@ -167,67 +167,81 @@ private Track track;
 		//Removes repair car if life time is 0
 		if(tabRepairCar.get(i).getLifetime()==0){
 			tabRepairCar.remove(i);
+			nbRepairCar--;
 		}
-		
-		
+		else{
+		 compute(tabRepairCar.get(i).getPosition());
+		}
 		
 	    }
 	}
 	
 	
-	/*public static Segment[] SP(Track t, int x, int y){
-		
-		int[][] dist = new int[t.getHeight()][t.getLength()];
-	    
-		dist[x][y] = 0;
-		Prev[x][y] prev ;
-		Segment source = t.getSegment(x, y);
-		
-        for (int i = x; i < t.getHeight(); i++) {
-            for (int j = y; j < t.getLength(); j++) {
-                if(source != t.getSegment(i, j))
-            	{
-                	tabSeg[i][j] = new Segment(i,j);
-                	}
-            }
-         
-        }
-		
-		return null;
-		
-	}
+//	public static Segment[] SP(Track t, int x, int y){
+//		
+//		int[][] dist = new int[t.getHeight()][t.getLength()];
+//		 
+//		for (int i = x; i < t.getHeight(); i++) {
+//	            for (int j = y; j < t.getLength(); j++) {
+//	            dist[i][j] = 0;	
+//	            }
+//	         }
+//		
+//		Prev[x][y] prev ;
+//		Segment source = t.getSegment(x, y);
+//		
+//        for (int i = x; i < t.getHeight(); i++) {
+//            for (int j = y; j < t.getLength(); j++) {
+//                if(source != t.getSegment(i, j))
+//            	{
+//                	tabSeg[i][j] = new Segment(i,j);
+//                	}
+//            }
+//         
+//        }
+//		
+//		return null;
+//		
+//	}
 	
 
 	
 	      // Dijkstra's algorithm to find shortest path from s to all other nodes
-	      public static int [] dijkstra (WeightedGraph G, int s) {
-	         final int [] dist = new int [G.size()];  // shortest known distance from "s"
-	         final int [] pred = new int [G.size()];  // preceeding node in path
-	         final boolean [] visited = new boolean [G.size()]; // all false initially
-	   
-	         for (int i=0; i<dist.length; i++) {
-	           dist[i] = Integer.MAX_VALUE;
-	        }
-	        dist[s] = 0;
-	  
-	        for (int i=0; i<dist.length; i++) {
-	           final int next = minVertex (dist, visited);
-	           visited[next] = true;
-	  
-	           // The shortest path to next is dist[next] and via pred[next].
-	  
-	           final int [] n = G.neighbors (next);
-	           for (int j=0; j<n.length; j++) {
-	              final int v = n[j];
-	              final int d = dist[next] + G.getWeight(next,v);
-	              if (dist[v] > d) {
-	                 dist[v] = d;
-	                 pred[v] = next;
-	              }
-	           }
-	        }
-	        return pred;  // (ignore pred[s]==0!)
-	     }*/
+	      public static Segment dijkstra (Track t,RepairCar rc) {
+	    	int[] preD = new int[t.getLength()];
+	  		int min = Integer.MAX_VALUE, nextNode = 0; // min holds the minimum value, nextNode holds the value for the next node.
+	  		 
+	  		int[] distance = new int[t.getLength()]; // the distance matrix
+	  		int[][] matrix = new int[t.getHeight()][t.getLength()]; // the actual matrix
+	  		int[] visited = new int[t.getLength()]; // the visited array
+	  		
+	  		//Builds array from the track
+	  		for(int i = 0; i < t.getLength(); i++){
+				
+				visited[i] = 0; //initialize visited array to zeros
+				
+				preD[i] = 0;
+				
+				for(int j = 0; j < t.getHeight(); j++){
+					//if it out of track set distance to infinity
+					if (t.getSegment(i, j).isOutOfTrack==true){
+						matrix[i][j] = Integer.MAX_VALUE;	
+					}
+					else{
+						matrix[i][j] = 1; //fill the matrix with distance one
+					}
+					
+					distance = matrix[rc.getPosition().getX()][rc.getPosition().getY()]; //initialize the distance array from the start
+					visited[0] = 1; //set the source node as visited
+					distance[0] = 0; //set the distance from source to source to zero which is the starting point
+					
+					
+					
+					
+				}
+				
+			}
+	     }
 	
 	
 	
