@@ -10,6 +10,10 @@ public class GameFactory {
         //
         //  Creation of track,segments and their Views
         //
+
+        Track track = new Track(sizeX,sizeY);
+        TrackView trView = new TrackView(track,sizeX,sizeY);
+
         SegView tmpSegV;
         Segment tmpSeg;
         Segment[][] tabSeg;
@@ -23,11 +27,11 @@ public class GameFactory {
                 tmpSeg.setView(tmpSegV);
                 tabSeg[i][j] = tmpSeg;
                 tabSegView[i][j] = tmpSegV;
+                trView.addToLayout(tmpSegV);
             }
         }
-        Track track = new Track(sizeX,sizeY);
         track.setTabSeg(tabSeg);
-        TrackView trView = new TrackView(track,sizeX,sizeY);
+        trView.setSegTab(tabSegView);
         track.setView(trView);
         g.setTrack(track);
 
@@ -38,6 +42,9 @@ public class GameFactory {
         CarView crv = new CarView(c);
         c.setView(crv);
 
+
+        // Update track according element on.
+        track.updateview();
 
         return g;
 

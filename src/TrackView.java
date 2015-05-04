@@ -12,10 +12,12 @@ public class TrackView extends JPanel implements IView  {
     private GridLayout grid;
 
 
-    int taillex = 30;
-    int tailley = 20;
+    int taillex;
+    int tailley;
 
     public TrackView(Track tr, int sizeX,int sizeY){
+        taillex = sizeX;
+        tailley = sizeY;
         track = tr;
         grid = new GridLayout(sizeX,sizeY);
         this.setLayout(grid);
@@ -30,7 +32,7 @@ public class TrackView extends JPanel implements IView  {
     }
 
     // constructor for test, to delete
-    public TrackView(){
+  /*  public TrackView(){
         //this.setSize(100000,200000);
         GridLayout grid = new GridLayout(taillex,tailley);
         this.segTab = new SegView[taillex][tailley];
@@ -47,9 +49,17 @@ public class TrackView extends JPanel implements IView  {
                 this.add(segTab[i][j]);
             }
         }
+    }*/
 
 
+    public void updateView(){
+        for(int i=0; i< taillex; i++){
+            for(int j=0; j< tailley; j++){
+                segTab[i][j].updateComponent();
+            }
+        }
     }
+
 
 
 

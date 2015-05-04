@@ -28,29 +28,26 @@ public class SegView extends JPanel {
     }
 
     public SegView(Segment s){
+        setLayout(new BorderLayout());
         segment = s;
     }
 
     public void updateComponent(){
+        this.removeAll();
         if( segment.hasObstacle() ){
             for(int i=0;i<segment.SObs.size();i++) {
-                    this.add(this.add(segment.SObs.get(i).getView()));
+                    this.add(segment.SObs.get(i).getView());
             }
 
         }
-        else {
-            System.out.println(segment.SObs.size());
-        }
+
     }
 
     public void paintComponent(Graphics g){
+
         //x1, y1, width, height
         g.setColor(Color.gray);
-       g.fillRect(0, 0, 20,20);
-       // g.fillRect(0, 0, 50, 20);
-        //System.out.println("ok");
-        //g.fillOval(0,0,10,10);
-
+        g.fillRect(0, 0, 20,20);
 
     }
 }

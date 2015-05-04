@@ -1,4 +1,4 @@
-import com.sun.tools.javac.util.List;
+//import com.sun.tools.javac.util.List;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 
 
 public class Controller extends JFrame{
-	List<IView> views;
+	ArrayList<IView> views;
 	Game game;
 	TrackView track;
 	KeyboardInput keyboard = new KeyboardInput();

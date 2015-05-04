@@ -17,7 +17,7 @@ public class GUI extends JFrame {
         //On prévient notre JFrame que notre JPanel sera son content pane
        // this.setContentPane(trv);
        // this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setSize(1000, 700);
+        this.setSize(1050, 650);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
        // setResizable(false);
     }
@@ -34,10 +34,10 @@ public class GUI extends JFrame {
 
 
     public static void main(String args[]) {
+
         GUI g = new GUI();
-        g.buildGame(20,20);
+        g.buildGame(30,50);
         g.setVisible(true);
-        g.game.getTrack().updateview();
 
 
 
