@@ -167,7 +167,7 @@ private Track track;
 	public RepairCar getRepairCar(int i) {
 		return tabRepairCar.get(i);
 	}
-	/*
+	
 	public void computeRepairCarMove(){
 	   for(int i=0;i<nbRepairCar;i++)
 	    {
