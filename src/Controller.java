@@ -132,7 +132,7 @@ public class Controller extends JFrame {
         app.setLocationRelativeTo(app.getParent());
         app.setVisible(true);
 
-       // app.setVisible(true);
+    
         app.game.getTrack().updateview();
         app.run();
     }
