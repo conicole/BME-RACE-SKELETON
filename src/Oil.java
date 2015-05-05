@@ -20,7 +20,6 @@ public class Oil implements AbstractObstacle{
         System.out.println("ObstacleHitted : Oil");
         c.hitOil();
         effectLeft--;
-        Writer.writeCollisionOil(c,this);
     }
 
     public void collisionWithRepairCar(RepairCar rc){
