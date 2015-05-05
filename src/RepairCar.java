@@ -84,7 +84,7 @@ public class RepairCar extends Oil  {
         position.addObstacle(new Oil());
     	LifeTime=0;
         
-        //Disappear();
+        Disappear();
     }
 
     public void print(int x, int y){

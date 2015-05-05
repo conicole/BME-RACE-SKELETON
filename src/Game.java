@@ -78,7 +78,7 @@ private Track track;
     	int x=rand(0,track.getHeight()-1);
     	int y=rand(0,track.getLength()-1);
     	//just to reduce the probability of generation
-    	int z=rand(0,10);
+    	int z=rand(0,200);
     	
     	Segment sg=track.getSegment(x,y);
     	//generates if the segment is on the track and empty
@@ -185,6 +185,7 @@ private Track track;
 		else{
 			//gets next position
 			tabRepairCar.get(i).Move(SP( track,tabRepairCar.get(i).getPosition()));
+			System.out.println("Repair car path "+tabRepairCar.get(i).getPosition().getX() + " " +tabRepairCar.get(i).getPosition().getY());
 		}
 		
 	    }
@@ -290,9 +291,9 @@ private Track track;
         Dijkstra.computePaths(v[s.getX()][s.getY()]);
     //    Vertex min= v[4][2];
         path = Dijkstra.getShortestPathTo(v[13][35]);
-        for (int i=0;i<path.size();i++){
+    //    for (int i=0;i<path.size();i++){
         	
-        	System.out.println(path.get(i).getSegment().getX() +" "+path.get(i).getSegment().getY());
+    //    	System.out.println(path.get(i).getSegment().getX() +" "+path.get(i).getSegment().getY());
 //       	 for (int j=0;j<t.length;j++)
 //   	     {
 //       		//gets min distance to a segment with min distance that contain glue or oil
@@ -303,12 +304,21 @@ private Track track;
 //   	    path = Dijkstra.getShortestPathTo(v[13][35]);
 //   	    System.out.println("Path: " + i + " " + j);
 //   	        }
-          }
+       //   }
    		
    		
         
         }
-        return path.get(0).getSegment();
+        Segment nextposition;
+        
+        //next position to visit exists else stay where you are
+        if (path.size()>1)
+        	nextposition= path.get(1).getSegment();
+        else{
+        	nextposition= path.get(0).getSegment();
+        }
+        
+        return nextposition;
 	}
 
     // run a step in the game : move all the object according to their speed
