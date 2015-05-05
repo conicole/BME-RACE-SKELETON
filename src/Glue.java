@@ -2,10 +2,12 @@ public class Glue implements AbstractObstacle{
     public static int nbpatch =1;
     public int id;
     public int effectLeft=EFFECTLONG;
+    private GlueView glueView;
 
     public Glue(){
         id=nbpatch;
         nbpatch++;
+        glueView = new GlueView(this);
     }
 
 
@@ -50,6 +52,16 @@ public class Glue implements AbstractObstacle{
         // todooo
         return new CarView(new Car());
     }
+
+
+	public GlueView getGlueView() {
+		return glueView;
+	}
+
+
+	public void setGlueView(GlueView glueView) {
+		this.glueView = glueView;
+	}
 
 
 

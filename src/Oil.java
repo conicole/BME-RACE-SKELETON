@@ -5,10 +5,11 @@ public class Oil implements AbstractObstacle{
     public static int nbpatch =1;
     public int id;
     public int effectLeft=EFFECTLONG;
-
+    private OilView oilView;
     public Oil(){
         id=nbpatch;
         nbpatch++;
+        oilView = new OilView(this);
     }
 
     public int getId(){
@@ -49,6 +50,14 @@ public class Oil implements AbstractObstacle{
         // todooo
         return new CarView(new Car());
     }
+
+	public OilView getOilView() {
+		return oilView;
+	}
+
+	public void setOilView(OilView oilView) {
+		this.oilView = oilView;
+	}
 
 }
 

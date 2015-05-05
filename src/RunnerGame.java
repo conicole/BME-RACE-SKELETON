@@ -18,7 +18,7 @@ public class RunnerGame extends Thread {
     public void run() {
 
             try {
-                sleep(80);
+                sleep(160);
                 game.UpdateGame();
             } catch (InterruptedException e) {
                 e.printStackTrace();
