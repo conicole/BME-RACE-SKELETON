@@ -12,7 +12,7 @@ public class RepairCar  implements AbstractObstacle  {
     //constructor
     RepairCar(Segment s, int i){
         position=s;
-        LifeTime=194;
+        LifeTime=4;
         s.addObstacle(this);
         id=i;
         
