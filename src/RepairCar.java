@@ -16,11 +16,10 @@ public class RepairCar extends Oil  {
         s.addObstacle(this);
         id=i;
         tStart = System.currentTimeMillis();//Sets the time the car was added
+        
     }
-    //set position
-    public void setPosition(Segment position) {
-        this.position = position;
-    }
+    
+
 
   
     //get position
@@ -41,21 +40,16 @@ public class RepairCar extends Oil  {
     ///Makes the Car to disapperar from the track when its lifetime is 0.
     void  Disappear(){
       //Gui
+    	position.remove(this);
     }
 
-    ///Creates the RepairCar and specifies its how long it will be on the Track
-    void  Create(int l){
-        LifeTime = l;
-    }
 
-    ///Specifies where the repair car will be placed on the track when it is created.
-    void StartPosition(Segment s){
-    	position = s;
-    }
+
 
     ///Used to move the Repair car around the track.
-    void Move(Segment seg){
-        position=seg;
+    public void Move(Segment seg){
+       // position.remove(this);
+    	position=seg;
         Age();
         seg.addObstacle(this);
     }
@@ -78,6 +72,11 @@ public class RepairCar extends Oil  {
         		tStart=System.currentTimeMillis();
         	}
         }
+        else{
+        	
+        	Disappear();
+        }
+       
        
     }
     //collision with car
