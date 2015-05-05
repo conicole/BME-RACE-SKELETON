@@ -128,7 +128,9 @@ public class Car implements  ICar{
     }
 //getter
     public Segment getPosition(){
-        return position;
+    	
+    	return position;
+        
     }
 
     //remove car from race
@@ -139,13 +141,14 @@ public class Car implements  ICar{
     public void collisionWithRepairCar(RepairCar rc){
         rc.hitCar();
         //Ensure speed vector doesnt change after collision
-        int x= (int)sv.SpeedX;
-        int y= (int)sv.SpeedY;
-        
-        position.addObstacle(this);
+        double x= (double)sv.SpeedX;
+        double y= (double)sv.SpeedY;
+     
+       // position.addObstacle(this);
         sv.SpeedX=x;
         sv.SpeedY=y;
-        Writer.writeCollisionRepairCar(this,rc);
+        System.out.println("Car collide with repair car" + rc.id);
+        
     }
     //speedvector constructor
     public SpeedVector getSpeedVector(){
@@ -166,7 +169,9 @@ public class Car implements  ICar{
 //print output
     public void print(int x, int y){
         SpeedVector sv = getSpeedVector();
-        Writer.write("Car "+getId()+" Position "+ x +" "+ y+" Speed "+sv.getSpeedX()+" "+sv.getSpeedY());
+       // Writer.write("Car "+getId()+" Position "+ x +" "+ y+" Speed "+sv.getSpeedX()+" "+sv.getSpeedY());
+        
+        
     }
     
 	

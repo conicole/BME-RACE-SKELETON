@@ -23,7 +23,8 @@ public class Oil implements AbstractObstacle{
     }
 
     public void collisionWithRepairCar(RepairCar rc){
-
+    	System.out.println("rc "+ rc.id +" clearing oil");
+    	rc.position.remove(this);
     }
     
     public boolean HasNoMoreEffect(){
@@ -47,7 +48,7 @@ public class Oil implements AbstractObstacle{
 
     public AbstractObstacleView getView(){
         // todooo
-        return new CarView(new Car());
+        return new OilView(new Oil());
     }
 
 	public OilView getOilView() {

@@ -57,7 +57,7 @@ private Track track;
 
     public void add_repairCar(int x,int y){
     	Segment s=track.getSegment(x, y);
-    	tabRepairCar.add(new RepairCar(s, nbRepairCar));
+    	tabRepairCar.add(new RepairCar(s,nbRepairCar));
     	nbRepairCar++;
     }
    
@@ -84,7 +84,7 @@ private Track track;
     	//generates if the segment is on the track and empty
     	if (!sg.isOutOfTrack && !sg.hasObstacle()&& z==4){
     		
-    		RepairCar rc1 =new RepairCar(sg, nbRepairCar);
+    		RepairCar rc1 =new RepairCar(sg,nbRepairCar);
     		
     		tabRepairCar.add(rc1);
     		
@@ -203,16 +203,13 @@ private Track track;
             	v[i][j] = new Vertex(t.getSegment(i, j));
             	//Stores an abitrary cell with glue or oil
             	for (AbstractObstacle l :  t.getSegment(i, j).SObs){
-            	 if (l.type().equalsIgnoreCase("oil")||l.type().equalsIgnoreCase("glue"))
-            	 {
-            		 if (job==false) job=true;
-            	 } 
+            	
             	}
             }
         }
         
         
-        if(job){
+        
         //building adjacency list
         for (int i = 0; i < t.height; i++) {
             for (int j = 0; j < t.length; j++) {
@@ -284,7 +281,7 @@ private Track track;
                
             
 
-        }
+        
         
   
         
