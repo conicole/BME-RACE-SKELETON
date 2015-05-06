@@ -27,6 +27,8 @@ public class Game  implements Serializable {
 
 
 	}
+	
+	
 
 	public void setTrack(int x,int y)
 	{
@@ -150,7 +152,9 @@ public class Game  implements Serializable {
 		track.getSegment(x,y).setOutOfTrack();
 	}
 
-
+	public int getNumberofCars(){
+		return nbCar;
+	}
 
 
 	// create the finish line

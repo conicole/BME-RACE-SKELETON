@@ -46,12 +46,14 @@ public class Controller extends JFrame {
         int res = 11;
 		while(res == 11){
 			keyboard.poll();
-
-			processInput();
-            timer++;
-            if( timer%100000 == 0){
-                 res = game.UpdateGame();
-            }
+			
+			if(game.getNumberofCars()!=0)
+				processInput();
+			
+			timer++;
+			if( timer%100000 == 0){
+				res = game.UpdateGame();
+			}
 		}
         return res;
 	}
