@@ -20,8 +20,7 @@ public class SpeedVector {
     void decrease(int a){
     	   r-=a;
     	   if(r<MINSPEED) r=MINSPEED;
-     	   SpeedX= (r*Math.sin(teta));
-    	   SpeedY=  (r*Math.cos(teta));
+
    // 	   System.out.println(r+" "+teta+" "+SpeedX+" "+SpeedY);
     
     }
@@ -29,36 +28,32 @@ public class SpeedVector {
     void increase(int a){
  	   r+=a;
  	   if(r>MAXSPEED)r=MAXSPEED;    	   
- 	   SpeedX=(r*Math.sin(teta));
-	   SpeedY=(r*Math.cos(teta));
+
 	 //  System.out.println(r+" "+teta+" "+SpeedX+" "+SpeedY);
 
     }
     
     void turnRight(){
  	   teta=teta-ROTATION;
- 	   SpeedX=(r*Math.sin(teta));
-	   SpeedY=(r*Math.cos(teta));
+
 	//   System.out.println(r+" "+teta+" "+SpeedX+" "+SpeedY);
     }
  
     void turnLeft(){
-       teta=teta-ROTATION;
-  	   SpeedX=(r*Math.cos(teta));
-	   SpeedY=(r*Math.sin(teta));
+       teta=teta+ROTATION;
+
  //	  System.out.println(r+" "+teta+" "+SpeedX+" "+SpeedY);
     }
 
     void stop(){
-    	SpeedX=0;
-   	    SpeedY=0;
+    	r = 0;
     }
     
     public int getSpeedX(){
-    	return  (int)Math.round(SpeedX);
+    	return  (int)Math.round(r*Math.sin(teta));
     }
     
     public int getSpeedY(){
-    	return (int) Math.round(SpeedY);
+    	return (int) Math.round(r*Math.cos(teta));
     }
 }
