@@ -157,7 +157,7 @@ public class Car implements  ICar{
         double x= (double)sv.SpeedX;
         double y= (double)sv.SpeedY;
      
-       // position.addObstacle(this);
+        //position.addObstacle(this);
         sv.SpeedX=x;
         sv.SpeedY=y;
         System.out.println("Car collide with repair car" + rc.id);

@@ -222,13 +222,6 @@ private Track track;
             	    if (v[i + 1][j]!=null && !v[i + 1][j].getSegment().isOutOfTrack)
                         v[i][j].adjacencies.add(new Edge(v[i + 1][j]));
             	  }
-                    //[][][=]
-                    //[][x][]
-                    //[][][]
-            	  if(i+1 < t.height && j+1 < t.length){ 
-                    if (!v[i + 1][j + 1].equals(null)  &&  !v[i + 1][j + 1].getSegment().isOutOfTrack)
-                        v[i][j].adjacencies.add(new Edge(v[i + 1][j + 1]));
-            	  }
             	  
             	 //[][][]
                   //[][x][=]
@@ -237,13 +230,7 @@ private Track track;
                   if (!v[i][j + 1].equals(null)  &&  !v[i][j + 1].getSegment().isOutOfTrack)
                       v[i][j].adjacencies.add(new Edge(v[i][j + 1]));
           	  }
-                    //[][][]
-                    //[][x][]
-                    //[=][][]
-            	  if(i-1 >= 0 && j-1 >=0){ 
-                    if (v[i - 1][j - 1] != null && !v[i - 1][j - 1].getSegment().isOutOfTrack)
-                        v[i][j].adjacencies.add(new Edge(v[i - 1][j - 1]));
-            	  }
+            
 
                     //[][][]
                     //[][x][]
@@ -261,21 +248,7 @@ private Track track;
                         v[i][j].adjacencies.add(new Edge(v[i][j - 1]));
             	  }
 
-                    //[][][]
-                    //[][x][]
-                    //[][][=]
-                  if(i-1 >= 0 && j+1 <t.length){ 
-                    if (v[i-1][j + 1] != null &&!v[i - 1][j + 1].getSegment().isOutOfTrack)
-                        v[i][j].adjacencies.add(new Edge(v[i - 1][j + 1]));
-                  }
-
-                    //[=][-][]
-                    //[][x][]
-                    //[][][]
-                  if(j-1 >= 0 && i+1 <t.height){ 
-                    if (v[i + 1][j - 1] != null && !v[i + 1][j - 1].getSegment().isOutOfTrack)
-                        v[i][j].adjacencies.add(new Edge(v[i + 1][j - 1]));
-                  }
+               
              }
 
                
@@ -286,7 +259,6 @@ private Track track;
   
         
         Dijkstra.computePaths(v[s.getX()][s.getY()]);
-    //    Vertex min= v[4][2];
         path = Dijkstra.getShortestPathTo(v[13][35]);
     //    for (int i=0;i<path.size();i++){
         	

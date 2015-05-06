@@ -27,7 +27,7 @@ public class OilView extends AbstractObstacleView{
     public void paintComponent(Graphics g){
         g.setColor(Color.orange);
         g.fillRect(0,0,20,20);
-     //   g.drawImage(bufferedImage,0,0,this);
+        g.drawImage(bufferedImage,0,0,this);
     }
 
 }

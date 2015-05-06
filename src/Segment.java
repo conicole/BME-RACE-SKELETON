@@ -70,9 +70,13 @@ public class Segment implements ISegment {
   //
   public void clear(RepairCar rc){
 	  
-	  for(int i=0;i<SObs.size();i++){
+	 
+		   for(int i=0;i<SObs.size();i++){
+		 if(rc.LifeTime!=0){
 		  SObs.get(i).collisionWithRepairCar(rc);
-	  }
+	      }
+	  
+	   }
   }
 
   //set as finish line
