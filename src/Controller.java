@@ -149,15 +149,23 @@ public class Controller extends JFrame {
                 app.setLocationRelativeTo(app.getParent());
                 app.setVisible(true);
             }
-            else{
+            else if(winner==0){
             	app.setVisible(false);
-            WinMenu wm = new WinMenu();
-            app.setContentPane(wm);
-            app.setSize(499, 498);
-            app.setLocationRelativeTo(app.getParent());
-            app.setVisible(true);
+            	WinMenu wm = new WinMenu();
+            	app.setContentPane(wm);
+            	app.setSize(499, 498);
+            	app.setLocationRelativeTo(app.getParent());
+            	app.setVisible(true);
             }
-            
+            else if(winner==1){
+            	app.setVisible(false);
+            	WinMenu2 wm2 = new WinMenu2();
+            	app.setContentPane(wm2);
+            	app.setSize(499, 498);
+            	app.setLocationRelativeTo(app.getParent());
+            	app.setVisible(true);
+            }
+
 
         }
 

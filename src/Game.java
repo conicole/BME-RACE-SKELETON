@@ -286,8 +286,10 @@ public class Game  implements Serializable {
 
 		//builds graph of entire track
 		Vertex[][] v = buildGraph(t, s);
+		
 		//Performs Dijkstras algorithm on graph, we pass source
 		Dijkstra.computePaths(v[s.getX()][s.getY()]);
+		
 		//get all segments with glue or oil patch
 		cellswithGlueOil= getAllTracksWithPatch( t,  v);
 
@@ -300,6 +302,7 @@ public class Game  implements Serializable {
 					min=l;
 				}
 			}
+			//gets path to min distance cell
 			path = Dijkstra.getShortestPathTo(min);
 			if (path.size()>1)
 				return path.get(1).getSegment();
