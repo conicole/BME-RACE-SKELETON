@@ -20,6 +20,7 @@ public class Glue implements AbstractObstacle{
     public void collisionWithRepairCar(RepairCar rc){
     	System.out.println("clearing glue");
     	rc.position.remove(this);
+    	
     }
     
     public boolean HasNoMoreEffect(){
