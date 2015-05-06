@@ -139,12 +139,23 @@ public class Controller extends JFrame {
             app.game.getTrack().updateview();
             int winner = app.run();
 
-            app.setVisible(false);
+            if(winner==10){
+             	app.setVisible(false);
+                Crash wm = new Crash();
+                app.setContentPane(wm);
+                app.setSize(595, 410);
+                app.setLocationRelativeTo(app.getParent());
+                app.setVisible(true);
+            }
+            else{
+            	app.setVisible(false);
             WinMenu wm = new WinMenu();
             app.setContentPane(wm);
             app.setSize(499, 498);
             app.setLocationRelativeTo(app.getParent());
             app.setVisible(true);
+            }
+            
 
         }
 

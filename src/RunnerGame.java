@@ -8,22 +8,22 @@ import java.lang.Thread;
 public class RunnerGame extends Thread {
 
 
-    Game game;
+	Game game;
 
-    public RunnerGame(Game g){
-        game = g;
-    }
+	public RunnerGame(Game g){
+		game = g;
+	}
 
-    public RunnerGame() { }
-    public void run() {
+	public RunnerGame() { }
+	public void run() {
 
-            try {
-                sleep(160);
-                game.UpdateGame();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+		try {
+			sleep(160);
+			game.UpdateGame();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
-        }
+	}
 }
 

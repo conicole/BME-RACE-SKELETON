@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Crash.jpg</name>
+			<type>1</type>
+			<location>C:/Users/jayha_000/git/BME-RACE-SKELETON/Crash.jpg</location>
+		</link>
+	</linkedResources>
 </projectDescription>

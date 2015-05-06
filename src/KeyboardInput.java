@@ -3,131 +3,131 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 public class KeyboardInput implements KeyListener {
 
-    private static final int KEY_COUNT = 256;
+	private static final int KEY_COUNT = 256;
 
-    private enum KeyState {
+	private enum KeyState {
 
-        RELEASED, // Not down
+		RELEASED, // Not down
 
-        PRESSED,  // Down, but not the first time
+		PRESSED,  // Down, but not the first time
 
-        ONCE      // Down for the first time
+		ONCE      // Down for the first time
 
-    }
+	}
 
 
 
-    // Current state of the keyboard
+	// Current state of the keyboard
 
-    private boolean[] currentKeys = null;
+	private boolean[] currentKeys = null;
 
 
 
-    // Polled keyboard state
+	// Polled keyboard state
 
-    private KeyState[] keys = null;
+	private KeyState[] keys = null;
 
 
 
-    public KeyboardInput() {
+	public KeyboardInput() {
 
-        currentKeys = new boolean[ KEY_COUNT ];
+		currentKeys = new boolean[ KEY_COUNT ];
 
-        keys = new KeyState[ KEY_COUNT ];
+		keys = new KeyState[ KEY_COUNT ];
 
-        for( int i = 0; i < KEY_COUNT; ++i ) {
+		for( int i = 0; i < KEY_COUNT; ++i ) {
 
-            keys[ i ] = KeyState.RELEASED;
+			keys[ i ] = KeyState.RELEASED;
 
-        }
+		}
 
-    }
+	}
 
 
 
-    public synchronized void poll() {
-        for( int i = 0; i < KEY_COUNT; ++i ) {
+	public synchronized void poll() {
+		for( int i = 0; i < KEY_COUNT; ++i ) {
 
 
-            // Set the key state
+			// Set the key state
 
-            if( currentKeys[ i ] ) {
+			if( currentKeys[ i ] ) {
 
 
 
 
-                // If the key is down now, but was not
+				// If the key is down now, but was not
 
-                // down last frame, set it to ONCE,
+				// down last frame, set it to ONCE,
 
-                // otherwise, set it to PRESSED
+				// otherwise, set it to PRESSED
 
-                if( keys[ i ] == KeyState.RELEASED )
+				if( keys[ i ] == KeyState.RELEASED )
 
-                    keys[ i ] = KeyState.ONCE;
+					keys[ i ] = KeyState.ONCE;
 
-                else
+				else
 
-                    keys[ i ] = KeyState.PRESSED;
+					keys[ i ] = KeyState.PRESSED;
 
-            } else {
+			} else {
 
-                keys[ i ] = KeyState.RELEASED;
+				keys[ i ] = KeyState.RELEASED;
 
-            }
+			}
 
-        }
+		}
 
-    }
+	}
 
 
 
-    public boolean keyDown( int keyCode ) {
+	public boolean keyDown( int keyCode ) {
 
-        return keys[ keyCode ] == KeyState.ONCE ||
+		return keys[ keyCode ] == KeyState.ONCE ||
 
-                keys[ keyCode ] == KeyState.PRESSED;
+				keys[ keyCode ] == KeyState.PRESSED;
 
-    }
+	}
 
 
 
-    public boolean keyDownOnce( int keyCode ) {
-        return keys[ keyCode ] == KeyState.ONCE;
+	public boolean keyDownOnce( int keyCode ) {
+		return keys[ keyCode ] == KeyState.ONCE;
 
-    }
+	}
 
 
 
-    public synchronized void keyPressed( KeyEvent e ) {
-        int keyCode = e.getKeyCode();
-        if( keyCode >= 0 && keyCode < KEY_COUNT ) {
+	public synchronized void keyPressed( KeyEvent e ) {
+		int keyCode = e.getKeyCode();
+		if( keyCode >= 0 && keyCode < KEY_COUNT ) {
 
-            currentKeys[ keyCode ] = true;
+			currentKeys[ keyCode ] = true;
 
-        }
+		}
 
-    }
+	}
 
 
 
 
-    public synchronized void keyReleased( KeyEvent e ) {
+	public synchronized void keyReleased( KeyEvent e ) {
 
-        int keyCode = e.getKeyCode();
+		int keyCode = e.getKeyCode();
 
-        if( keyCode >= 0 && keyCode < KEY_COUNT ) {
+		if( keyCode >= 0 && keyCode < KEY_COUNT ) {
 
-            currentKeys[ keyCode ] = false;
+			currentKeys[ keyCode ] = false;
 
-        }
+		}
 
-    }
+	}
 
 
 
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
