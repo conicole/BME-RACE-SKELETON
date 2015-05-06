@@ -17,7 +17,6 @@ public class Game  implements Serializable {
 	int nbCar;
 	private List<RepairCar> tabRepairCar;
 	int nbRepairCar;
-	private ArrayList<Vertex> cellswithGlueOil;
 
 
 	public Game(){
@@ -25,14 +24,14 @@ public class Game  implements Serializable {
 		tabRepairCar =new ArrayList<RepairCar>();
 		nbCar=0;
 		nbRepairCar=0;
-		cellswithGlueOil =new ArrayList<Vertex>();
+
 
 	}
 
 	public void setTrack(int x,int y)
 	{
 		track = new Track(x,y);
-	
+
 	}
 
 
@@ -76,7 +75,7 @@ public class Game  implements Serializable {
 		int x=rand(0,track.getHeight()-1);
 		int y=rand(0,track.getLength()-1);
 		//just to reduce the probability of generation
-		int z=rand(0,200);
+		int z=rand(0,100);
 
 		Segment sg=track.getSegment(x,y);
 		//generates if the segment is on the track and empty
@@ -182,7 +181,7 @@ public class Game  implements Serializable {
 			}
 			else{
 				//gets next position
-				tabRepairCar.get(i).Move(SP( track,tabRepairCar.get(i).getPosition()));
+				tabRepairCar.get(i).Move(getshortestPath( track,tabRepairCar.get(i).getPosition()));
 				//System.out.println("Repair car path "+tabRepairCar.get(i).getPosition().getX() + " " +tabRepairCar.get(i).getPosition().getY());
 			}
 
@@ -190,12 +189,10 @@ public class Game  implements Serializable {
 	}
 
 
-
-	public Segment SP(Track t, Segment s) {
-
-		List<Vertex> path = null;
-		boolean job=false;
+	private Vertex[][] buildGraph(Track t, Segment s){
 		Vertex[][] v = new Vertex[t.height][t.length];
+
+		//Builds vertices out of every segment
 		for (int i = 0; i < t.height; i++) {
 			for (int j = 0; j < t.length; j++) {
 				v[i][j] = new Vertex(t.getSegment(i, j));
@@ -211,7 +208,7 @@ public class Game  implements Serializable {
 
 
 				//[][=][]
-						//[][x][]
+				//[][x][]
 				//[][][]
 				if(i+1 < t.height){    
 					if (v[i + 1][j]!=null && !v[i + 1][j].getSegment().isOutOfTrack)
@@ -247,57 +244,64 @@ public class Game  implements Serializable {
 			}
 
 		}
+		return v;
 
+	}
 
+	private ArrayList<Vertex> getAllTracksWithPatch(Track t, Vertex[][] v){
+		ArrayList<Vertex> cellswithGlueOil = new ArrayList<Vertex>();
 
-
-			
-
-			Dijkstra.computePaths(v[s.getX()][s.getY()]);
-		
-			
-			//gets all segments with glue or oil patch that need cleaning
-			for (int i1=0;i1<t.height;i1++){
-				for (int j=0;j<t.length;j++){
-					System.out.println("Distance to " +" " +i1+" " +j + ": " + v[i1][j].minDistance);
-					if(!t.getSegment(i1, j).isOutOfTrack && !t.getSegment(i1, j).isFinishLine){
-						//Stores an abitrary cell with glue or oil
-						for (AbstractObstacle l :  t.getSegment(i1, j).SObs){
-							if(l.type().equalsIgnoreCase("oil")||l.type().equalsIgnoreCase("glue")){
-								cellswithGlueOil.add(v[i1][j]);
-								break;
-							}
-
+		//gets all segments with glue or oil patch that need cleaning
+		for (int i1=0;i1<t.height;i1++){
+			for (int j=0;j<t.length;j++){
+				System.out.println("Distance to " +" " +i1+" " +j + ": " + v[i1][j].minDistance);
+				if(!t.getSegment(i1, j).isOutOfTrack && !t.getSegment(i1, j).isFinishLine){
+					//Stores an abitrary cell with glue or oil
+					for (AbstractObstacle l :  t.getSegment(i1, j).SObs){
+						if(l.type().equalsIgnoreCase("oil")||l.type().equalsIgnoreCase("glue")){
+							cellswithGlueOil.add(v[i1][j]);
+							break;
 						}
 
 					}
 
 				}
+
 			}
+		}
 
-			
-			if(cellswithGlueOil.size()!=0){
-				//gets cell with min distance from the race car
+		return cellswithGlueOil;
 
-				Vertex min = cellswithGlueOil.get(0) ;
-				for (Vertex l :  cellswithGlueOil){
-					if(l.minDistance<min.minDistance){
-						min=l;
-					}
+	}
+
+
+	public Segment getshortestPath(Track t, Segment s) {
+
+		ArrayList<Vertex> cellswithGlueOil;
+		List<Vertex> path = null;
+
+		//builds graph of entire track
+		Vertex[][] v = buildGraph(t, s);
+		//Performs Dijkstras algorithm on graph, we pass source
+		Dijkstra.computePaths(v[s.getX()][s.getY()]);
+		//get all segments with glue or oil patch
+		cellswithGlueOil= getAllTracksWithPatch( t,  v);
+
+		if(cellswithGlueOil.size()!=0){
+			//gets cell with min distance from the race car
+
+			Vertex min = cellswithGlueOil.get(0) ;
+			for (Vertex l :  cellswithGlueOil){
+				if(l.minDistance<min.minDistance){
+					min=l;
 				}
-				path = Dijkstra.getShortestPathTo(min);
-				if (path.size()>1)
-					return path.get(1).getSegment();
 			}
+			path = Dijkstra.getShortestPathTo(min);
+			if (path.size()>1)
+				return path.get(1).getSegment();
+		}
 
-			
-
-	    
-
-
-	
-
-		 return path.get(path.size()).getSegment();
+		return t.getSegment(s.getX(), s.getY());
 	}
 
 	// run a step in the game : move all the object according to their speed
@@ -317,7 +321,7 @@ public class Game  implements Serializable {
 		}
 		generateRepairCar();
 		computeRepairCarMove();
-		
+
 		return 11;
 	}
 
