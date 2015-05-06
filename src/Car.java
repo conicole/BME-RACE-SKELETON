@@ -30,9 +30,20 @@ public class Car implements  ICar{
         position=game.getTrack().getSegment(i,j);
         position.addObstacle(this);
         id=n;
+        Oil o;
+        OilView oV;
+        Glue Gl;
+        GlueView Glv;
+
         for(int k=0;k<AMMUNITION;k++) {
-            So.push(new Oil());
-            Sg.push(new Glue());
+            o = new Oil();
+            oV = new OilView(o);
+            o.setOilView(oV);
+            Gl = new Glue();
+            Glv = new GlueView(Gl);
+            Gl.setGlueView(Glv);
+            So.push(o);
+            Sg.push(Gl);
         }
     }
     //getter
@@ -46,7 +57,6 @@ public class Car implements  ICar{
   //checks if obstacle hit
     public void ObstacleHitted(ICar c){
         c.hitCar();
-        Writer.writeCollisionCar(this,c);
         this.accelerate();
     }
     //checks if car hit
@@ -108,18 +118,21 @@ public class Car implements  ICar{
 //releases oil
     public void releaseOil(){
         if(!So.empty()) {
+            System.out.println("drop oil");
             Oil o=So.pop();
             position.addObstacle(o);
-            Writer.writeReleaseOil(this, o);
+            position.updateView();
         }
 
     }
     //releases glue
     public void releaseGlue(){
         if(!Sg.empty()) {
+            System.out.println("drop glue");
             Glue g =Sg.pop();
             position.addObstacle(g);
-            Writer.writeReleaseGlue(this, g);
+            position.updateView();
+            //  Writer.writeReleaseGlue(this, g);
         }
     }
 //setter

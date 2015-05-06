@@ -9,7 +9,6 @@ public class Oil implements AbstractObstacle{
     public Oil(){
         id=nbpatch;
         nbpatch++;
-        oilView = new OilView(this);
     }
 
     public int getId(){
@@ -47,8 +46,7 @@ public class Oil implements AbstractObstacle{
     }
 
     public AbstractObstacleView getView(){
-        // todooo
-        return new OilView(new Oil());
+        return oilView;
     }
 
 	public OilView getOilView() {

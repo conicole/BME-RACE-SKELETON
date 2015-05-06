@@ -72,11 +72,13 @@ public class Controller extends JFrame {
 			 game.getCar(0).goRight();
 		 }
 		 
-		 if( keyboard.keyDownOnce( KeyEvent.VK_ALT ) ){
+		 if( keyboard.keyDownOnce( KeyEvent.VK_CONTROL) ){
 			 game.getCar(0).releaseOil();
 		 }
 		 if( keyboard.keyDownOnce( KeyEvent.VK_SHIFT ) ){
-			 game.getCar(0).releaseGlue();
+
+             game.getCar(0).releaseGlue();
+
 		 }
 		 
 		 if( keyboard.keyDown( KeyEvent.VK_S ) ){

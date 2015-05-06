@@ -12,12 +12,10 @@ public class RepairCar  implements AbstractObstacle  {
     //constructor
     RepairCar(Segment s, int i){
         position=s;
-        LifeTime=4;
+        LifeTime=10;
         s.addObstacle(this);
         id=i;
-        
         tStart = System.currentTimeMillis();//Sets the time the car was added
-        
     }
     
 
@@ -39,13 +37,10 @@ public class RepairCar  implements AbstractObstacle  {
           position.clear(this);
     }
 
-    ///Makes the Car to disapperar from the track when its lifetime is 0.
-    void  Disappear(){
-    	if(LifeTime!=0){
-    	LifeTime=0;
-    	position.remove(this);
-    	}
-    	
+
+///Makes the Car to disapperar from the track when its lifetime is 0.
+    void  disappear(){
+            position.remove(this);
     }
 
 
@@ -53,12 +48,14 @@ public class RepairCar  implements AbstractObstacle  {
 
     ///Used to move the Repair car around the track.
     public void Move(Segment seg){
-      if(LifeTime!=0){
-    	position=seg;
-        Age();
-        seg.addObstacle(this);
-        cleaning();
-        }
+        System.out.println(seg.getX() + " " + seg.getY());
+            position.remove(this);
+            position.updateView();
+            position=seg;
+            Age();
+            position.addObstacle(this);
+            position.updateView();
+            cleaning();
     }
 
     ///Used to get the lifetime the repairCar has left.
@@ -69,8 +66,7 @@ public class RepairCar  implements AbstractObstacle  {
 
     ///Used to decrease the lifetime of the repairCar Object.
     void Age(){
-        if(LifeTime!=0)
-        {
+
         	long elapse = System.currentTimeMillis()-tStart;
         	
         	elapse = (long) (elapse / 1000.0);
@@ -78,17 +74,11 @@ public class RepairCar  implements AbstractObstacle  {
         		LifeTime--;
         		tStart=System.currentTimeMillis();
         	}
-        }
-        else{
-        	
-        	Disappear();
-        }
-       
-       
+
     }
     //collision with car
     public void hitCar(){
-        Disappear();
+        disappear();
     	position.addObstacle(new Oil());
     	position.remove(this);
     	

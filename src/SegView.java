@@ -36,6 +36,7 @@ public class SegView extends JPanel {
         this.removeAll();
         if( segment.hasObstacle() ){
             for(int i=0;i<segment.SObs.size();i++) {
+                   // System.out.println("seg : "+ segment.getX() + " , " + segment.getY() + " obstacle " + i);
                     this.add(segment.SObs.get(i).getView());
             }
 
@@ -70,4 +71,6 @@ public class SegView extends JPanel {
 
 
     }
+
+
 }

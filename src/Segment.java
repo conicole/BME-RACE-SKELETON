@@ -30,8 +30,9 @@ public class Segment implements ISegment {
     
     //removes obstacles
     public void remove(AbstractObstacle obj){
-        SObs.remove(obj);
+       SObs.remove(obj);
         view.updateComponent();
+        view.validate();
         view.repaint();
 
     }
@@ -59,8 +60,7 @@ public class Segment implements ISegment {
 	  if(isOutOfTrack) {
 		  c.outOfTrack();
 	  }
-        view.updateComponent();
-        view.repaint();
+        this.updateView();
   }
   //checks if out of track
   public void setOutOfTrack(){
@@ -83,8 +83,15 @@ public class Segment implements ISegment {
     public void setView(SegView sgV){
         view =sgV;
     }
-  
-  
-  
-  
+
+
+    public void updateView(){
+        view.updateComponent();
+        view.validate();
+        view.repaint();
+    }
+
+
+
+
 }

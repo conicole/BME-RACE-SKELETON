@@ -56,6 +56,7 @@ public class TrackView extends JPanel implements IView  {
         for(int i=0; i< taillex; i++){
             for(int j=0; j< tailley; j++){
                 segTab[i][j].updateComponent();
+                segTab[i][j].repaint();
             }
         }
     }

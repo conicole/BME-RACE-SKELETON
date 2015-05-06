@@ -7,7 +7,6 @@ public class Glue implements AbstractObstacle{
     public Glue(){
         id=nbpatch;
         nbpatch++;
-        glueView = new GlueView(this);
     }
 
 
@@ -15,7 +14,7 @@ public class Glue implements AbstractObstacle{
         System.out.println("ObstacleHitted : Glue");
         c.hitGlue();
         effectLeft--;
-        Writer.writeCollisionGlue(c,this);
+//        Writer.writeCollisionGlue(c,this);
     }
 
     public void collisionWithRepairCar(RepairCar rc){
@@ -50,8 +49,7 @@ public class Glue implements AbstractObstacle{
 
 
     public AbstractObstacleView getView(){
-        // todooo
-        return new CarView(new Car());
+        return glueView;
     }
 
 

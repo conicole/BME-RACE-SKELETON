@@ -178,14 +178,14 @@ private Track track;
 	    {
 		//Removes repair car if life time is 0
 		if(tabRepairCar.get(i).getLifetime()==0){
-			
+            tabRepairCar.get(i).disappear();
 			tabRepairCar.remove(i);
 			nbRepairCar--;
 		}
 		else{
 			//gets next position
 			tabRepairCar.get(i).Move(SP( track,tabRepairCar.get(i).getPosition()));
-			System.out.println("Repair car path "+tabRepairCar.get(i).getPosition().getX() + " " +tabRepairCar.get(i).getPosition().getY());
+			//System.out.println("Repair car path "+tabRepairCar.get(i).getPosition().getX() + " " +tabRepairCar.get(i).getPosition().getY());
 		}
 		
 	    }
@@ -321,7 +321,7 @@ private Track track;
     // run a step in the game : move all the object according to their speed
     // return while nobody wins
     public boolean UpdateGame(){
-        if( (nbCar + nbRepairCar) == 0 ){
+        if( (nbCar) == 0 ){
             return false;
         }
         for(int i = 0; i < nbCar; i++){
@@ -330,8 +330,9 @@ private Track track;
             }
             tabCar.get(i).updateCarPosition();
         }
-        generateRepairCar();
-        computeRepairCarMove();
+       generateRepairCar();
+       computeRepairCarMove();
+
         return true;
     }
 
