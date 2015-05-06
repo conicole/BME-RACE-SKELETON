@@ -35,7 +35,7 @@ public class Controller extends JFrame {
 		game=t;
 	}
 	
-	public void run(){
+	public int run(){
 		
 		//while(! keyboard.keyDownOnce( KeyEvent.VK_ENTER ) ){
 			///Wait launch the game
@@ -43,16 +43,17 @@ public class Controller extends JFrame {
 		//}
 		
 		RunnerGame rg = new RunnerGame();
-		while(true){
+        int res = 11;
+		while(res == 11){
 			keyboard.poll();
 
 			processInput();
             timer++;
             if( timer%100000 == 0){
-                game.UpdateGame();
-
+                 res = game.UpdateGame();
             }
 		}
+        return res;
 	}
 	
 	 protected void processInput() {
@@ -119,24 +120,35 @@ public class Controller extends JFrame {
         app.setLocationRelativeTo(app.getParent());
         app.setVisible(true);
 
-        while(!app.keyboard.keyDown(KeyEvent.VK_ENTER)) {
-            ///Wait launch the game
-            	app.keyboard.poll();
 
-            //}
+
+        while (true) {
+
+            ///Wait launch the game
+            while(!app.keyboard.keyDownOnce(KeyEvent.VK_ENTER)) {
+                app.keyboard.poll();
+            }
+
+            app.setVisible(false);
+            app.buildGame(30, 50);
+            app.setSize(1050, 650);
+            app.setLocationRelativeTo(app.getParent());
+            app.setVisible(true);
+
+
+            app.game.getTrack().updateview();
+            int winner = app.run();
+
+            app.setVisible(false);
+            WinMenu wm = new WinMenu();
+            app.setContentPane(wm);
+            app.setSize(499, 498);
+            app.setLocationRelativeTo(app.getParent());
+            app.setVisible(true);
+
         }
 
-        System.out.println("out");
 
-        app.setVisible(false);
-        app.buildGame(30, 50);
-        app.setSize(1050, 650);
-        app.setLocationRelativeTo(app.getParent());
-        app.setVisible(true);
-
-    
-        app.game.getTrack().updateview();
-        app.run();
     }
 
 

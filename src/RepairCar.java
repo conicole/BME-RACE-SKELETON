@@ -48,7 +48,7 @@ public class RepairCar  implements AbstractObstacle  {
 
     ///Used to move the Repair car around the track.
     public void Move(Segment seg){
-        System.out.println(seg.getX() + " " + seg.getY());
+     //   System.out.println(seg.getX() + " " + seg.getY());
             position.remove(this);
             position.updateView();
             position=seg;

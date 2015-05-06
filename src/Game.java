@@ -320,20 +320,23 @@ private Track track;
 
     // run a step in the game : move all the object according to their speed
     // return while nobody wins
-    public boolean UpdateGame(){
+    // 10 -> no more car in the circuit
+    // 11 -> game is going on
+    // other number : nb of winner.
+    public int UpdateGame(){
         if( (nbCar) == 0 ){
-            return false;
+            return 10;
         }
         for(int i = 0; i < nbCar; i++){
             if(tabCar.get(i).isWinner()){
-                return false;
+                return tabCar.get(i).getId();
             }
             tabCar.get(i).updateCarPosition();
         }
        generateRepairCar();
        computeRepairCarMove();
 
-        return true;
+        return 11;
     }
 
     public TrackView getTrackView(){

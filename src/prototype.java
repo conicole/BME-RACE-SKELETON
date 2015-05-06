@@ -190,8 +190,8 @@ public class prototype {
     //Runs the game
     public void run_game(BufferedReader br) throws java.io.IOException {
         String strLine;
-        boolean gameOn = true;
-        while( ((strLine = br.readLine()) != null ) && gameOn) {
+        int gameOn = 11;
+        while( ((strLine = br.readLine()) != null ) && gameOn == 11) {
             int nbCmd = isInput(strLine);
             this.ComputeInputCmd(nbCmd);
             gameOn = game.UpdateGame();
