@@ -76,10 +76,13 @@ public class Car implements  ICar{
 //goleft
     public void goLeft(){
         sv.turnLeft();
+        position.updateView();
     }
 //goright
     public void goRight(){
         sv.turnRight();
+        position.updateView();
+
     }
 //stop
     public void stop(){
@@ -118,7 +121,7 @@ public class Car implements  ICar{
     }
 //releases oil
     public void releaseOil(){
-        if(!So.empty()) {
+        if(!So.empty() & !dead) {
             System.out.println("drop oil");
             Oil o=So.pop();
             position.addObstacle(o);
@@ -128,7 +131,7 @@ public class Car implements  ICar{
     }
     //releases glue
     public void releaseGlue(){
-        if(!Sg.empty()) {
+        if(!Sg.empty() & !dead ) {
             System.out.println("drop glue");
             Glue g =Sg.pop();
             position.addObstacle(g);

@@ -15,9 +15,6 @@ public class SpeedVector {
 		SpeedY=0;
 		r=0;
 		teta =-90;
-				
-				
-				;
 	}
 
 	void decrease(int a){
@@ -38,12 +35,12 @@ public class SpeedVector {
 
 	void turnRight(){
 		
-        teta=teta+ROTATION;
+        teta= (teta+ROTATION)%360;
 		//   System.out.println(r+" "+teta+" "+SpeedX+" "+SpeedY);
 	}
 
 	void turnLeft(){
-		teta=teta-ROTATION;
+		teta=  (teta-ROTATION)%360;
 
 		//	  System.out.println(r+" "+teta+" "+SpeedX+" "+SpeedY);
 	}

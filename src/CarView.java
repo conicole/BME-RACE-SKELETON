@@ -22,17 +22,13 @@ public class CarView extends AbstractObstacleView{
     public CarView(Car c){
         car = c;
 
-        bufferedImageAlive = new BufferedImage(20,20,    BufferedImage.TYPE_INT_ARGB);
+        bufferedImageAlive = new BufferedImage(20,20, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = bufferedImageAlive.createGraphics();
 
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setPaint(Color.red);
         g2d.fillOval(0, 0, 18, 18);
         g2d.setPaint(Color.white);
- /*       Font fonte = new Font("TimesRoman ",Font.BOLD,1);
-        g2d.setFont(fonte);
-        g2d.drawString("AAA", 0, 0);
-        g2d.dispose();*/
 
         int fontSize = 17;
 
@@ -56,8 +52,18 @@ public class CarView extends AbstractObstacleView{
     public void paintComponent(Graphics g){
         if(!car.dead)
         {
+            AffineTransform at = new AffineTransform();
+            System.out.println((car.getSpeedVector().teta)+90);
+            double rot = ((car.getSpeedVector().teta)+90)*(Math.PI/180);
+            System.out.println(rot);
+            at.translate(getWidth() / 2, getHeight() / 2);
 
-           g.drawImage(bufferedImageAlive,0,0,this);
+            at.rotate( rot );
+            at.translate(-bufferedImageAlive.getWidth()/2, -bufferedImageAlive.getHeight()/2);
+
+
+            Graphics2D g2d = (Graphics2D) g;
+           g2d.drawImage(bufferedImageAlive,at,this);
         }
         else {
             g.drawImage(bufferedImagedead,0,0,this);

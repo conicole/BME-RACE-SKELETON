@@ -12,6 +12,7 @@ public class Controller extends JFrame {
 	TrackView track;
 	KeyboardInput keyboard;
     int timer;
+    int winner;
 
 	public Controller(){
         timer = 0;
@@ -21,6 +22,7 @@ public class Controller extends JFrame {
         this.setSize(1050, 650);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        winner = 11;
 	}
 	
 	public void addViews(IView v){
@@ -34,29 +36,23 @@ public class Controller extends JFrame {
 	public void setGame(Game t){
 		game=t;
 	}
+
+    public void pollKeyboard(){
+        keyboard.poll();
+    }
 	
-	public int run(){
+	public void run() throws InterruptedException {
 		
 		//while(! keyboard.keyDownOnce( KeyEvent.VK_ENTER ) ){
 			///Wait launch the game
 		//	keyboard.poll();
 		//}
 		
-		RunnerGame rg = new RunnerGame();
-        int res = 11;
-   
-		while(res == 11){
-			keyboard.poll();
-			
-			if(game.getNumberofCars()!=0)
-				processInput();
-			
-			timer++;
-			if( timer%500000 == 0){
-				res = game.UpdateGame();
-			}
-		}
-        return res;
+		RunnerGame rg = new RunnerGame(this);
+        rg.run();
+        rg.join();
+        System.out.println(winner);
+
 	}
 	
 	 protected void processInput() throws java.lang.NullPointerException {
@@ -81,11 +77,8 @@ public class Controller extends JFrame {
                  game.getCar(0).releaseOil();
              }
              if (keyboard.keyDownOnce(KeyEvent.VK_SHIFT)) {
-
                  game.getCar(0).releaseGlue();
-
              }
-
              if (keyboard.keyDownOnce(KeyEvent.VK_S)) {
                  game.getCar(1).brake();
              }
@@ -112,6 +105,11 @@ public class Controller extends JFrame {
 		 
 	 }
 
+
+    public void reset(){
+        winner = 11;
+    }
+
     public void buildGame(int sizeX,int sizeY){
         GameFactory gf = new GameFactory();
         game = gf.createGame(sizeX,sizeY);
@@ -132,6 +130,7 @@ public class Controller extends JFrame {
 
         while (true) {
 
+
             ///Wait launch the game
             while(!app.keyboard.keyDownOnce(KeyEvent.VK_ENTER)) {
                 app.keyboard.poll();
@@ -145,9 +144,13 @@ public class Controller extends JFrame {
 
 
             app.game.getTrack().updateview();
-            int winner = app.run();
+            try {
+                app.run();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-            if(winner==10){
+            if(app.winner==10){
              	app.setVisible(false);
                 Crash wm = new Crash();
                 app.setContentPane(wm);
@@ -155,7 +158,7 @@ public class Controller extends JFrame {
                 app.setLocationRelativeTo(app.getParent());
                 app.setVisible(true);
             }
-            else if(winner==0){
+            else if(app.winner==0){
             	app.setVisible(false);
             	WinMenu wm = new WinMenu();
             	app.setContentPane(wm);
@@ -163,7 +166,7 @@ public class Controller extends JFrame {
             	app.setLocationRelativeTo(app.getParent());
             	app.setVisible(true);
             }
-            else if(winner==1){
+            else if(app.winner==1){
             	app.setVisible(false);
             	WinMenu2 wm2 = new WinMenu2();
             	app.setContentPane(wm2);
@@ -171,6 +174,9 @@ public class Controller extends JFrame {
             	app.setLocationRelativeTo(app.getParent());
             	app.setVisible(true);
             }
+
+            app.reset();
+
 
 
         }
