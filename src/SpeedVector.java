@@ -8,13 +8,16 @@ public class SpeedVector {
 	double teta;
 	final static int MAXSPEED = 3;
 	final static int MINSPEED = 0;
-	final static double ROTATION = 5;
+	final static double ROTATION = 90;
 
 	SpeedVector(){
 		SpeedX=0;
 		SpeedY=0;
 		r=0;
-		teta =90;
+		teta =-90;
+				
+				
+				;
 	}
 
 	void decrease(int a){
@@ -34,13 +37,13 @@ public class SpeedVector {
 	}
 
 	void turnRight(){
-		teta=teta-ROTATION;
-
+		
+        teta=teta+ROTATION;
 		//   System.out.println(r+" "+teta+" "+SpeedX+" "+SpeedY);
 	}
 
 	void turnLeft(){
-		teta=teta+ROTATION;
+		teta=teta-ROTATION;
 
 		//	  System.out.println(r+" "+teta+" "+SpeedX+" "+SpeedY);
 	}
@@ -50,10 +53,12 @@ public class SpeedVector {
 	}
 
 	public int getSpeedX(){
-		return  (int)Math.round(r*Math.sin(teta));
+		//trig math function are in radian
+		return  (int)Math.round(r*Math.sin(teta*Math.PI/180));
+		
 	}
 
 	public int getSpeedY(){
-		return (int) Math.round(r*Math.cos(teta));
+		return (int) Math.round(r*Math.cos(teta*Math.PI/180));
 	}
 }
