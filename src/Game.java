@@ -59,7 +59,7 @@ public class Game  implements Serializable {
 
 	public void add_repairCar(int x,int y){
 		Segment s=track.getSegment(x, y);
-		tabRepairCar.add(new RepairCar(s,nbRepairCar));
+		tabRepairCar.add(new RepairCar(s,track,nbRepairCar));
 		nbRepairCar++;
 	}
 
@@ -81,9 +81,9 @@ public class Game  implements Serializable {
 
 		Segment sg=track.getSegment(x,y);
 		//generates if the segment is on the track and empty
-		if (!sg.isOutOfTrack && !sg.hasObstacle()&& z==4){
+		if (!sg.isOutOfTrack && !sg.isFinishLine && !containsRaceCarOrRepairCar(sg) && !sg.hasObstacle()&& z==4){
 
-			RepairCar rc1 =new RepairCar(sg,nbRepairCar);
+			RepairCar rc1 =new RepairCar(sg,track,nbRepairCar);
 
 			tabRepairCar.add(rc1);
 
@@ -215,7 +215,7 @@ public class Game  implements Serializable {
 				//[][x][]
 				//[][][]
 				if(i+1 < t.height){    
-					if (v[i + 1][j]!=null && !v[i + 1][j].getSegment().isOutOfTrack)
+					if (v[i + 1][j]!=null && !v[i + 1][j].getSegment().isOutOfTrack && !containsRaceCarOrRepairCar(v[i+1][j].getSegment()))
 						v[i][j].adjacencies.add(new Edge(v[i + 1][j]));
 				}
 
@@ -223,7 +223,7 @@ public class Game  implements Serializable {
 				//[][x][=]
 				//[][][]
 				if( j+1 < t.length){ 
-					if (!v[i][j + 1].equals(null)  &&  !v[i][j + 1].getSegment().isOutOfTrack)
+					if (!v[i][j + 1].equals(null)  &&  !v[i][j + 1].getSegment().isOutOfTrack && !containsRaceCarOrRepairCar(v[i][j+1].getSegment()))
 						v[i][j].adjacencies.add(new Edge(v[i][j + 1]));
 				}
 
@@ -232,7 +232,7 @@ public class Game  implements Serializable {
 				//[][x][]
 				//[][=][]
 				if(i-1 >= 0){ 
-					if (v[i - 1][j] != null && !v[i - 1][j].getSegment().isOutOfTrack)
+					if (v[i - 1][j] != null && !v[i - 1][j].getSegment().isOutOfTrack && !containsRaceCarOrRepairCar(v[i-1][j].getSegment()))
 						v[i][j].adjacencies.add(new Edge(v[i - 1][j]));
 				}
 
@@ -240,7 +240,7 @@ public class Game  implements Serializable {
 				//[=][x][]
 				//[][][]
 				if(j-1 >=0){ 
-					if (v[i][j - 1] != null &&!v[i][j - 1].getSegment().isOutOfTrack)
+					if (v[i][j - 1] != null &&!v[i][j - 1].getSegment().isOutOfTrack && !containsRaceCarOrRepairCar(v[i][j - 1].getSegment()))
 						v[i][j].adjacencies.add(new Edge(v[i][j - 1]));
 				}
 
@@ -258,7 +258,7 @@ public class Game  implements Serializable {
 		//gets all segments with glue or oil patch that need cleaning
 		for (int i1=0;i1<t.height;i1++){
 			for (int j=0;j<t.length;j++){
-				System.out.println("Distance to " +" " +i1+" " +j + ": " + v[i1][j].minDistance);
+				//System.out.println("Distance to " +" " +i1+" " +j + ": " + v[i1][j].minDistance);
 				if(!t.getSegment(i1, j).isOutOfTrack && !t.getSegment(i1, j).isFinishLine){
 					//Stores an abitrary cell with glue or oil
 					for (AbstractObstacle l :  t.getSegment(i1, j).SObs){
@@ -276,6 +276,17 @@ public class Game  implements Serializable {
 
 		return cellswithGlueOil;
 
+	}
+	
+	public boolean containsRaceCarOrRepairCar(Segment s){
+		
+		for (AbstractObstacle l : s.SObs){
+			if(l.type().equalsIgnoreCase("car")||l.type().equalsIgnoreCase("repaircar")){
+				return true;
+			 }
+	    }
+		return false;
+		
 	}
 
 

@@ -53,27 +53,27 @@ public class GameFactory {
         track.updateview();
 
 
-        // Sow grass
-        for(int i = 0; i < sizeX; i++){
-            for(int j = 0; j < 5; j++) {
-                g.sow_grass(i, j);
-            }
-            for(int j = 45; j < 50; j++) {
-                g.sow_grass(i, j);
-            }
-        }
-
-        for(int j = 0; j < sizeY; j++){
-            for(int i = 0; i < 2; i++){
-                g.sow_grass(i,j);
-            }
-        }
-
-        for(int j = 20; j < 30; j++){
-            for(int i = 15; i < 30; i++){
-                g.sow_grass(i,j);
-            }
-        }
+//        // Sow grass
+//        for(int i = 0; i < sizeX; i++){
+//            for(int j = 0; j < 5; j++) {
+//                g.sow_grass(i, j);
+//            }
+//            for(int j = 45; j < 50; j++) {
+//                g.sow_grass(i, j);
+//            }
+//        }
+//
+//        for(int j = 0; j < sizeY; j++){
+//            for(int i = 0; i < 2; i++){
+//                g.sow_grass(i,j);
+//            }
+//        }
+//
+//        for(int j = 20; j < 30; j++){
+//            for(int i = 15; i < 30; i++){
+//                g.sow_grass(i,j);
+//            }
+//        }
        
         //finish line
         for (int i=sizeX-2;i<sizeX;i++)

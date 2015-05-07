@@ -7,11 +7,11 @@ public class RepairCar implements AbstractObstacle {
 	int id;
 	long tStart;
 	private RepairCarView view;
-
+    Track t;
 	// constructor
-	RepairCar(Segment s, int i) {
+	RepairCar(Segment s,Track t, int i) {
 		position = s;
-		LifeTime = 5;
+		LifeTime = 15;
 		s.addObstacle(this);
 
 		id = i;
@@ -107,12 +107,11 @@ public class RepairCar implements AbstractObstacle {
 	}
 
 
-
-
+ 
 	@Override
 	public void collisionWithRepairCar(RepairCar rc) {
 		// TODO Auto-generated method stub
-
+				
 	}
 
 
