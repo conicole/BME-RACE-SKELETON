@@ -45,7 +45,7 @@ public class RepairCar implements AbstractObstacle {
 		// System.out.println(seg.getX() + " " + seg.getY());
 
 		position.remove(this);
-		position.updateView();
+		//position.updateView();
 		position = seg;
 		Age();
 		position.addObstacle(this);
@@ -76,8 +76,11 @@ public class RepairCar implements AbstractObstacle {
 	// collision with car
 	public void hitCar() {
 		LifeTime = 0;
-		position.addObstacle(new Oil());
-
+		
+		Oil o = new Oil();
+        OilView oV = new OilView(o);
+        o.setOilView(oV);
+        position.addObstacle(o);
 	}
 
 	//testing method

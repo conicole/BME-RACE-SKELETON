@@ -37,6 +37,7 @@ public class SegView extends JPanel {
 		if( segment.hasObstacle() ){
 			for(int i=0;i<segment.SObs.size();i++) {
 				// System.out.println("seg : "+ segment.getX() + " , " + segment.getY() + " obstacle " + i);
+				if (segment.SObs.get(i)!=null)
 				this.add(segment.SObs.get(i).getView());
 			}
 
