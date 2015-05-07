@@ -77,7 +77,7 @@ public class Game  implements Serializable {
 		int x=rand(0,track.getHeight()-1);
 		int y=rand(0,track.getLength()-1);
 		//just to reduce the probability of generation
-		int z=rand(0,100);
+		int z=rand(0,60);
 
 		Segment sg=track.getSegment(x,y);
 		//generates if the segment is on the track and empty

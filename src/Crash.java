@@ -8,6 +8,8 @@ import java.io.IOException;
 public class Crash extends JPanel implements IView   {
 
 
+	//Displays that all cars are out of the race
+
     public void paintComponent(Graphics g) {
         try {
             File img = new File("Crash.jpg");
@@ -16,6 +18,7 @@ public class Crash extends JPanel implements IView   {
 
         } catch (IOException e) {
             e.printStackTrace();
+            
         }
 
     }

@@ -11,7 +11,12 @@ import java.io.IOException;
 public class WinMenu extends JPanel implements IView   {
 
 
-    public void paintComponent(Graphics g) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public void paintComponent(Graphics g) {
         try {
             File img = new File("WIN1.jpg");
             BufferedImage image = ImageIO.read(img);
