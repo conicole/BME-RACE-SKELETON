@@ -36,16 +36,18 @@ public class GameFactory {
         g.setTrack(track);
 
 
-        Glue glue = new Glue();
-        GlueView glv = new GlueView(glue);
-        glue.setGlueView(glv);
-       g.getTrack().tabSeg[0][10].addObstacle(glue);
+
    //     g.getTrack().tabSeg[0][10].updateView();
         // add a car
-        Car c = new Car(g,10,10,0);
+        Car c = new Car(g,27,10,0);
         CarView crv = new CarView(c);
         c.setView(crv);
         g.add_car(c);
+        
+        Car c2 = new Car(g,29,12,1);
+        CarView crv2 = new CarView(c2);
+        c2.setView(crv2);
+        g.add_car(c2);
      //   c.getPosition().updateView();
 
 
