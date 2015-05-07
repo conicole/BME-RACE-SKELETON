@@ -1,8 +1,10 @@
 
 import javax.swing.JComponent;
+
 import java.awt.*;
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
+
 import javax.swing.*;
 
 
@@ -17,13 +19,20 @@ public class RepairCarView extends AbstractObstacleView{
 
 	public RepairCarView(RepairCar c){
 		repairCar = c;
-
+		
 		bufferedImage = new BufferedImage(20,20,    BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = bufferedImage.createGraphics();
-
+		
 		g2d.setRenderingHint (RenderingHints.KEY_ANTIALIASING,   RenderingHints.VALUE_ANTIALIAS_ON);
+
 		g2d.setPaint(Color.WHITE);
 		g2d.fillOval(0,0,18,18);
+		
+	    g2d.setPaint(Color.RED);
+	    g2d.setFont(new Font("Times Roman", Font.BOLD, 18));
+		
+		g2d.drawString("+", 4, 15);
+		
 		g2d.dispose();
 	}
 

@@ -13,7 +13,7 @@ public class Controller extends JFrame {
 	KeyboardInput keyboard;
     int timer;
     int winner;
-
+    
 	public Controller(){
         timer = 0;
         keyboard = new KeyboardInput();

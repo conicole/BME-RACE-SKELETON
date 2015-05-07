@@ -36,7 +36,6 @@ public class CarView extends AbstractObstacleView{
 
         g2d.drawString(car.getID(), 5, 16);
 
-
         bufferedImagedead = new BufferedImage(20,20,    BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d2 = bufferedImagedead.createGraphics();
 
