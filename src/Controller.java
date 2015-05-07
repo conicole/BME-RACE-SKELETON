@@ -51,7 +51,7 @@ public class Controller extends JFrame {
 				processInput();
 			
 			timer++;
-			if( timer%140000 == 0){
+			if( timer%3000000 == 0){
 				res = game.UpdateGame();
 			}
 		}
@@ -87,7 +87,7 @@ public class Controller extends JFrame {
 		 if( keyboard.keyDown( KeyEvent.VK_S ) ){
 			 game.getCar(1).brake();
 		 }
-		 if( keyboard.keyDown( KeyEvent.VK_Z ) ){
+		 if( keyboard.keyDown( KeyEvent.VK_W ) ){
 			 game.getCar(1).accelerate();
 		 }
 		 if( keyboard.keyDown( KeyEvent.VK_A ) ){

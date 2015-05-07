@@ -18,7 +18,17 @@
 		<link>
 			<name>Crash.jpg</name>
 			<type>1</type>
-			<location>C:/Users/jayha_000/git/BME-RACE-SKELETON/Crash.jpg</location>
+			<location>/Applications/eclipse 2/Eclipse.app/Contents/MacOS/C::/Users/jayha_000/git/BME-RACE-SKELETON/Crash.jpg</location>
+		</link>
+		<link>
+			<name>src/Crash.java</name>
+			<type>1</type>
+			<locationURI>PARENT-4-PROJECT_LOC/Mobilit%C3%A9/Cours/Software%20Laboratory%204/BME-RACE-SKELETON/src/Crash.java</locationURI>
+		</link>
+		<link>
+			<name>src/WinMenu2.java</name>
+			<type>1</type>
+			<locationURI>PARENT-4-PROJECT_LOC/Mobilit%C3%A9/Cours/Software%20Laboratory%204/BME-RACE-SKELETON/src/WinMenu2.java</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
