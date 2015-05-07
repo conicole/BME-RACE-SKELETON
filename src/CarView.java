@@ -53,9 +53,9 @@ public class CarView extends AbstractObstacleView{
         if(!car.dead)
         {
             AffineTransform at = new AffineTransform();
-            System.out.println((car.getSpeedVector().teta)+90);
+           // System.out.println((car.getSpeedVector().teta)+90);
             double rot = ((car.getSpeedVector().teta)+90)*(Math.PI/180);
-            System.out.println(rot);
+         //   System.out.println(rot);
             at.translate(getWidth() / 2, getHeight() / 2);
 
             at.rotate( rot );
