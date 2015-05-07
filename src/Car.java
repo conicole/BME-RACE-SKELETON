@@ -157,7 +157,7 @@ public class Car implements  ICar{
         double x= (double)sv.SpeedX;
         double y= (double)sv.SpeedY;
      
-       // position.addObstacle(this);
+        //position.addObstacle(new Oil());
         sv.SpeedX=x;
         sv.SpeedY=y;
         System.out.println("Car collide with repair car" + rc.id);
@@ -183,8 +183,7 @@ public class Car implements  ICar{
     public void print(int x, int y){
         SpeedVector sv = getSpeedVector();
        // Writer.write("Car "+getId()+" Position "+ x +" "+ y+" Speed "+sv.getSpeedX()+" "+sv.getSpeedY());
-        
-        
+              
     }
     
 	

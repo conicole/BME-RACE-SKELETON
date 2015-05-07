@@ -46,12 +46,14 @@ public class Controller extends JFrame {
         int res = 11;
 		while(res == 11){
 			keyboard.poll();
-
-			processInput();
-            timer++;
-            if( timer%100000 == 0){
-                 res = game.UpdateGame();
-            }
+			
+			if(game.getNumberofCars()!=0)
+				processInput();
+			
+			timer++;
+			if( timer%140000 == 0){
+				res = game.UpdateGame();
+			}
 		}
         return res;
 	}
@@ -139,12 +141,31 @@ public class Controller extends JFrame {
             app.game.getTrack().updateview();
             int winner = app.run();
 
-            app.setVisible(false);
-            WinMenu wm = new WinMenu();
-            app.setContentPane(wm);
-            app.setSize(499, 498);
-            app.setLocationRelativeTo(app.getParent());
-            app.setVisible(true);
+            if(winner==10){
+             	app.setVisible(false);
+                Crash wm = new Crash();
+                app.setContentPane(wm);
+                app.setSize(595, 410);
+                app.setLocationRelativeTo(app.getParent());
+                app.setVisible(true);
+            }
+            else if(winner==0){
+            	app.setVisible(false);
+            	WinMenu wm = new WinMenu();
+            	app.setContentPane(wm);
+            	app.setSize(499, 498);
+            	app.setLocationRelativeTo(app.getParent());
+            	app.setVisible(true);
+            }
+            else if(winner==1){
+            	app.setVisible(false);
+            	WinMenu2 wm2 = new WinMenu2();
+            	app.setContentPane(wm2);
+            	app.setSize(499, 498);
+            	app.setLocationRelativeTo(app.getParent());
+            	app.setVisible(true);
+            }
+
 
         }
 
