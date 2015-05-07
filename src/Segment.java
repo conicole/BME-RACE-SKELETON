@@ -37,7 +37,19 @@ public class Segment implements ISegment {
 	}
 	//adds obstacles
 	public void addObstacle(AbstractObstacle o){
-		SObs.add(o);
+		
+		if(o.type().equalsIgnoreCase("car"))  
+			{
+			List<AbstractObstacle> l = new ArrayList<AbstractObstacle>();
+			l.add(o);
+			l.addAll(SObs);
+			SObs.clear();
+			SObs.addAll(l);
+			}
+		else{
+			SObs.add(o);
+		}
+		
 	}
 
 	// prevent all the object on the segment that
