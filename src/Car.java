@@ -53,7 +53,7 @@ public class Car implements  ICar{
     }
    //getter
     public String getID(){
-        return Integer.toString(id);
+        return Integer.toString(id+1);
     }
   //checks if obstacle hit
     public void ObstacleHitted(ICar c){

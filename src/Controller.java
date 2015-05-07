@@ -51,7 +51,7 @@ public class Controller extends JFrame {
 				processInput();
 			
 			timer++;
-			if( timer%1000000 == 0){
+			if( timer%500000 == 0){
 				res = game.UpdateGame();
 			}
 		}
