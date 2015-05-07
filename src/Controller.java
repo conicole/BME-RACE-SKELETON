@@ -44,6 +44,7 @@ public class Controller extends JFrame {
 		
 		RunnerGame rg = new RunnerGame();
         int res = 11;
+   
 		while(res == 11){
 			keyboard.poll();
 			
@@ -101,7 +102,7 @@ public class Controller extends JFrame {
              if (keyboard.keyDownOnce(KeyEvent.VK_CAPS_LOCK)) {
                  game.getCar(1).releaseOil();
              }
-             if (keyboard.keyDownOnce(KeyEvent.VK_TAB)) {
+             if (keyboard.keyDownOnce(KeyEvent.VK_Q)) {
                  game.getCar(1).releaseGlue();
              }
          }
