@@ -1,9 +1,19 @@
 -------------Summarize-----------------
-Game : 1 4
+Game : 1 20
 Car 0 Position 0 0 Speed 0 0
-Glue 5 Position 0 1 Effect_Left 4
+Glue 5 Position 0 4 Effect_Left 4
 ---------------------------------------
 Car 0 Accelerated 
-Car 0 Collided_With Glue 5 At 0 0
-Car 0 Collided_With Glue 5 At 0 1
-Car 0 Collided_With Glue 5 At 0 1
+-------------Summarize-----------------
+Game : 1 20
+Car 0 Position 0 3 Speed 0 1
+Glue 5 Position 0 4 Effect_Left 4
+---------------------------------------
+Car 0 Collided_With Glue 5 At 0 3
+Car 0 Accelerated 
+-------------Summarize-----------------
+Game : 1 20
+Glue 5 Position 0 4 Effect_Left 3
+Car 0 Position 0 8 Speed 0 1
+---------------------------------------
+No more Car in the race

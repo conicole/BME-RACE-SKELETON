@@ -16,22 +16,42 @@ public class CarView extends AbstractObstacleView{
     private static final int LINE_THICKNESS = 4;
     private static final int LINE_GAP = 10;
     private Color lineColor = Color.red;
-    BufferedImage bufferedImage;
+    BufferedImage bufferedImageAlive;
+    BufferedImage bufferedImagedead;
 
     public CarView(Car c){
         car = c;
 
-        bufferedImage = new BufferedImage(20,20,    BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = bufferedImage.createGraphics();
+        bufferedImageAlive = new BufferedImage(20,20,    BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = bufferedImageAlive.createGraphics();
 
         g2d.setRenderingHint (RenderingHints.KEY_ANTIALIASING,   RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setPaint(Color.red);
         g2d.fillOval(0,0,18,18);
         g2d.dispose();
+
+
+        bufferedImagedead = new BufferedImage(20,20,    BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d2 = bufferedImagedead.createGraphics();
+
+        g2d2.setRenderingHint (RenderingHints.KEY_ANTIALIASING,   RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d2.setPaint(Color.black);
+        g2d2.fillOval(0,0,18,18);
+        g2d2.dispose();
+
+
+
     }
 
     public void paintComponent(Graphics g){
-        g.drawImage(bufferedImage,0,0,this);
+        if(!car.dead)
+        {
+            g.drawImage(bufferedImageAlive,0,0,this);
+        }
+        else {
+            g.drawImage(bufferedImagedead,0,0,this);
+
+        }
     }
 
 

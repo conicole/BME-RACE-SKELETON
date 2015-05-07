@@ -11,6 +11,7 @@ public class Car implements  ICar{
     public Stack<Oil> So;
     public final int AMMUNITION = 4;
     private CarView view;
+    boolean dead = false;
 
  //constructor
     Car(){
@@ -106,13 +107,13 @@ public class Car implements  ICar{
 
        // g.getTrack().remove(this, position);
         //position = g.nextSegment(this);
-
-        Segment newpos = g.nextSegment(this);
-        if( newpos.equals(this.position)) {
-        }
-        else{
-            g.getTrack().remove(this,position);
-            this.position = newpos;
+        if(!dead) {
+            Segment newpos = g.nextSegment(this);
+            if (newpos.equals(this.position)) {
+            } else {
+                g.getTrack().remove(this, position);
+                this.position = newpos;
+            }
         }
     }
 //releases oil
@@ -148,7 +149,7 @@ public class Car implements  ICar{
 
     //remove car from race
     public void outOfTrack(){
-    	g.deleteCar(this);
+    	this.dead = true;
     }
     //collision with repair car
     public void collisionWithRepairCar(RepairCar rc){

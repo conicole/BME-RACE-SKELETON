@@ -51,58 +51,63 @@ public class Controller extends JFrame {
 				processInput();
 			
 			timer++;
-			if( timer%3000000 == 0){
+			if( timer%1000000 == 0){
 				res = game.UpdateGame();
 			}
 		}
         return res;
 	}
 	
-	 protected void processInput() {
-         if( keyboard.keyDownOnce( KeyEvent.VK_ESCAPE ) ) {
-             this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+	 protected void processInput() throws java.lang.NullPointerException {
+         try {
+             if (keyboard.keyDownOnce(KeyEvent.VK_ESCAPE)) {
+                 this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+             }
+             if (keyboard.keyDownOnce(KeyEvent.VK_DOWN)) {
+                 game.getCar(0).brake();
+             }
+             if (keyboard.keyDownOnce(KeyEvent.VK_UP)) {
+                 game.getCar(0).accelerate();
+             }
+             if (keyboard.keyDownOnce(KeyEvent.VK_LEFT)) {
+                 game.getCar(0).goLeft();
+             }
+             if (keyboard.keyDownOnce(KeyEvent.VK_RIGHT)) {
+                 game.getCar(0).goRight();
+             }
+
+             if (keyboard.keyDownOnce(KeyEvent.VK_CONTROL)) {
+                 game.getCar(0).releaseOil();
+             }
+             if (keyboard.keyDownOnce(KeyEvent.VK_SHIFT)) {
+
+                 game.getCar(0).releaseGlue();
+
+             }
+
+             if (keyboard.keyDownOnce(KeyEvent.VK_S)) {
+                 game.getCar(1).brake();
+             }
+             if (keyboard.keyDownOnce(KeyEvent.VK_W)) {
+                 game.getCar(1).accelerate();
+             }
+             if (keyboard.keyDownOnce(KeyEvent.VK_A)) {
+                 game.getCar(1).goLeft();
+             }
+             if (keyboard.keyDownOnce(KeyEvent.VK_D)) {
+                 game.getCar(1).goRight();
+             }
+
+             if (keyboard.keyDownOnce(KeyEvent.VK_CAPS_LOCK)) {
+                 game.getCar(1).releaseOil();
+             }
+             if (keyboard.keyDownOnce(KeyEvent.VK_TAB)) {
+                 game.getCar(1).releaseGlue();
+             }
          }
-		 if( keyboard.keyDownOnce(KeyEvent.VK_DOWN) ){
-			 game.getCar(0).brake();
-		 }
-		 if( keyboard.keyDownOnce(KeyEvent.VK_UP) ){
-			 game.getCar(0).accelerate();
-		 }
-		 if( keyboard.keyDownOnce(KeyEvent.VK_LEFT) ){
-			 game.getCar(0).goLeft();
-		 }
-		 if( keyboard.keyDownOnce(KeyEvent.VK_RIGHT) ){
-			 game.getCar(0).goRight();
-		 }
-		 
-		 if( keyboard.keyDownOnce( KeyEvent.VK_CONTROL) ){
-			 game.getCar(0).releaseOil();
-		 }
-		 if( keyboard.keyDownOnce( KeyEvent.VK_SHIFT ) ){
-
-             game.getCar(0).releaseGlue();
-
-		 }
-		 
-		 if( keyboard.keyDown( KeyEvent.VK_S ) ){
-			 game.getCar(1).brake();
-		 }
-		 if( keyboard.keyDown( KeyEvent.VK_W ) ){
-			 game.getCar(1).accelerate();
-		 }
-		 if( keyboard.keyDown( KeyEvent.VK_A ) ){
-			 game.getCar(1).goLeft();
-		 }
-		 if( keyboard.keyDown( KeyEvent.VK_D ) ){
-			 game.getCar(1).goRight();
-		 }
-		 
-		 if( keyboard.keyDownOnce( KeyEvent.VK_CAPS_LOCK ) ){
-			 game.getCar(1).releaseOil();
-		 }
-		 if( keyboard.keyDownOnce( KeyEvent.VK_TAB ) ){
-			 game.getCar(1).releaseGlue();
-		 }
+         catch (NullPointerException e){
+             System.err.println("Car " + e.getMessage() + " is not on the circuit ");
+         }
 		 
 	 }
 

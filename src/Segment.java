@@ -34,7 +34,6 @@ public class Segment implements ISegment {
 		view.updateComponent();
 		view.validate();
 		view.repaint();
-
 	}
 	//adds obstacles
 	public void addObstacle(AbstractObstacle o){

@@ -165,7 +165,7 @@ public class Game  implements Serializable {
 	}
 
 	public void deleteCar(ICar car){
-		this.tabCar.remove(car.getId());
+		this.tabCar.remove(car);
 		nbCar--;
 	}
 
@@ -328,7 +328,7 @@ public class Game  implements Serializable {
 	// 11 -> game is going on
 	// other number : nb of winner.
 	public int UpdateGame(){
-		if( (nbCar) == 0 ){
+		if( alldead()){
 			return 10;
 		}
 		for(int i = 0; i < nbCar; i++){
@@ -342,6 +342,14 @@ public class Game  implements Serializable {
 
 		return 11;
 	}
+
+    public boolean alldead(){
+        boolean res = true;
+        for(int i = 0; i < tabCar.size(); i++){
+            res = res && tabCar.get(i).dead;
+        }
+        return res;
+    }
 
 	public TrackView getTrackView(){
 		return track.getView();
