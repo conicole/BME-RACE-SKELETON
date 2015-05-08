@@ -19,7 +19,7 @@ public class Obstacle implements AbstractObstacle{
 		return effectLeft==0;
 	}
 
-	public String type() {
+	public String name() {
 		// TODO Auto-generated method stub
 		return "Obstacle ";
 	}

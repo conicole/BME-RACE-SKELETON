@@ -13,7 +13,7 @@ public class startTimer extends JPanel implements ActionListener {
     private Font font;
     private int size;
     private int time;
-    private String txt;
+    private String txt="";
     static int STARTSIZE = 30;
     private int width = this.getWidth();
     private boolean blockGame = true;

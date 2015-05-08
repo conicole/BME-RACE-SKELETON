@@ -5,7 +5,7 @@ public interface  AbstractObstacle{
     public void ObstacleHitted(ICar c);
     public void collisionWithRepairCar(RepairCar rc);
     public boolean HasNoMoreEffect();
-    public String type();
+    public String name();
     public int getId();
     public int effectLeft();
    public void print(int x, int y);

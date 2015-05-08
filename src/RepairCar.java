@@ -128,7 +128,7 @@ public class RepairCar implements AbstractObstacle {
 
 
 	@Override
-	public String type() {
+	public String name() {
 		// TODO Auto-generated method stub
 		return "RepairCar";
 	}

@@ -30,7 +30,7 @@ public class Oil implements AbstractObstacle{
 		return effectLeft==0;
 	}
 
-	public String type(){
+	public String name(){
 		return "Oil";
 	}
 

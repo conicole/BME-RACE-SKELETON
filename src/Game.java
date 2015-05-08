@@ -1,13 +1,10 @@
 
-import java.awt.image.BufferedImage;
-import java.io.File;
+
 import java.io.Serializable;
 //import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import javax.imageio.ImageIO;
 
 //import sun.security.util.Length;
 
@@ -272,8 +269,9 @@ public class Game  implements Serializable {
 				if(!t.getSegment(i1, j).isOutOfTrack && !t.getSegment(i1, j).isFinishLine){
 					//Stores an abitrary cell with glue or oil
 					for (AbstractObstacle l :  t.getSegment(i1, j).SObs){
-						if(l.type().equalsIgnoreCase("oil")||l.type().equalsIgnoreCase("glue")){
+						if(l.name().equalsIgnoreCase("oil")||l.name().equalsIgnoreCase("glue")){
 							cellswithGlueOil.add(v[i1][j]);
+							
 							break;
 						}
 
@@ -291,7 +289,7 @@ public class Game  implements Serializable {
 	public boolean containsRaceCarOrRepairCar(Segment s){
 
 		for (AbstractObstacle l : s.SObs){
-			if(l.type().equalsIgnoreCase("car")||l.type().equalsIgnoreCase("repaircar")){
+			if(l.name().equalsIgnoreCase("car")||l.name().equalsIgnoreCase("repaircar")){
 				return true;
 			}
 		}

@@ -38,7 +38,7 @@ public class Segment implements ISegment {
 	//adds obstacles
 	public void addObstacle(AbstractObstacle o){
 		
-		if(o.type().equalsIgnoreCase("car"))  
+		if(o.name().equalsIgnoreCase("car"))  
 			{
 			List<AbstractObstacle> l = new ArrayList<AbstractObstacle>();
 			l.add(o);

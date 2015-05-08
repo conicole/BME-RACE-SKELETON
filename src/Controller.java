@@ -1,12 +1,14 @@
 //import com.sun.tools.javac.util.List;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-
 import javax.swing.*;
 
 
 public class Controller extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ArrayList<IView> views;
 	Game game;
 	TrackView track;

@@ -176,7 +176,7 @@ public class Car implements  ICar{
         return false;
     }
 //get type
-    public String type(){
+    public String name(){
         return "car";
     }
 //check if effect left

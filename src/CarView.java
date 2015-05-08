@@ -42,6 +42,11 @@ public class CarView extends AbstractObstacleView{
         g2d2.setRenderingHint (RenderingHints.KEY_ANTIALIASING,   RenderingHints.VALUE_ANTIALIAS_ON);
         g2d2.setPaint(Color.black);
         g2d2.fillOval(0,0,18,18);
+        
+        g2d2.setPaint(Color.RED);
+        g2d2.setFont(new Font("Times Roman", Font.BOLD, fontSize));
+
+        g2d2.drawString("x", 5, 14);
         g2d2.dispose();
 
 
