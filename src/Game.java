@@ -1,9 +1,13 @@
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.Serializable;
 //import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 
 //import sun.security.util.Length;
 
@@ -17,18 +21,23 @@ public class Game  implements Serializable {
 	int nbCar;
 	private List<RepairCar> tabRepairCar;
 	int nbRepairCar;
-
+	
 
 	public Game(){
 		tabCar=new ArrayList<Car>();
 		tabRepairCar =new ArrayList<RepairCar>();
 		nbCar=0;
 		nbRepairCar=0;
+		
+
+		
 
 
 	}
 	
 	
+
+
 
 	public void setTrack(int x,int y)
 	{
@@ -245,6 +254,7 @@ public class Game  implements Serializable {
 				}
 
 
+
 			}
 
 		}
@@ -277,16 +287,16 @@ public class Game  implements Serializable {
 		return cellswithGlueOil;
 
 	}
-	
+
 	public boolean containsRaceCarOrRepairCar(Segment s){
-		
+
 		for (AbstractObstacle l : s.SObs){
 			if(l.type().equalsIgnoreCase("car")||l.type().equalsIgnoreCase("repaircar")){
 				return true;
-			 }
-	    }
+			}
+		}
 		return false;
-		
+
 	}
 
 
@@ -297,10 +307,10 @@ public class Game  implements Serializable {
 
 		//builds graph of entire track
 		Vertex[][] v = buildGraph(t, s);
-		
+
 		//Performs Dijkstras algorithm on graph, we pass source
 		Dijkstra.computePaths(v[s.getX()][s.getY()]);
-		
+
 		//get all segments with glue or oil patch
 		cellswithGlueOil= getAllTracksWithPatch( t,  v);
 
@@ -343,13 +353,13 @@ public class Game  implements Serializable {
 		return 11;
 	}
 
-    public boolean alldead(){
-        boolean res = true;
-        for(int i = 0; i < tabCar.size(); i++){
-            res = res && tabCar.get(i).dead;
-        }
-        return res;
-    }
+	public boolean alldead(){
+		boolean res = true;
+		for(int i = 0; i < tabCar.size(); i++){
+			res = res && tabCar.get(i).dead;
+		}
+		return res;
+	}
 
 	public TrackView getTrackView(){
 		return track.getView();

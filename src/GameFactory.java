@@ -1,12 +1,17 @@
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 /**
  * Created by Nicole on 04/05/2015.
  */
 public class GameFactory {
 
-
     public Game createGame(int sizeX, int sizeY){
         Game g = new Game();
-
+        
         //
         //  Creation of track,segments and their Views
         //
@@ -124,7 +129,13 @@ public class GameFactory {
         	for(int j=40;j<48;j++)
         		g.set_finish_line(i, j);
 
+      
+        
+        
         return g;
 
     }
+    
+	
+
 }

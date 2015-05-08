@@ -21,8 +21,6 @@ public class SegView extends JPanel {
 
 	public boolean car;
 
-
-
 	private Segment segment;
 
 	public SegView(int i){
@@ -36,6 +34,7 @@ public class SegView extends JPanel {
 	public SegView(Segment s){
 		setLayout(new BorderLayout());
 		segment = s;
+
 	}
 
 	public void updateComponent(){
@@ -59,8 +58,15 @@ public class SegView extends JPanel {
 	public void paintComponent(Graphics g){
 
 		if(segment.isOutOfTrack){
-			g.setColor(new Color(0,102,0));
-			g.fillRect(0, 0, 20,20);
+
+			if(TrackView.getGrassImg()==null)
+			{
+				g.setColor(new Color(0,102,0));
+				g.fillRect(0, 0, 20,20);
+			}
+			else{
+				g.drawImage(TrackView.getGrassImg(), 0, 0,this);
+			}
 
 
 
@@ -80,9 +86,16 @@ public class SegView extends JPanel {
 		}
 
 		else{
-			g.setColor(Color.gray);
-			g.fillRect(0, 0, 20,20);
 
+
+			if(TrackView.getGrassImg()==null)
+			{
+				g.setColor(Color.gray);
+				g.fillRect(0, 0, 20,20);
+			}
+			else{
+				g.drawImage(TrackView.getRoadImg(), 0, 0,this);
+			}
 		}
 
 
