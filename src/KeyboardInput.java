@@ -5,6 +5,7 @@ public class KeyboardInput implements KeyListener {
 
 	private static final int KEY_COUNT = 256;
 
+	//keyboard states
 	private enum KeyState {
 
 		RELEASED, // Not down
@@ -27,7 +28,7 @@ public class KeyboardInput implements KeyListener {
 
 	private KeyState[] keys = null;
 
-
+//constructor
 
 	public KeyboardInput() {
 
@@ -44,7 +45,7 @@ public class KeyboardInput implements KeyListener {
 	}
 
 
-
+//waits for keyboard press
 	public synchronized void poll() {
 		for( int i = 0; i < KEY_COUNT; ++i ) {
 
@@ -81,7 +82,7 @@ public class KeyboardInput implements KeyListener {
 	}
 
 
-
+//keydown event
 	public boolean keyDown( int keyCode ) {
 
 		return keys[ keyCode ] == KeyState.ONCE ||
@@ -90,7 +91,7 @@ public class KeyboardInput implements KeyListener {
 
 	}
 
-
+//keydownonce event
 
 	public boolean keyDownOnce( int keyCode ) {
 		return keys[ keyCode ] == KeyState.ONCE;
@@ -98,7 +99,7 @@ public class KeyboardInput implements KeyListener {
 	}
 
 
-
+//keypressevent
 	public synchronized void keyPressed( KeyEvent e ) {
 		int keyCode = e.getKeyCode();
 		if( keyCode >= 0 && keyCode < KEY_COUNT ) {
@@ -111,7 +112,7 @@ public class KeyboardInput implements KeyListener {
 
 
 
-
+//key release event
 	public synchronized void keyReleased( KeyEvent e ) {
 
 		int keyCode = e.getKeyCode();
