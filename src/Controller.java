@@ -13,6 +13,7 @@ public class Controller extends JFrame {
 	KeyboardInput keyboard;
     int timer;
     int winner;
+    JPanel card;
     
 	public Controller(){
         timer = 0;
@@ -23,6 +24,9 @@ public class Controller extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         winner = 11;
+        card = new JPanel();
+        OverlayLayout ov = new OverlayLayout(card);
+        card.setLayout(ov);
 	}
 	
 	public void addViews(IView v){
@@ -111,10 +115,18 @@ public class Controller extends JFrame {
     }
 
     public void buildGame(int sizeX,int sizeY){
+        card.removeAll();
         GameFactory gf = new GameFactory();
         game = gf.createGame(sizeX,sizeY);
         // put the track view as major panel
-        this.setContentPane(game.getTrackView());
+        this.setContentPane(card);
+        startTimer st = new startTimer();
+        card.add(st);
+        card.add(game.getTrackView());
+        setSize(1050, 650);
+        setLocationRelativeTo(getParent());
+        setVisible(true);
+        st.WaitEndTimer();
     }
 
     public static void main(String[] args) {
@@ -138,9 +150,7 @@ public class Controller extends JFrame {
 
             app.setVisible(false);
             app.buildGame(30, 50);
-            app.setSize(1050, 650);
-            app.setLocationRelativeTo(app.getParent());
-            app.setVisible(true);
+
 
 
             app.game.getTrack().updateview();
