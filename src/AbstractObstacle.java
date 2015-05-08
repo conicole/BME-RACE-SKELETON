@@ -1,5 +1,6 @@
 public interface  AbstractObstacle{
-
+   //abstractObstacle interface
+//specifies contract of all obstacles
     public final int  EFFECTLONG=4;
 
     public void ObstacleHitted(ICar c);

@@ -2,6 +2,8 @@ import java.util.Stack;
 
 public class Car implements  ICar{
 
+	
+	//initialization
     private SpeedVector sv;///
     boolean winner =false;
     private Game g;///
@@ -9,6 +11,7 @@ public class Car implements  ICar{
     private int id;
     public Stack<Glue> Sg;
     public Stack<Oil> So;
+    //sets the number of ammo
     public final int AMMUNITION = 4;
     private CarView view;
     boolean dead = false;
@@ -24,7 +27,8 @@ public class Car implements  ICar{
     }
     //constructor
     Car(Game game,int i,int j, int n){
-        Sg = new Stack<Glue>();
+       //initialization
+    	Sg = new Stack<Glue>();
         So = new Stack<Oil>();
         g=game;
         sv = new SpeedVector();
@@ -35,7 +39,7 @@ public class Car implements  ICar{
         OilView oV;
         Glue Gl;
         GlueView Glv;
-
+        //assigns ammo to cars
         for(int k=0;k<AMMUNITION;k++) {
             o = new Oil();
             oV = new OilView(o);

@@ -1,6 +1,6 @@
 public class Obstacle implements AbstractObstacle{
 	private int effectLeft = EFFECTLONG;
-
+	private ObstacleView obstacleView;
 	public Obstacle(){
 		System.out.println("Obstacle : Creation of an Obstacle");
 	}
@@ -13,7 +13,7 @@ public class Obstacle implements AbstractObstacle{
 	}
 
 	public void collisionWithRepairCar(RepairCar rc){
-
+		rc.position.remove(this);
 	}
 	public boolean HasNoMoreEffect(){
 		return effectLeft==0;
@@ -21,7 +21,7 @@ public class Obstacle implements AbstractObstacle{
 
 	public String name() {
 		// TODO Auto-generated method stub
-		return "Obstacle ";
+		return "Obstacle";
 	}
 
 	public int getId() {
@@ -39,9 +39,18 @@ public class Obstacle implements AbstractObstacle{
 	}
 
 
+	
+	
 	public AbstractObstacleView getView(){
-		// todooo
-		return new CarView(new Car());
+		return obstacleView;
+	}
+
+	public ObstacleView getObstacleView() {
+		return obstacleView;
+	}
+
+	public void setOilView(ObstacleView obstacleView) {
+		this.obstacleView = obstacleView;
 	}
 
 }

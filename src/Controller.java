@@ -9,6 +9,7 @@ public class Controller extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	//Declaration
 	ArrayList<IView> views;
 	Game game;
 	TrackView track;
@@ -17,14 +18,15 @@ public class Controller extends JFrame {
     int winner;
     JPanel card;
     
+    //constructor of the controller
 	public Controller(){
         timer = 0;
         keyboard = new KeyboardInput();
         this.addKeyListener(keyboard);
         this.setTitle("BME - RACE");
-        this.setSize(1050, 650);
+        this.setSize(1050, 650);//screensize
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+        setResizable(false);//not resizable
         winner = 11;
         card = new JPanel();
         OverlayLayout ov = new OverlayLayout(card);
@@ -32,28 +34,25 @@ public class Controller extends JFrame {
 	}
 	
 	public void addViews(IView v){
-		views.add(v);
+		views.add(v);//add view
 	}
 	
 	public void setTrackView(TrackView t){
-		track=t;
+		track=t; //addview
 	}
 	
 	public void setGame(Game t){
-		game=t;
+		game=t;//set game
 	}
 
     public void pollKeyboard(){
-        keyboard.poll();
+        keyboard.poll();//wait for keyboeard
     }
 	
 	public void run() throws InterruptedException {
 		
-		//while(! keyboard.keyDownOnce( KeyEvent.VK_ENTER ) ){
-			///Wait launch the game
-		//	keyboard.poll();
-		//}
-		
+
+		//run game
 		RunnerGame rg = new RunnerGame(this);
         rg.run();
         rg.join();
@@ -61,6 +60,7 @@ public class Controller extends JFrame {
 
 	}
 	
+	//red keyboard input
 	 protected void processInput() throws java.lang.NullPointerException {
          try {
              if (keyboard.keyDownOnce(KeyEvent.VK_ESCAPE)) {
@@ -111,13 +111,15 @@ public class Controller extends JFrame {
 		 
 	 }
 
-
+	 //reset game
     public void reset(){
         winner = 11;
     }
 
+    //build game
     public void buildGame(int sizeX,int sizeY){
-        card.removeAll();
+        //empty cards
+    	card.removeAll();
         GameFactory gf = new GameFactory();
         game = gf.createGame(sizeX,sizeY);
         // put the track view as major panel
@@ -131,14 +133,17 @@ public class Controller extends JFrame {
         st.WaitEndTimer();
     }
 
+    //main of the application
     public static void main(String[] args) {
-
+    	//creates controller
         Controller app = new Controller();
+        //creates start screen
         StartMenu sm = new StartMenu();
         app.setContentPane(sm);
         app.setSize(578, 456);
         app.setLocationRelativeTo(app.getParent());
-        app.setVisible(true);
+        //screen visible
+        app.setVisible(true); 
 
 
 
@@ -149,12 +154,12 @@ public class Controller extends JFrame {
             while(!app.keyboard.keyDownOnce(KeyEvent.VK_ENTER)) {
                 app.keyboard.poll();
             }
-
+            //make game visible
             app.setVisible(false);
             app.buildGame(30, 50);
 
 
-
+            //load track view
             app.game.getTrack().updateview();
             try {
                 app.run();
@@ -163,6 +168,7 @@ public class Controller extends JFrame {
             }
 
             if(app.winner==10){
+            	//if all cars crash out
              	app.setVisible(false);
                 Crash wm = new Crash();
                 app.setContentPane(wm);
@@ -171,6 +177,7 @@ public class Controller extends JFrame {
                 app.setVisible(true);
             }
             else if(app.winner==0){
+            	//if there is a winner and it is car 1
             	app.setVisible(false);
             	WinMenu wm = new WinMenu();
             	app.setContentPane(wm);
@@ -179,6 +186,7 @@ public class Controller extends JFrame {
             	app.setVisible(true);
             }
             else if(app.winner==1){
+            	//if there is a winner and it is car 2
             	app.setVisible(false);
             	WinMenu2 wm2 = new WinMenu2();
             	app.setContentPane(wm2);
@@ -186,7 +194,7 @@ public class Controller extends JFrame {
             	app.setLocationRelativeTo(app.getParent());
             	app.setVisible(true);
             }
-
+            //reset game
             app.reset();
 
 

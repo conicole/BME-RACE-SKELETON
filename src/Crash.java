@@ -12,6 +12,7 @@ public class Crash extends JPanel implements IView   {
 
     public void paintComponent(Graphics g) {
         try {
+        	//background image
             File img = new File("Crash.jpg");
             BufferedImage image = ImageIO.read(img);
             g.drawImage(image,0,0,this);
