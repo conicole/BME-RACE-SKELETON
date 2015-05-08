@@ -105,16 +105,14 @@ public class RepairCar implements AbstractObstacle {
 
 	@Override
 	public void ObstacleHitted(ICar c) {
-		// TODO Auto-generated method stub
-
+	      
 	}
 
 
  
 	@Override
 	public void collisionWithRepairCar(RepairCar rc) {
-		// TODO Auto-generated method stub
-				
+		// TODO Auto-generated method stub	
 	}
 
 
