@@ -6,37 +6,35 @@
 import javax.swing.*;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
 
 
 public class SegView extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public boolean car;
 
 	private Segment segment;
-
+	//sets view
 	public SegView(int i){
 		car = true;
 	}
-
+	//sets view
 	public SegView(){
 		car = false;
 	}
 
+	//constructor
 	public SegView(Segment s){
 		setLayout(new BorderLayout());
 		segment = s;
 
 	}
 
+	//update view
 	public void updateComponent(){
 		this.removeAll();
 		if( segment.hasObstacle() ){

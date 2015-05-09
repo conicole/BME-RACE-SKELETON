@@ -10,9 +10,15 @@ import java.io.IOException;
  */
 public class WinMenu2 extends JPanel implements IView   {
 
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
+	//prints to screen
     public void paintComponent(Graphics g) {
         try {
+        	//uses image as a background
             File img = new File("WIN2.jpg");
             BufferedImage image = ImageIO.read(img);
             g.drawImage(image,0,0,this);

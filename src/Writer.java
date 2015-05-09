@@ -72,7 +72,7 @@ public class Writer  {
 		}
 	}
 
-
+//write if out of track
 	public static void writeOutOfTrack(Car c){
 		try{
 			bw.append("Car "+c.getId()+" Out_Of_Track ");
@@ -136,6 +136,8 @@ public class Writer  {
 			System.err.println("Error during summarize" + e.getMessage());
 		}
 	}
+	
+	//writes finishline
 	public static void writefinish(Car c, Oil o){
 		try{
 			bw.append("Car "+c.getId()+" Wins race At "+c.getPosition().getX()+" "+c.getPosition().getY());
@@ -209,7 +211,7 @@ public class Writer  {
 
 		}
 	}
-
+//writes a string
 	public static void write(String string) {
 		try {
 			bw.append(string);
@@ -219,7 +221,7 @@ public class Writer  {
 		}
 
 	}
-
+//writes if winner
 	public static void write_win(int i){
 		try {
 			bw.append("Car : " + (i+1) + " wins the race" );
@@ -229,6 +231,7 @@ public class Writer  {
 		}
 	}
 
+	//writes if empty
 	public static void write_empty(){
 		try {
 			bw.append("No more Car in the race" );

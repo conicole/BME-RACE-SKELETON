@@ -15,9 +15,6 @@ public class CarView extends AbstractObstacleView{
 	private static final long serialVersionUID = 1L;
 	//initialization
     private Car car;
-    private static final int LINE_THICKNESS = 4;
-    private static final int LINE_GAP = 10;
-    private Color lineColor = Color.red;
     BufferedImage bufferedImageAlive;
     BufferedImage bufferedImagedead;
 

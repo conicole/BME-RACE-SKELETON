@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class Segment implements ISegment {
+	//fields
 	private int x;
 	private int y;
 	public ArrayList<AbstractObstacle> SObs;
@@ -30,6 +31,7 @@ public class Segment implements ISegment {
 
 	//removes obstacles
 	public void remove(AbstractObstacle obj){
+		
 		SObs.remove(obj);
 		view.updateComponent();
 		view.validate();
@@ -37,7 +39,7 @@ public class Segment implements ISegment {
 	}
 	//adds obstacles
 	public void addObstacle(AbstractObstacle o){
-		
+		//ensures car is always on to of track
 		if(o.name().equalsIgnoreCase("car"))  
 			{
 			List<AbstractObstacle> l = new ArrayList<AbstractObstacle>();
@@ -56,9 +58,11 @@ public class Segment implements ISegment {
 	// a car is coming | manage collision
 	public void CarIsComing(ICar c)
 	{
+		//checks if it is finishline
 		if(isFinishLine==true){
 			c.setWinner(true);
 		}
+		//checks if empty
 		if(!SObs.isEmpty()){
 			for(int i=0;i<SObs.size();i++){
 				//if obstacle is myself then skip
@@ -67,18 +71,19 @@ public class Segment implements ISegment {
 				if(SObs.get(i).HasNoMoreEffect()) SObs.remove(i);
 			}
 		}
+		//adds to track
 		this.addObstacle(c);
 		if(isOutOfTrack) {
 			c.outOfTrack();
 		}
-		this.updateView();
+		this.updateView();//update view
 	}
 	//checks if out of track
 	public void setOutOfTrack(){
 		isOutOfTrack = true;
 	}
 
-	//
+	//clears repair car from track
 	public void clear(RepairCar rc){
 
 
@@ -94,12 +99,12 @@ public class Segment implements ISegment {
 	public void setInFinishLine(){
 		isFinishLine = true;
 	}
-
+//set view
 	public void setView(SegView sgV){
 		view =sgV;
 	}
 
-
+//update view
 	public void updateView(){
 		view.updateComponent();
 		view.validate();

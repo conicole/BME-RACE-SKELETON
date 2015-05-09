@@ -11,8 +11,11 @@ import java.io.IOException;
  */
 public class TrackView extends JPanel implements IView  {
 
-    private Track track;
-    public SegView[][] segTab;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public SegView[][] segTab;
 
     private GridLayout grid;
     private static BufferedImage grassimg;
@@ -24,7 +27,6 @@ public class TrackView extends JPanel implements IView  {
     public TrackView(Track tr, int sizeX,int sizeY){
         taillex = sizeX;
         tailley = sizeY;
-        track = tr;
         grid = new GridLayout(sizeX,sizeY);
         this.setLayout(grid);
         
@@ -44,26 +46,6 @@ public class TrackView extends JPanel implements IView  {
     public void addToLayout(Component c){
         this.add(c);
     }
-
-    // constructor for test, to delete
-  /*  public TrackView(){
-        //this.setSize(100000,200000);
-        GridLayout grid = new GridLayout(taillex,tailley);
-        this.segTab = new SegView[taillex][tailley];
-        this.setLayout(grid);
-        for(int i = 0; i < taillex; i++){
-            for(int j=0; j < tailley; j++){
-                if((i==2) && (j==2)){
-                    segTab[i][j] = new SegView(1);
-                    }
-               else {
-                    segTab[i][j] = new SegView();
-
-                }
-                this.add(segTab[i][j]);
-            }
-        }
-    }*/
 
 
     public void updateView(){

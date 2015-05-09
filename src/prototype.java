@@ -1,5 +1,10 @@
-import java.util.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -203,7 +208,6 @@ public class prototype {
 	//determines what each commands does
 	public void ComputeInputCmd(int nbCmd ){
 		int x;
-		int y;
 		switch(nbCmd) {
 		case 0:
 			return;

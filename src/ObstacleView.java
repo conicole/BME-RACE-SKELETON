@@ -1,8 +1,5 @@
-import javax.swing.JComponent;
 import java.awt.*;
-import java.awt.geom.*;
 import java.awt.image.BufferedImage;
-import javax.swing.*;
 
 
 public class ObstacleView extends AbstractObstacleView{
@@ -12,14 +9,9 @@ public class ObstacleView extends AbstractObstacleView{
 	 */
 	//Fields
 	private static final long serialVersionUID = 1L;
-	private Obstacle obstacle;
-	private static final int LINE_THICKNESS = 4;
-	private static final int LINE_GAP = 10;
-	private Color lineColor = Color.orange;
 	BufferedImage bufferedImage;
 	//constructor
 	public ObstacleView(Obstacle o){
-		obstacle=o;
 		bufferedImage = new BufferedImage(20,20,    BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = bufferedImage.createGraphics();
 		//redering

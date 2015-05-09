@@ -1,7 +1,7 @@
-import java.lang.Math.*;
+
 
 public class SpeedVector {
-
+//feilds
 	double SpeedX;
 	double SpeedY;
 	double r;
@@ -9,14 +9,14 @@ public class SpeedVector {
 	final static int MAXSPEED = 3;
 	final static int MINSPEED = 0;
 	final static double ROTATION = 90;
-
+//constructor
 	SpeedVector(){
 		SpeedX=0;
 		SpeedY=0;
 		r=0;
 		teta =-90;
 	}
-
+//decelerate
 	void decrease(int a){
 		r-=a;
 		if(r<MINSPEED) r=MINSPEED;
@@ -24,27 +24,22 @@ public class SpeedVector {
 		// 	   System.out.println(r+" "+teta+" "+SpeedX+" "+SpeedY);
 
 	}
-
+//accelerate
 	void increase(int a){
 		r+=a;
 		if(r>MAXSPEED)r=MAXSPEED;    	   
-
-		//  System.out.println(r+" "+teta+" "+SpeedX+" "+SpeedY);
-
 	}
-
+//turn right
 	void turnRight(){
 		
         teta= (teta+ROTATION)%360;
-		//   System.out.println(r+" "+teta+" "+SpeedX+" "+SpeedY);
-	}
-
+		}
+//turn left
 	void turnLeft(){
 		teta=  (teta-ROTATION)%360;
 
-		//	  System.out.println(r+" "+teta+" "+SpeedX+" "+SpeedY);
-	}
-
+			}
+//stops car
 	void stop(){
 		r = 0;
 	}
@@ -56,6 +51,7 @@ public class SpeedVector {
 	}
 
 	public int getSpeedY(){
+		//trig math function are in radian
 		return (int) Math.round(r*Math.cos(teta*Math.PI/180));
 	}
 }

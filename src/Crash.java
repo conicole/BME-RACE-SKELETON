@@ -10,7 +10,12 @@ public class Crash extends JPanel implements IView   {
 
 	//Displays that all cars are out of the race
 
-    public void paintComponent(Graphics g) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public void paintComponent(Graphics g) {
         try {
         	//background image
             File img = new File("Crash.jpg");

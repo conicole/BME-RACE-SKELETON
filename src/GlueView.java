@@ -1,13 +1,13 @@
-import javax.swing.JComponent;
 import java.awt.*;
-import java.awt.geom.*;
 import java.awt.image.BufferedImage;
-import javax.swing.*;
 
 //glue view
 public class GlueView extends AbstractObstacleView{
 
-	private Glue glue;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	BufferedImage bufferedImage;
 
 	public GlueView(Glue g){

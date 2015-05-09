@@ -189,8 +189,6 @@ public class Car implements  ICar{
     }
 //print output
     public void print(int x, int y){
-        SpeedVector sv = getSpeedVector();
-       // Writer.write("Car "+getId()+" Position "+ x +" "+ y+" Speed "+sv.getSpeedX()+" "+sv.getSpeedY());
               
     }
     

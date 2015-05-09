@@ -100,7 +100,7 @@ public class RepairCar implements AbstractObstacle {
 		return view;
 	}
 
-
+//taken care of in game
 
 
 	@Override
@@ -108,7 +108,7 @@ public class RepairCar implements AbstractObstacle {
 	      
 	}
 
-
+//collsion with repair car, but they never collide thanks to dijkstra
  
 	@Override
 	public void collisionWithRepairCar(RepairCar rc) {
@@ -116,7 +116,7 @@ public class RepairCar implements AbstractObstacle {
 	}
 
 
-
+//check for more effects
 
 	@Override
 	public boolean HasNoMoreEffect() {
@@ -125,7 +125,7 @@ public class RepairCar implements AbstractObstacle {
 	}
 
 
-
+//gets name
 
 	@Override
 	public String name() {
@@ -135,7 +135,7 @@ public class RepairCar implements AbstractObstacle {
 
 
 
-
+//gets id
 	@Override
 	public int getId() {
 		// TODO Auto-generated method stub
@@ -144,7 +144,7 @@ public class RepairCar implements AbstractObstacle {
 
 
 
-
+//effects left
 	@Override
 	public int effectLeft() {
 		// TODO Auto-generated method stub
